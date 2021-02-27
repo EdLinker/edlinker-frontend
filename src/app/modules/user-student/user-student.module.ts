@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { userStudentRouting } from './user-student.routing';
 
 @NgModule({
-  imports: [],
+  imports: [
+    RouterModule.forChild(userStudentRouting)
+  ],
   exports: [],
   declarations: [],
   providers: [],
