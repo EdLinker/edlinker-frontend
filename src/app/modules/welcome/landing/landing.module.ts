@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { landingRouting } from './landing.routing';
 import { RouterModule } from '@angular/router';
+import { landingRouting } from './landing.routing';
 import { LandingViewComponent } from './components';
 
 @NgModule({
