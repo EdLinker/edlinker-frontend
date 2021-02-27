@@ -5,9 +5,9 @@ import { LandingViewComponent } from './modules/welcome/landing/components';
 
 const routes: Routes = [
   {
-    path: '',
-    component: LandingViewComponent
-  },
+    path: '', 
+    loadChildren: () => import('./modules/welcome').then(m => m.WelcomeModule),
+  }
 ];
 
 @NgModule({

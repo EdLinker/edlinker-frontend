@@ -1,12 +1,10 @@
 import { Routes } from '@angular/router';
-// import { PostsListViewComponent } from './components';
-// import { PostsListResolver } from './resolvers';
+import { LandingViewComponent } from './components';
 
 export const landingRouting: Routes = [
   {
-    // path: '',
-    // resolve: { posts: PostsListResolver },
-    // component: PostsListViewComponent
+    path: '',
+    component: LandingViewComponent
   }
 ];
 
