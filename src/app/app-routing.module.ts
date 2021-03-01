@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/user-teacher').then(m => m.UserTeacherModule),
   },
   {
+    path: 'teacher-post',
+    loadChildren: () => import('./modules/user-teacher/teacher-post').then(m => m.TeacherPostModule),  
+  },
+  {
     path: 'auth', 
     loadChildren: () => import('./modules/auth').then(m => m.AuthModule),
   },

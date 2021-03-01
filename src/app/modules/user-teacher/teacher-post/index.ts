@@ -1,0 +1,1 @@
+export { TeacherPostModule } from './teacher-post.module';
