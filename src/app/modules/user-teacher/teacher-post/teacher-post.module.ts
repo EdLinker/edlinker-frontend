@@ -26,7 +26,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule
   ],
   exports: [],
-  declarations: [TeacherPostViewComponent, TeacherPostFormComponent],
+  declarations: [
+    TeacherPostViewComponent,
+    TeacherPostFormComponent
+  ],
   providers: [],
 })
 export class TeacherPostModule { }
