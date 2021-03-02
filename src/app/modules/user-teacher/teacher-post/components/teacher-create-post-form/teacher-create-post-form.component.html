@@ -1,0 +1,12 @@
+<form [formGroup]="createPostForm" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Тема</mat-label>
+      <input formControlName="title" matInput placeholder="Тема">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Завдання</mat-label>
+      <textarea formControlName="value" matInput placeholder="Доброго дня.. Завдання додому: ...."
+      class="example-input"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="onSubmit()">Надіслати</button>
+  </form>
