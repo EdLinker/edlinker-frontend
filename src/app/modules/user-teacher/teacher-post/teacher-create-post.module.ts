@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { TeacherPostViewComponent } from './components'
-import { TeacherPostFormComponent } from './components/teacher-post-form/teacher-post-form.component';
-import { teacherPostRouting } from './teacher-post.routing';
+import { TeacherCreatePostFormComponent } from './components';
+import { teacherCreatePostRouting } from './teacher-create-post.routing';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TeacherPostState } from './store/teacher-post.state';
@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(teacherPostRouting),
+    RouterModule.forChild(teacherCreatePostRouting),
     NgxsModule.forRoot([TeacherPostState], {
       developmentMode: !environment.production
     }),
@@ -28,8 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
   exports: [],
   declarations: [
     TeacherPostViewComponent,
-    TeacherPostFormComponent
+    TeacherCreatePostFormComponent
   ],
   providers: [],
 })
-export class TeacherPostModule { }
+export class TeacherCreatePostModule { }

@@ -1,1 +1,1 @@
-export { TeacherPostModule } from './teacher-post.module';
+export { TeacherCreatePostModule } from './teacher-create-post.module';

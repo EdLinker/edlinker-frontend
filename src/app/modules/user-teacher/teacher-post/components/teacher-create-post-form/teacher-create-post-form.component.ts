@@ -4,11 +4,11 @@ import { Store } from '@ngxs/store';
 import { TeacherAddPost } from '../../store/actions';
 
 @Component({
-  selector: 'app-teacher-post-form',
-  templateUrl: './teacher-post-form.component.html',
-  styleUrls: ['./teacher-post-form.component.css']
+  selector: 'app-teacher-create-post-form',
+  templateUrl: './teacher-create-post-form.component.html',
+  styleUrls: ['./teacher-create-post-form.component.css']
 })
-export class TeacherPostFormComponent implements OnInit {
+export class TeacherCreatePostFormComponent implements OnInit {
 
   createPostForm!: FormGroup;
   
