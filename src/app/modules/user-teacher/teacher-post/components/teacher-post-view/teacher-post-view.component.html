@@ -1,1 +1,8 @@
-<p>teacher-post-view works!</p>
+<ul *ngIf="posts">
+    <li *ngFor="let post of posts | async">
+      {{ post.title }}
+      <br>
+      {{ post.value }}
+    </li>
+</ul>
+<app-teacher-post-form></app-teacher-post-form>

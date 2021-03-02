@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { TeacherAddPost } from '../../store/actions';
 
 @Component({
   selector: 'app-teacher-post-form',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherPostFormComponent implements OnInit {
 
-  constructor() { }
+  createPostForm!: FormGroup;
+  
+  constructor(
+    private fb: FormBuilder,
+    private store: Store
+    ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.initForm();
   }
 
+  initForm(){
+    this.createPostForm = this.fb.group({
+     title: [''],
+     value: ['']
+    });
+   }
+
+  onSubmit() {
+    const title = this.createPostForm.controls['title'].value
+    const value = this.createPostForm.controls['value'].value
+    
+    this.store.dispatch(new TeacherAddPost({ 
+      title: title, 
+      value: value
+    }))
+    .subscribe(() => this.createPostForm.reset());
+  }
 }

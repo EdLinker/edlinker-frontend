@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { Post } from 'src/models';
 
 @Component({
   selector: 'app-teacher-post-view',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherPostViewComponent implements OnInit {
 
-  constructor() { }
+  posts: Observable<Post[]>;
+
+  constructor(private store: Store) {
+    this.posts = this.store.select(state => state.teacherPost.posts)
+   }
 
   ngOnInit(): void {
   }
