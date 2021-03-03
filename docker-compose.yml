@@ -10,3 +10,10 @@ services:
     container_name: edlinker-front-end
     volumes:
       - .:/app
+
+  mock-json:
+    image: 'ajoelpod/mock-json-server'
+    volumes:
+      - ./api/db.json:/usr/src/app/data.json
+    ports:
+      - 8000:8000
