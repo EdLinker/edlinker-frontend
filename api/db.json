@@ -3,15 +3,18 @@
         "get": {
             "data": [
                 {
-                "id":1,
-                "title": "Why Front-End?",
-                "value": "This task consist of..."
+                    "id": 1,
+                    "title": "Why Front-End?",
+                    "value": "This task consist of..."
                 }
             ]
         },
         "post": {
             "data": [
-                {"id":2,"name": "Steve2 French"}
+                {
+                    "id": 2,
+                    "name": "Steve2 French"
+                }
             ]
         }
     }
