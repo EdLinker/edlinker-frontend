@@ -11,31 +11,32 @@ import { TeacherAddPost } from '../../store/actions';
 export class TeacherCreatePostFormComponent implements OnInit {
 
   createPostForm!: FormGroup;
-  
+
   constructor(
     private fb: FormBuilder,
     private store: Store
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.initForm();
   }
 
-  initForm(){
+  initForm() {
     this.createPostForm = this.fb.group({
-     title: [''],
-     value: ['']
+      title: [''],
+      value: ['']
     });
-   }
+  }
 
   onSubmit() {
     const title = this.createPostForm.controls['title'].value
     const value = this.createPostForm.controls['value'].value
-    
-    this.store.dispatch(new TeacherAddPost({ 
-      title: title, 
-      value: value
+
+    this.store.dispatch(new TeacherAddPost({
+      title: title,
+      value: value,
+      author: 'Admin'
     }))
-    .subscribe(() => this.createPostForm.reset());
+      .subscribe(() => this.createPostForm.reset());
   }
 }
