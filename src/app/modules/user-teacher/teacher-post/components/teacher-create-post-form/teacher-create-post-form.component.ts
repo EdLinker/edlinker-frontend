@@ -23,20 +23,22 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
   initForm() {
     this.createPostForm = this.fb.group({
-      title: [''],
-      value: ['']
+      title: ['', [Validators.required, Validators.maxLength(255)]],
+      value: ['', [Validators.required, Validators.maxLength(255)]]
     });
   }
 
   onSubmit() {
     const title = this.createPostForm.controls['title'].value
     const value = this.createPostForm.controls['value'].value
-
+  
+  if (this.createPostForm.valid) {
     this.store.dispatch(new TeacherAddPost({
       title: title,
       value: value,
       author: 'Admin'
     }))
       .subscribe(() => this.createPostForm.reset());
+    }
   }
 }
