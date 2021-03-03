@@ -11,9 +11,11 @@ services:
     volumes:
       - .:/app
 
-  mock-json:
-    image: 'ajoelpod/mock-json-server'
+  mock_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.mock-api
     volumes:
       - ./api/db.json:/usr/src/app/data.json
     ports:
-      - 8000:8000
+      - 3000:3000

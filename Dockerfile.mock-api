@@ -1,0 +1,5 @@
+FROM node:14.15.5-alpine3.10
+
+RUN npm install -g json-server && rm -rf /tmp/npm* /var/cache/apk/
+
+CMD ["json-server", "--host", "0.0.0.0", "--watch", "/usr/src/app/data.json"]

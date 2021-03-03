@@ -1,21 +1,9 @@
 {
-    "/get-posts": {
-        "get": {
-            "data": [
-                {
-                    "id": 1,
-                    "title": "Why Front-End?",
-                    "value": "This task consist of..."
-                }
-            ]
-        },
-        "post": {
-            "data": [
-                {
-                    "id": 2,
-                    "name": "Steve2 French"
-                }
-            ]
-        }
-    }
-}
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
