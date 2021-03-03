@@ -31,14 +31,17 @@ export class TeacherCreatePostFormComponent implements OnInit {
   onSubmit() {
     const title = this.createPostForm.controls['title'].value
     const value = this.createPostForm.controls['value'].value
-  
-  if (this.createPostForm.valid) {
-    this.store.dispatch(new TeacherAddPost({
-      title: title,
-      value: value,
-      author: 'Admin'
-    }))
-      .subscribe(() => this.createPostForm.reset());
+    const today = new Date();
+    const date = 'Дата:' + today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ' ' + 'Час:' + today.getHours() + ':' + today.getMinutes();
+
+    if (this.createPostForm.valid) {
+      this.store.dispatch(new TeacherAddPost({
+        title: title,
+        value: value,
+        author: 'Admin',
+        date: date,
+      }))
+        .subscribe(() => this.createPostForm.reset());
     }
   }
 }
