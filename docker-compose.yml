@@ -10,3 +10,12 @@ services:
     container_name: edlinker-front-end
     volumes:
       - .:/app
+
+  mock_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.mock-api
+    volumes:
+      - ./api/db.json:/usr/src/app/data.json
+    ports:
+      - 3000:3000
