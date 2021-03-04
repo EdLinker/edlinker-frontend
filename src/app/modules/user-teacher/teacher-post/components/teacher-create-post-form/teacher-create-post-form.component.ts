@@ -13,7 +13,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
   createPostForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private store: Store
   ) { }
 
@@ -22,24 +22,21 @@ export class TeacherCreatePostFormComponent implements OnInit {
   }
 
   initForm() {
-    this.createPostForm = this.fb.group({
+    this.createPostForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(255)]],
       value: ['', [Validators.required, Validators.maxLength(255)]]
     });
   }
 
   onSubmit() {
-    const title = this.createPostForm.controls['title'].value
-    const value = this.createPostForm.controls['value'].value
-    const today = new Date();
-    const date = 'Дата:' + today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ' ' + 'Час:' + today.getHours() + ':' + today.getMinutes();
+    const title = this.createPostForm.controls['title'].value;
+    const value = this.createPostForm.controls['value'].value;
 
     if (this.createPostForm.valid) {
       this.store.dispatch(new TeacherAddPost({
         title: title,
         value: value,
         author: 'Admin',
-        date: date,
       }))
         .subscribe(() => this.createPostForm.reset());
     }
