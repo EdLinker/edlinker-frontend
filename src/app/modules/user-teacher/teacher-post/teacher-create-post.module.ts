@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
-import { TeacherPostViewComponent } from './components'
+import { TeacherPostViewComponent } from './components';
 import { TeacherCreatePostFormComponent } from './components';
 import { teacherCreatePostRouting } from './teacher-create-post.routing';
 import { FormsModule } from '@angular/forms';

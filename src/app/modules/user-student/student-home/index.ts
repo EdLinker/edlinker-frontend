@@ -1,1 +1,1 @@
-export { StudentHomeModule } from './student-home.module'
+export { StudentHomeModule } from './student-home.module';
