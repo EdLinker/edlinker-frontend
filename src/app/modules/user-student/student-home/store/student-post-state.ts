@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Post } from 'src/models';
 import { StudentPostsService } from '../services';
-import { StudentGetPosts } from './actions';
-import { tap } from 'rxjs/operators';
+import { HideLoaderAction, ShowLoaderAction, StudentGetPosts } from './actions';
+import { finalize, tap } from 'rxjs/operators';
 
 export class StudentPostsStateModel {
     posts!: Post[];
@@ -17,7 +17,10 @@ export class StudentPostsStateModel {
 })
 @Injectable()
 export class StudentPostsState {
-    constructor(private studentPostsService: StudentPostsService) { }
+    constructor(
+        private studentPostsService: StudentPostsService,
+        private store: Store
+    ) { }
 
     @Selector()
     static getPosts(state: StudentPostsStateModel) {
@@ -27,6 +30,7 @@ export class StudentPostsState {
     @Action(StudentGetPosts)
     getPosts({ getState, setState }: StateContext<StudentPostsStateModel>) {
         return this.studentPostsService.getPosts().pipe(
+            finalize(() => this.store.dispatch(new HideLoaderAction())),
             tap((result) => {
                 const state = getState();
                 setState({
