@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { studentHomeRouting } from './student-home.routing';
 import { StudentHomeViewComponent } from './components';
-<<<<<<< HEAD
+
 import { SharedHeaderModule } from '../../shared';
-=======
 import { StudentPostsComponent } from './components/student-posts/student-posts.component';
 import { StudentPostsService } from './services';
 import { NgxsModule } from '@ngxs/store';
@@ -16,23 +15,19 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderState } from './store/loader.state';
->>>>>>> main
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(studentHomeRouting),
-<<<<<<< HEAD
-    SharedHeaderModule
-=======
+    SharedHeaderModule,
     NgxsModule.forRoot([StudentPostsState, LoaderState], {
       developmentMode: !environment.production,
     }),
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule
->>>>>>> main
   ],
   exports: [],
   declarations: [
