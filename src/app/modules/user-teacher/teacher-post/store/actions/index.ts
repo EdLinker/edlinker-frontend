@@ -1,1 +1,1 @@
-export { TeacherAddPost } from './teacher-add-post.action';
+export { TeacherAddPost } from './teacher-add-post.action'

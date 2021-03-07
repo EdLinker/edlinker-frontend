@@ -13,7 +13,7 @@ export class TeacherPostViewComponent implements OnInit {
   posts: Observable<Post[]>;
 
   constructor(private store: Store) {
-    this.posts = this.store.select(state => state.teacherPost.posts);
+    this.posts = this.store.select(state => state.teacherPost.posts)
    }
 
   ngOnInit(): void {
