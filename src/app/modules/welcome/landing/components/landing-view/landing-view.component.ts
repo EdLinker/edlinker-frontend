@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'landing-view',
+    selector: 'app-landing-view',
     templateUrl: './landing-view.component.html',
     styleUrls: ['./landing-view.component.css']
 

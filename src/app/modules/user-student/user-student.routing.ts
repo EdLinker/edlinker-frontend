@@ -5,4 +5,4 @@ export const userStudentRouting: Routes = [
     path: '',
     loadChildren: () => import('./student-home').then(m => m.StudentHomeModule)
   },
-]
+];

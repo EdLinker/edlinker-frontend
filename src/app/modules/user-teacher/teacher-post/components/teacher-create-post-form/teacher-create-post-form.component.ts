@@ -29,13 +29,13 @@ export class TeacherCreatePostFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const title = this.createPostForm.controls['title'].value;
-    const value = this.createPostForm.controls['value'].value;
+    const title = this.createPostForm.controls.title.value;
+    const value = this.createPostForm.controls.value.value;
 
     if (this.createPostForm.valid) {
       this.store.dispatch(new TeacherAddPost({
-        title: title,
-        value: value,
+        title,
+        value,
         author: 'Admin',
       }))
         .subscribe(() => this.createPostForm.reset());

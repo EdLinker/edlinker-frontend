@@ -1,4 +1,4 @@
-import { Post } from "src/models";
+import { Post } from 'src/models';
 
 export class TeacherAddPost {
     static readonly type = '[Teacher] Add post';
