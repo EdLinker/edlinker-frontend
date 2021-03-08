@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'shared-header-component',
+  selector: 'app-shared-header-component',
   templateUrl: './shared-header.component.html',
   styleUrls: ['./shared-header.component.css']
 })

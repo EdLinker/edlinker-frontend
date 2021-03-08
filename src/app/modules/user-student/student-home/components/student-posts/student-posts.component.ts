@@ -23,7 +23,7 @@ export class StudentPostsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(new StudentGetPosts())
+    this.store.dispatch(new StudentGetPosts());
   }
 
 }

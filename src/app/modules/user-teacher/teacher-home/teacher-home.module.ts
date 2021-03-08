@@ -5,7 +5,7 @@ import { TeacherHomeViewComponent } from './components';
 import { SharedHeaderModule } from '../../shared';
 import { GroupListComponent } from './components';
 
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import {MatTableModule} from '@angular/material/table';
   ],
   exports: [TeacherHomeViewComponent],
   declarations: [
-    TeacherHomeViewComponent, 
+    TeacherHomeViewComponent,
     GroupListComponent,
   ],
   providers: [],

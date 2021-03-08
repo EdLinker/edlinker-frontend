@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'auth-page-view',
+  selector: 'app-auth-page-view',
   templateUrl: 'auth-page-view.component.html'
 })
 

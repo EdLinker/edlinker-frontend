@@ -5,4 +5,4 @@ export const authRouting: Routes = [
     path: '',
     loadChildren: () => import('./auth-page').then(m => m.AuthPageModule)
   }
-]
+];
