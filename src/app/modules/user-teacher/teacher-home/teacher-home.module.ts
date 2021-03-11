@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { teacherHomeRouting } from './teacher-home.routing';
 import { TeacherHomeViewComponent } from './components';
-import { SharedHeaderModule } from '../../shared';
+import { SharedHeaderModule } from '../../shared/shared-header';
 import { GroupListComponent } from './components';
 
 import { MatTableModule } from '@angular/material/table';
