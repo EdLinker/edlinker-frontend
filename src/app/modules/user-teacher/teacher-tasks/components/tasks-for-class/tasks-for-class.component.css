@@ -1,0 +1,17 @@
+.container {
+  max-width: 1200px;
+  margin: 2% auto;
+}
+
+.sort-nav {
+    padding-bottom: 10px;
+}
+
+.title {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.title h1 {
+    padding-left: 10%;
+}

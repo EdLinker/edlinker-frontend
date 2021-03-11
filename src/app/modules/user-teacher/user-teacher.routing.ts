@@ -9,4 +9,8 @@ export const userTeacherRouting: Routes = [
     path: 'create-post',
     loadChildren: () => import('./teacher-post').then(m => m.TeacherCreatePostModule),
   },
+  {
+    path: 'class-tasks',
+    loadChildren: () => import('./teacher-tasks').then(m => m.TasksForClassModule),
+  }
 ];

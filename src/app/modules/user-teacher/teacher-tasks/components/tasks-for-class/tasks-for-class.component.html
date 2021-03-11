@@ -1,0 +1,17 @@
+<header>
+    <app-shared-header-component> </app-shared-header-component>
+</header>
+<div class="container">
+    <div class="title">
+        <button mat-raised-button>Back</button>
+        <h1>Англійська мова - 2 курс</h1>
+    </div>
+    <nav class="sort-nav">
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip>Все</mat-chip>
+            <mat-chip>Завдання</mat-chip>
+            <mat-chip>Повідомлення</mat-chip>
+        </mat-chip-list>
+    </nav>
+    <app-shared-post *ngFor="let post of posts$ | async" [post]="post"></app-shared-post>
+</div>
