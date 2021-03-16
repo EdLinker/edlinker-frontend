@@ -1,0 +1,23 @@
+<header>
+    <app-shared-header-component> </app-shared-header-component>
+</header>
+<h3>
+    Класи > 224 - Фізика <!--!Will be shared component-->
+</h3>
+<hr>
+<div class="container">
+    <nav class="sort-nav">
+        <div class="sort-nav-buttons">
+            <span>Показати:</span>
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip>Все</mat-chip>
+                <mat-chip>Завдання</mat-chip>
+                <mat-chip>Повідомлення</mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="sort-nav-button-create">
+            <button mat-raised-button color="warn">+ Створити</button>
+        </div>
+    </nav>
+    <app-shared-post *ngFor="let post of posts$ | async" [post]="post"></app-shared-post>
+</div>
