@@ -36,7 +36,11 @@ export class TeacherCreatePostFormComponent implements OnInit {
       this.store.dispatch(new TeacherAddPost({
         title,
         value,
-        author: 'Admin',
+        subjectName: 'Some Subject',
+        imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+        date: '26.05.2021 16:40',
+        author: 'Carl Mask',
+        mediaUrl: 'Google.com'
       }))
         .subscribe(() => this.createPostForm.reset());
     }
