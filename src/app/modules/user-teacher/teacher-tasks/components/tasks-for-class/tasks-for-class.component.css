@@ -3,8 +3,35 @@
   margin: 2% auto;
 }
 
+h3 {
+  margin: 3px;
+} 
+/*! Will be shared component */
+
 .sort-nav {
-    padding-bottom: 10px;
+  display: flex;
+  min-height: 50px;
+  background: #f1f1f1;
+  border-radius: 15px;
+  justify-content: space-between;
+}
+
+.sort-nav-buttons {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.sort-nav-buttons span {
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sort-nav-button-create {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;  
 }
 
 .title {
