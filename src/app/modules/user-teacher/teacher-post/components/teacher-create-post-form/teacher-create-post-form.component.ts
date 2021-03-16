@@ -37,9 +37,10 @@ export class TeacherCreatePostFormComponent implements OnInit {
         title,
         value,
         subjectName: 'Some Subject',
-        image: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-        date: '23/02 | 16:00',
-        author: 'Carl Mask'
+        imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+        date: '26.05.2021 16:40',
+        author: 'Carl Mask',
+        mediaUrl: 'Google.com'
       }))
         .subscribe(() => this.createPostForm.reset());
     }
