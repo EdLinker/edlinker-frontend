@@ -1,5 +1,9 @@
 export interface Post {
+    imageUrl: string;
     title: string;
+    subjectName: string;
+    author: string;
     value: string;
-    author?: string;
+    date: string;
+    mediaUrl: string;
 }

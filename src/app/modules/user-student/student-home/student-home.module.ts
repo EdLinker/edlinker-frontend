@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
-import { SharedHeaderModule } from '../../shared';
+import { SharedHeaderModule } from '../../shared/shared-header';
 import { StudentPostsComponent } from './components/student-posts/student-posts.component';
 import { StudentPostsService } from './services';
 import { StudentPostsState } from './store/student-post-state';
@@ -15,6 +15,7 @@ import { studentHomeRouting } from './student-home.routing';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SharedPostModule } from '../../shared/shared-post-card';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     }),
     HttpClientModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedPostModule
   ],
   exports: [],
   declarations: [
