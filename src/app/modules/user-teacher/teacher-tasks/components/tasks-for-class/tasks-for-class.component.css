@@ -3,11 +3,6 @@
   margin: 2% auto;
 }
 
-h3 {
-  margin: 3px;
-} 
-/*! Will be shared component */
-
 .sort-nav {
   display: flex;
   min-height: 50px;

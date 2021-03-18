@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
 export class SharedBreadcrumbsComponent implements OnInit {
 
   static readonly routeDataBreadCrumb = 'breadcrumb';
-  home: MenuItem = { icon: 'pi pi-home', url: 'teacher' };
+  home: MenuItem = { icon: 'pi pi-home', url: '/' };
   menuItems!: MenuItem[];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }

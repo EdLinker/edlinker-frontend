@@ -15,6 +15,7 @@ import { TeacherPostState } from './store/teacher-post.state';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     }),
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatChipsModule
   ],
   exports: [],
   declarations: [
