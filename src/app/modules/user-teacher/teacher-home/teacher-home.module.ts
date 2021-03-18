@@ -11,7 +11,7 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     RouterModule.forChild(teacherHomeRouting),
     MatTableModule,
-    SharedHeaderModule
+    SharedHeaderModule,
   ],
   exports: [TeacherHomeViewComponent],
   declarations: [

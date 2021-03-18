@@ -7,7 +7,8 @@ import { LandingViewComponent } from './components';
 @NgModule({
     imports: [
         RouterModule.forChild(landingRouting),
-        SharedHeaderModule
+        SharedHeaderModule,
+
     ],
     exports: [],
     declarations: [LandingViewComponent],
