@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
+import { SharedHeaderModule } from './modules/shared/shared-header';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot(),
-    SharedBreadcrumbsModule
+    SharedBreadcrumbsModule,
+    SharedHeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
