@@ -1,0 +1,21 @@
+.example-container {
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    padding: 0 10px;
+}
+
+.icon-eye {
+    border: none;
+    background-color: inherit;
+    outline: none;
+}
+
+.icon-eye:hover {
+    cursor: pointer;
+}
+
+.login-button {
+    color: #1BB55C;
+}
