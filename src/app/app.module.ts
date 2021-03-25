@@ -10,10 +10,11 @@ import { SharedHeaderModule } from './modules/shared/shared-header';
 import { AuthGuard } from './modules/auth/guards';
 import { AuthService } from './modules/auth/auth-page/services';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LayoutComponent } from './modules/shared/layout/layout.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
