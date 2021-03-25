@@ -25,6 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [],
   declarations: [AuthPageViewComponent, AuthFormComponent],
-  providers: [AuthService],
+  providers: [],
 })
 export class AuthPageModule { }

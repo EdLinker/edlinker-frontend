@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
 import { SharedHeaderModule } from './modules/shared/shared-header';
+import { AuthGuard } from './modules/auth/guards';
+import { AuthService } from './modules/auth/auth-page/services';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,10 @@ import { SharedHeaderModule } from './modules/shared/shared-header';
     BrowserAnimationsModule,
     NgxsModule.forRoot(),
     SharedBreadcrumbsModule,
-    SharedHeaderModule
+    SharedHeaderModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
