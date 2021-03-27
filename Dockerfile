@@ -24,8 +24,7 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy from the stage 1
 COPY --from=builder /app/dist/edlinker /usr/share/nginx/html
 
+COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 4200 80 443
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
