@@ -26,6 +26,6 @@ COPY --from=builder /app/dist/edlinker /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 4200 80
+EXPOSE 4200 80 443
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
