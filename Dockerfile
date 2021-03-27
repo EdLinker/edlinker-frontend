@@ -16,7 +16,7 @@ RUN npm run build --prod
 RUN gzipper compress -i js,css,svg --level 4 /app/dist/edlinker
 
 # Stage 2, Build NGINX
-FROM nginx:1.19-alpine
+FROM nginx:1.19.6
 
 # Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
@@ -27,4 +27,4 @@ COPY --from=builder /app/dist/edlinker /usr/share/nginx/html
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 COPY nginx.conf /etc/nginx/nginx.conf
 
-CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
