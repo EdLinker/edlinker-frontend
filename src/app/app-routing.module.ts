@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './modules/auth/guards';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
 
 const routes: Routes = [
@@ -13,10 +14,12 @@ const routes: Routes = [
       },
       {
         path: 'student',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/user-student').then(m => m.UserStudentModule),
       },
       {
         path: 'teacher',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/user-teacher').then(m => m.UserTeacherModule),
       }
     ]
