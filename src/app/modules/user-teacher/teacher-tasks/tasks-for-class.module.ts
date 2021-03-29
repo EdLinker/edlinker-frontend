@@ -14,9 +14,10 @@ import { tasksForClassRouting } from './tasks-for-class.routing';
 
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import { TaskForStudentsComponent } from './components/task-for-students/task-for-students.component';
 
 @NgModule({
-  declarations: [TasksForClassComponent],
+  declarations: [TasksForClassComponent, TaskForStudentsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(tasksForClassRouting),
