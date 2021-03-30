@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shared-breadcrumbs',
@@ -18,7 +18,8 @@ export class SharedBreadcrumbsComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter(event => event instanceof NavigationEnd),
+      startWith(undefined))
       .subscribe(() => this.menuItems = this.createBreadcrumbs(this.activatedRoute.root));
   }
 
