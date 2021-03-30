@@ -12,7 +12,6 @@ import { AuditoriumsListComponent } from './components';
 import { TeacherAuditoriumsListState } from './store/teacher-auditoriumslist.state';
 import { TeacherAuditoriumsService } from './services';
 
-
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({

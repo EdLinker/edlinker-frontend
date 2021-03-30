@@ -16,6 +16,14 @@ export class AuditoriumsListComponent implements OnInit {
 
   @Select(TeacherAuditoriumsListState.getAuditoriumsList) auditoriums$!: Observable<AuditoriumModele[]>;
 
+  displayedColumns: string[] = [
+    'groupNameColumn',
+    'subjectNameColumn',
+    'courceNumberColumn',
+    'studentsCountColumn',
+    'groupLeaderNameColumn',
+  ];
+
   constructor(
     private store: Store,
   ) {}
