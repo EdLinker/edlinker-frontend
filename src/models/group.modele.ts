@@ -1,7 +1,7 @@
 export interface GroupModele {
   groupName: string;
   subjectName: string;
-  courceNumber: string;
-  numberOfStudents: string;
+  courceNumber: number;
+  studentsCount: number;
   groupLeaderName?: string;
 }

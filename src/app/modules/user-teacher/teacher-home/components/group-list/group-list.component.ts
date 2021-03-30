@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { GroupModele } from 'src/models';
-
-const groupsData: GroupModele[] = [
-  { groupName: '224', subjectName: 'фізика', courceNumber: '2', numberOfStudents: '16', groupLeaderName: 'Пономарчук Bалерій' },
-  { groupName: '226', subjectName: 'фізика', courceNumber: '2', numberOfStudents: '18', groupLeaderName: 'Боднаренко Ніна' },
-  { groupName: '112', subjectName: 'хімія', courceNumber: '1', numberOfStudents: '27', groupLeaderName: 'Євгенійович Шевченко' },
-];
+import { GetTeacherGroups } from '../../store/actions';
+import { TeacherGroupListState } from '../../store/teacher-grouplist.state';
 
 @Component({
   selector: 'app-group-list',
@@ -16,12 +14,13 @@ const groupsData: GroupModele[] = [
 
 export class GroupListComponent implements OnInit {
 
-  displayedColumns?: string[];
-  dataSource = groupsData;
+  @Select(TeacherGroupListState.getGroupList) groups$!: Observable<GroupModele[]>;
 
-  constructor() {
-    this.displayedColumns = ['groupName', 'subjectName', 'courceNumber', 'numberOfStudents', 'groupLeaderName'];
-   }
+  constructor(
+    private store: Store,
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.store.dispatch(new GetTeacherGroups());
+  }
 }
