@@ -5,9 +5,9 @@
     "comments": [
       { "id": 1, "body": "some comment", "postId": 1 }
     ],
-    "groups": [
-      { "groupName": "422", "subjectName": "Фізика", "courceNumber": 3, "studentsCount": 16, "groupLeaderName": "groupLeaderName" },
-      { "groupName": "423", "subjectName": "Фізика", "courceNumber": 3, "studentsCount": 12, "groupLeaderName": "groupLeaderName" }
+    "auditoriums": [
+      { "auditorium_id": 1, "group_id": 1, "groupName": "422", "subjectName": "Фізика", "courceNumber": 3, "studentsCount": 16, "groupLeaderName": "groupLeaderName" },
+      { "auditorium_id": 2, "group_id": 2, "groupName": "423", "subjectName": "Фізика", "courceNumber": 3, "studentsCount": 12, "groupLeaderName": "groupLeaderName" }
     ],
     "profile": { "name": "typicode" }
   }

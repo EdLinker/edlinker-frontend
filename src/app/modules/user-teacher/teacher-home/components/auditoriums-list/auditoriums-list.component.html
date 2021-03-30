@@ -1,0 +1,9 @@
+<h2>Мої класи</h2>
+
+<div *ngFor="let auditorium of auditoriums$ | async ">
+  <span> {{ auditorium.groupName }} </span>
+  <span> {{ auditorium.subjectName }} </span>
+  <span> {{ auditorium.courceNumber }} </span>
+  <span> {{ auditorium.studentsCount }} </span>
+  <span> {{ auditorium.groupLeaderName }} </span>
+</div>

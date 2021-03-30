@@ -8,9 +8,9 @@ import { environment } from 'src/environments/environment';
 import { teacherHomeRouting } from './teacher-home.routing';
 import { SharedHeaderModule } from '../../shared';
 import { TeacherHomeViewComponent } from './components';
-import { GroupListComponent } from './components';
-import { TeacherGroupListState } from './store/teacher-grouplist.state';
-import { TeacherGroupsService } from './services';
+import { AuditoriumsListComponent } from './components';
+import { TeacherAuditoriumsListState } from './store/teacher-auditoriumslist.state';
+import { TeacherAuditoriumsService } from './services';
 
 
 import { MatTableModule } from '@angular/material/table';
@@ -20,7 +20,7 @@ import { MatTableModule } from '@angular/material/table';
     RouterModule.forChild(teacherHomeRouting),
     CommonModule,
     SharedHeaderModule,
-    NgxsModule.forRoot([TeacherGroupListState], {
+    NgxsModule.forRoot([TeacherAuditoriumsListState], {
       developmentMode: !environment.production,
     }),
     HttpClientModule,
@@ -29,10 +29,10 @@ import { MatTableModule } from '@angular/material/table';
   exports: [TeacherHomeViewComponent],
   declarations: [
     TeacherHomeViewComponent,
-    GroupListComponent,
+    AuditoriumsListComponent,
   ],
   providers: [
-    TeacherGroupsService,
+    TeacherAuditoriumsService,
   ],
 })
 export class TeacherHomeModule { }

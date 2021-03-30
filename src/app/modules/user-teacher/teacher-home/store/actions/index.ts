@@ -1,1 +1,1 @@
-export { GetTeacherGroups } from './teacher-grouplist.action';
+export { GetTeacherAuditoriums } from './teacher-auditoriumslist.action';

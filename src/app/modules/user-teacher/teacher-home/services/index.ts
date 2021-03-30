@@ -1,1 +1,1 @@
-export { TeacherGroupsService } from './grouplinst.service';
+export { TeacherAuditoriumsService } from './auditoriumslinst.service';

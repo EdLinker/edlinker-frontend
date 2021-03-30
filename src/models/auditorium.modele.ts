@@ -1,4 +1,4 @@
-export interface GroupModele {
+export interface AuditoriumModele {
   groupName: string;
   subjectName: string;
   courceNumber: number;
