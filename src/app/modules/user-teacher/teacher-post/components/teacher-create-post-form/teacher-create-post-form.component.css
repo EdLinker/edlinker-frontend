@@ -1,13 +1,94 @@
+.container {
+  max-width: 1200px;
+  margin: 1% auto;
+}
+
 .example-form {
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
-  .example-input {
-    min-height: 160px;
-  }
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.input-title {
+  height: 50px;
+}
+
+.input-value {
+  height: 140px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.container-file-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.container-file-button:active {
+  color: #3e8e41;
+  text-shadow: 0 1px #666;
+}
+
+.container-file-button:hover {
+  cursor: pointer;
+}
+
+.container-file-button h3 {
+  margin-left: 12px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #1bb55c;
+}
+
+.add-file {
+  background: #ddffeb;
+  font-size: 24px;
+  color: #1bb55c;
+  box-shadow: none;
+}
+
+.to-plan-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.to-plan-container:hover {
+  cursor: pointer;
+}
+
+.to-plan {
+  background: #ddffeb;
+  font-size: 24px;
+  color: #1bb55c;
+  box-shadow: none;
+}
+
+.to-plan-container h3 {
+  margin-left: 12px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #1bb55c;
+}
+
+.to-plan-container:active {
+  color: #3e8e41;
+  text-shadow: 0 1px #666;
+}
+
+.send-post {
+  display: flex;
+  justify-content:flex-end;
+}
+
+.send-button {
+  font-weight: 500;
+  font-size: 18px;
+  color: #1bb55c;
+}

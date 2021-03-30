@@ -1,0 +1,39 @@
+.container {
+  max-width: 1200px;
+  margin: 2% auto;
+}
+
+.sort-nav {
+  display: flex;
+  min-height: 50px;
+  background: #f1f1f1;
+  border-radius: 15px;
+  justify-content: space-between;
+}
+
+.sort-nav-buttons {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.sort-nav-buttons span {
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sort-nav-button-create {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;  
+}
+
+.title {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.title h1 {
+    padding-left: 10%;
+}

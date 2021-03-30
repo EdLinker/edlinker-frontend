@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { teacherHomeRouting } from './teacher-home.routing';
-import { SharedHeaderModule } from '../../shared';
+import { SharedHeaderModule } from '../../shared/shared-header';
 import { TeacherHomeViewComponent } from './components';
 import { AuditoriumsListComponent } from './components';
 import { TeacherAuditoriumsListState } from './store/teacher-auditoriumslist.state';

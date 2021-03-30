@@ -4,6 +4,6 @@ import { TeacherHomeViewComponent } from './components';
 export const teacherHomeRouting: Routes = [
   {
     path: '',
-    component: TeacherHomeViewComponent
+    component: TeacherHomeViewComponent,
   }
 ];

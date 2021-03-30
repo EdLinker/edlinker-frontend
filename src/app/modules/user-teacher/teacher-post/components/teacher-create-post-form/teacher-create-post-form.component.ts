@@ -9,13 +9,17 @@ import { TeacherAddPost } from '../../store/actions';
   styleUrls: ['./teacher-create-post-form.component.css']
 })
 export class TeacherCreatePostFormComponent implements OnInit {
-
+  isDate: boolean;
   createPostForm!: FormGroup;
+  isFile: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private store: Store
-  ) { }
+  ) {
+    this.isDate = false;
+    this.isFile = false;
+   }
 
   ngOnInit() {
     this.initForm();
@@ -36,9 +40,21 @@ export class TeacherCreatePostFormComponent implements OnInit {
       this.store.dispatch(new TeacherAddPost({
         title,
         value,
-        author: 'Admin',
+        subjectName: 'Some Subject',
+        imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+        date: '26.05.2021 16:40',
+        author: 'Carl Mask',
+        mediaUrl: 'Google.com'
       }))
         .subscribe(() => this.createPostForm.reset());
     }
+  }
+
+  openDatePicker() {
+    this.isDate = !this.isDate;
+  }
+
+  openAddFilesInput() {
+    this.isFile = !this.isFile;
   }
 }
