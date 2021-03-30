@@ -38,8 +38,23 @@ export const userTeacherRouting: Routes = [
           data: {
             breadcrumb: null
           },
-          loadChildren: () => import('./teacher-tasks').then(m => m.TasksForClassModule),
+          loadChildren: () => import('./teacher-tasks/tasks-for-class.module').then(m => m.TasksForClassModule),
         }]
+      },
+      {
+        path: 'task-for-students',
+        data: {
+          breadcrumb: 'Студенти'
+        },
+        children: [
+          {
+            path: '',
+            data: {
+              breadcrumb: null
+            },
+            loadChildren: () => import('./teacher-tasks/task-for-student.module').then(m => m.TaskForStudentModule)
+          }
+        ]
       }
     ]
   },
