@@ -1,0 +1,9 @@
+table {
+    width: 920px;
+    margin: 1em;
+}
+
+.mat-row:hover {
+    background-color: #00000008;
+    cursor: pointer;
+}
