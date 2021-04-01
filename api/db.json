@@ -28,8 +28,49 @@
         "mediaUrl": "Google.com"
       }
     ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
+    "students": [
+      { "id": 1,
+        "firstName": "Hello",
+        "lastName": "World",
+        "patronymic": "Abc",
+        "phoneNumber" : "09149128",
+        "email": "string" 
+      },
+      { "id": 2,
+        "firstName": "Hello",
+        "lastName": "World",
+        "patronymic": "Abc",
+        "phoneNumber" : "09149128",
+        "email": "string" 
+      },
+      { "id": 3,
+        "firstName": "Hello",
+        "lastName": "World",
+        "patronymic": "Abc",
+        "phoneNumber" : "09149128",
+        "email": "string" 
+      },
+      { "id": 4,
+        "firstName": "Hello",
+        "lastName": "World",
+        "patronymic": "Abc",
+        "phoneNumber" : "09149128",
+        "email": "string" 
+      },
+      { "id": 5,
+        "firstName": "Hello",
+        "lastName": "World",
+        "patronymic": "Abc",
+        "phoneNumber" : "09149128",
+        "email": "string" 
+      },
+      { "id": 6,
+        "firstName": "Hello",
+        "lastName": "World",
+        "patronymic": "Abc",
+        "phoneNumber" : "09149128",
+        "email": "string" 
+      }
     ],
     "profile": { "name": "typicode" }
   }
