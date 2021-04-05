@@ -1,6 +1,7 @@
 .container {
   max-width: 1200px;
   margin: 1% auto;
+  box-sizing: border-box;
 }
 
 .example-form {
@@ -91,4 +92,8 @@
   font-weight: 500;
   font-size: 18px;
   color: #1bb55c;
+}
+
+.example-chip-list {
+  width: 100%;
 }
