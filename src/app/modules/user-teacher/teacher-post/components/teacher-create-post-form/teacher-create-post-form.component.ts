@@ -20,8 +20,12 @@ export class TeacherCreatePostFormComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   links = [{
-    url: 'url'
-  }];
+    url: 'https://material.angular.io/components/badge/overview'
+  },
+  {
+    url: 'https://material.angular.io/components/badge/overview'
+  }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,7 +58,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
         imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
         date: '26.05.2021 16:40',
         author: 'Carl Mask',
-        mediaUrl: 'Google.com'
+        mediaUrl: this.links
       }))
         .subscribe(() => this.createPostForm.reset());
     }

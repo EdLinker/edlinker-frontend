@@ -5,5 +5,7 @@ export interface Post {
     author: string;
     value: string;
     date: string;
-    mediaUrl: string;
+    mediaUrl: {
+        url: string;
+    }[];
 }
