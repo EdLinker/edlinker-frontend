@@ -16,6 +16,9 @@ import { TeacherPostState } from './store/teacher-post.state';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { ShortUrlPipe } from './pipes/short-url.pipe';
+
 
 @NgModule({
   imports: [
@@ -29,12 +32,14 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatChipsModule
+    MatChipsModule,
+    MatIconModule
   ],
   exports: [],
   declarations: [
     TeacherPostViewComponent,
-    TeacherCreatePostFormComponent
+    TeacherCreatePostFormComponent,
+    ShortUrlPipe
   ],
   providers: [TeacherPostService],
 })

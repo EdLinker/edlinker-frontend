@@ -11,6 +11,6 @@
     <p> {{ post.value }} </p>
   </mat-card-content>
   <mat-chip-list aria-label="Fish selection">
-  <mat-chip><a href="{{ post.mediaUrl }}">{{ post.mediaUrl }}</a></mat-chip>
+  <mat-chip *ngFor="let url of post.mediaUrl"><a href="{{ url.url }}">{{ url.url }}</a></mat-chip>
   </mat-chip-list>
 </mat-card>
