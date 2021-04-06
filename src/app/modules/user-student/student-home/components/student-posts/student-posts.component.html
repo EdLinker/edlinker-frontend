@@ -2,5 +2,5 @@
 </mat-progress-spinner>
 
 <div class="example-card">
-  <app-shared-post *ngFor="let post of posts$ | async" [post]="post"></app-shared-post>
+  <app-shared-post *ngFor="let post of posts$ | async" [post]="post" (click)="openDialog(post)"></app-shared-post>
 </div>

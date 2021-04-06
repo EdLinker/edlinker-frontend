@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
-import { StudentPostsComponent } from './components/student-posts/student-posts.component';
+import { PostPopupComponent, StudentPostsComponent } from './components/student-posts/student-posts.component';
 import { StudentPostsService } from './services';
 import { StudentPostsState } from './store/student-post-state';
 import { LoaderState } from './store/loader.state';
@@ -15,6 +15,8 @@ import { studentHomeRouting } from './student-home.routing';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedPostModule } from '../../shared/shared-post-card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,12 +28,16 @@ import { SharedPostModule } from '../../shared/shared-post-card';
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    SharedPostModule
+    SharedPostModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   exports: [],
   declarations: [
     StudentHomeViewComponent,
-    StudentPostsComponent],
+    StudentPostsComponent,
+    PostPopupComponent
+  ],
   providers: [
     StudentPostsService,
   ],
