@@ -19,6 +19,8 @@ export class TeacherCreatePostFormComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  //todo links from database
   links = [{
     url: 'https://material.angular.io/components/badge/overview'
   },
