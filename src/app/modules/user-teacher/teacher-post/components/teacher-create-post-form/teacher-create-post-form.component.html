@@ -20,9 +20,21 @@
   </div>
   <div class="container-file-button" (click)="openAddFilesInput()">
     <button mat-mini-fab class="add-file">+</button>
-    <h3>Додати файл</h3>
+    <h3>Додати посилання</h3>
   </div>
-  <h1 *ngIf="isFile">There will be file</h1>
+  <mat-form-field class="example-chip-list" *ngIf="isFile">
+    <mat-label>Посилання</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip *ngFor="let link of links" [selectable]="selectable" [removable]="removable"
+        (removed)="remove(link)">
+        {{link.url | shortUrl}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon> 
+      </mat-chip>
+      <input placeholder="Посилання" [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>
   <br>
   <div class="to-plan-container" (click)="openDatePicker()">
     <button mat-mini-fab class="to-plan">?</button>
