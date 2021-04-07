@@ -6,8 +6,24 @@
 <mat-dialog-content class="mat-typography">
   <h2>{{ data.title }}</h2>
   <p> {{ data.value }} </p>
+  <h2 *ngIf="mediaUrl">Корисна інформація:</h2>
+  <mat-chip-list aria-label="Fish selection">
+    <mat-chip *ngFor="let url of data.mediaUrl"><a href="{{ url.url }}">{{ url.url }}</a></mat-chip>
+  </mat-chip-list>
+
+  <mat-chip-list *ngIf="showAddTasks" #chipList aria-label="Fruit selection">
+    <mat-chip *ngFor="let link of links" [selectable]="selectable" [removable]="removable"
+      (removed)="remove(link)">
+      {{ link.url }}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="Посилання" [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Надіслати завдання</button>
-  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  <button mat-button (click)="addTasks()">Прикріпити завдання</button>
+  <button mat-button [mat-dialog-close]="true">Надіслати завдання</button>
 </mat-dialog-actions>

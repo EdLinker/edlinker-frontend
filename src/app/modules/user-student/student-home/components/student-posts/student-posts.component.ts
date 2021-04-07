@@ -5,15 +5,18 @@ import { Post } from 'src/models';
 import { StudentGetPosts } from '../../store/actions';
 import { LoaderState } from '../../store/loader.state';
 import { StudentPostsState } from '../../store/student-post-state';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatChipInputEvent } from '@angular/material/chips';
 @Component({
   selector: 'app-student-posts',
   templateUrl: './student-posts.component.html',
   styleUrls: ['./student-posts.component.css']
 })
 export class StudentPostsComponent implements OnInit {
+
 
   @Select(StudentPostsState.getPosts) posts$!: Observable<Post[]>;
 
@@ -33,7 +36,7 @@ export class StudentPostsComponent implements OnInit {
     const dialogRef = this.dialog.open(PostPopupComponent,
       {
         data: post,
-        height: 'auto',
+        height: '400px',
         width: '100%',
       },
     );
@@ -49,5 +52,51 @@ export class StudentPostsComponent implements OnInit {
   styleUrls: ['./../popup-post/popup-post.component.css']
 })
 export class PostPopupComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Post) { }
+  showAddTasks!: boolean;
+  mediaUrl: boolean;
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  //todo links from database
+  links = [{
+    url: 'https://material.angular.io/components/badge/overview'
+  },
+  {
+    url: 'https://material.angular.io/components/badge/overview'
+  }
+  ];
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Post,
+  ) {
+    this.mediaUrl = !data.mediaUrl;
+  }
+
+  addTasks() {
+    this.showAddTasks = !this.showAddTasks;
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.links.push({ url: value.trim() });
+    }
+
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(link: any): void {
+    const index = this.links.indexOf(link);
+
+    if (index >= 0) {
+      this.links.splice(index, 1);
+    }
+  }
 }

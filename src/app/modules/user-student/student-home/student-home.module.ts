@@ -12,11 +12,16 @@ import { LoaderState } from './store/loader.state';
 import { StudentHomeViewComponent } from './components';
 import { studentHomeRouting } from './student-home.routing';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedPostModule } from '../../shared/shared-post-card';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +35,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatProgressSpinnerModule,
     SharedPostModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatInputModule
   ],
   exports: [],
   declarations: [
