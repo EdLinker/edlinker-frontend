@@ -4,13 +4,15 @@ import { SharedHeaderComponent } from './components/shared-header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { SharedPostComponent } from '../shared-post-card/components/shared-post/shared-post.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [SharedHeaderComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
   ],
   exports: [SharedHeaderComponent]
 })
