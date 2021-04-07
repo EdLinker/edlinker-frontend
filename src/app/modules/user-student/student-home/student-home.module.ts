@@ -12,7 +12,9 @@ import { LoaderState } from './store/loader.state';
 import { StudentHomeViewComponent } from './components';
 import { studentHomeRouting } from './student-home.routing';
 
+import { PipesModule } from '../../shared/pipes/pipes.module';
 import { SharedPostModule } from '../../shared/shared-post-card';
+
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -38,13 +41,15 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatChipsModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    PipesModule,
+    MatFormFieldModule
   ],
   exports: [],
   declarations: [
     StudentHomeViewComponent,
     StudentPostsComponent,
-    PostPopupComponent
+    PostPopupComponent,
   ],
   providers: [
     StudentPostsService,

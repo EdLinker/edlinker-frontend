@@ -36,7 +36,7 @@ export class StudentPostsComponent implements OnInit {
     const dialogRef = this.dialog.open(PostPopupComponent,
       {
         data: post,
-        height: '400px',
+        height: 'auto',
         width: '100%',
       },
     );
@@ -51,9 +51,9 @@ export class StudentPostsComponent implements OnInit {
   templateUrl: './../popup-post/popup-post.component.html',
   styleUrls: ['./../popup-post/popup-post.component.css']
 })
-export class PostPopupComponent {
+export class PostPopupComponent implements OnInit{
   showAddTasks!: boolean;
-  mediaUrl: boolean;
+  mediaUrl?: boolean = false;
   visible = true;
   selectable = true;
   removable = true;
@@ -71,8 +71,12 @@ export class PostPopupComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Post,
-  ) {
-    this.mediaUrl = !data.mediaUrl;
+  ) {}
+
+  ngOnInit(): void {
+    if (this.data.mediaUrl.length !== 0) {
+     this.mediaUrl = !this.mediaUrl;
+    }
   }
 
   addTasks() {
