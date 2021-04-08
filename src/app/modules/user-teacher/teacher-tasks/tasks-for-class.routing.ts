@@ -4,6 +4,6 @@ import { TasksForClassComponent } from './components/tasks-for-class/tasks-for-c
 export const tasksForClassRouting: Routes = [
     {
       path: '',
-      component: TasksForClassComponent
+      component: TasksForClassComponent,
     }
   ];

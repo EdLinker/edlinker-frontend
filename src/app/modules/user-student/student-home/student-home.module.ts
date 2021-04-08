@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
-import { SharedHeaderModule } from '../../shared/shared-header';
 import { StudentPostsComponent } from './components/student-posts/student-posts.component';
 import { StudentPostsService } from './services';
 import { StudentPostsState } from './store/student-post-state';
@@ -21,7 +20,6 @@ import { SharedPostModule } from '../../shared/shared-post-card';
     CommonModule,
     FormsModule,
     RouterModule.forChild(studentHomeRouting),
-    SharedHeaderModule,
     NgxsModule.forRoot([StudentPostsState, LoaderState], {
       developmentMode: !environment.production,
     }),

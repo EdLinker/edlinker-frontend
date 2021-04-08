@@ -31,5 +31,9 @@
     "comments": [
       { "id": 1, "body": "some comment", "postId": 1 }
     ],
+    "auditoriums": [
+      { "auditoriumId": 1, "groupId": 1, "groupName": "422", "studentsCount": 16, "subjectName": "Фізика", "courceNumber": 3, "groupLeaderName": "groupLeaderName" },
+      { "auditoriumId": 2, "groupId": 2, "groupName": "423", "studentsCount": 12, "subjectName": "Фізика", "courceNumber": 3, "groupLeaderName": "groupLeaderName" }
+    ],
     "profile": { "name": "typicode" }
   }

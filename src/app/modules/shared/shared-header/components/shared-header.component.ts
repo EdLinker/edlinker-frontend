@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SharedHeaderComponent implements OnInit {
 
+  userData = {
+    id: '63',
+    role: 'teacher',
+    firstName: 'Name',
+    lastName: 'Surname',
+    patronymic: 'Patronymic',
+  };
+
+  getUserDataForTooltip = `
+    ${this.userData.role} #${this.userData.id}
+    ${this.userData.lastName} ${this.userData.firstName} ${this.userData.patronymic}
+  `;
+
   constructor() { }
 
   ngOnInit(): void {

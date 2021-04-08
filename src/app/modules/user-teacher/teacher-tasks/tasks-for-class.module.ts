@@ -24,7 +24,6 @@ import { MatButtonModule } from '@angular/material/button';
       developmentMode: !environment.production,
     }),
     SharedPostModule,
-    SharedHeaderModule,
     HttpClientModule,
     MatChipsModule,
     MatButtonModule
