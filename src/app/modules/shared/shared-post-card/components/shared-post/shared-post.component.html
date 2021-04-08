@@ -1,16 +1,15 @@
-<mat-card class="card">
-  <mat-card-header>
-    <img mat-card-avatar class="header-image" src="{{ post.imageUrl }}">
-    <mat-card-title>
-    {{ post.subjectName }} | {{ post.author }}
-    </mat-card-title>
-    <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <h1> {{ post.title }} </h1>
-    <p> {{ post.value }} </p>
-  </mat-card-content>
-  <mat-chip-list aria-label="Fish selection">
-  <mat-chip *ngFor="let url of post.mediaUrl"><a href="{{ url.url }}">{{ url.url }}</a></mat-chip>
-  </mat-chip-list>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <img mat-card-avatar class="header-image" src="{{ post.imageUrl }}">
+      <mat-card-title>
+        {{ post.subjectName }} | {{ post.author }}
+      </mat-card-title>
+      <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1> {{ post.title | truncate:[221, '...'] }} </h1>
+      <p> {{ post.value | truncate:[221, '...'] }} </p>
+    </mat-card-content>
 </mat-card>
+</div>

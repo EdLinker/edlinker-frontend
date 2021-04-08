@@ -1,7 +1,22 @@
 .card {
     max-width: 1200px;
-    margin: 15px auto;
+    background: #fffbfb;
+    margin: 0 auto;
 }
+
+.card:hover {
+    cursor: pointer;
+}
+
 .header-image {
     background-size: cover;
   }
+
+.mat-chip a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    padding: 10px 10px 15px;
+}

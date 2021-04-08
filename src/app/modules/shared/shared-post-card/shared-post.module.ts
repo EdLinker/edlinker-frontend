@@ -4,13 +4,15 @@ import { SharedPostComponent } from './components/shared-post/shared-post.compon
 
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { PipesModule } from '../pipes';
 
 @NgModule({
   declarations: [SharedPostComponent],
   imports: [
     MatCardModule,
     CommonModule,
-    MatChipsModule
+    MatChipsModule,
+    PipesModule
   ],
   exports: [SharedPostComponent]
 })
