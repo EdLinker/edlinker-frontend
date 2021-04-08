@@ -6,7 +6,7 @@ import { filter, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-shared-breadcrumbs',
   templateUrl: './shared-breadcrumbs.component.html',
-  styleUrls: ['./shared-breadcrumbs.component.css']
+  styleUrls: ['./shared-breadcrumbs.component.scss']
 })
 export class SharedBreadcrumbsComponent implements OnInit {
 

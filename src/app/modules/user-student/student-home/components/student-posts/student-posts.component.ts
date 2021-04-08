@@ -9,7 +9,7 @@ import { StudentPostsState } from '../../store/student-post-state';
 @Component({
   selector: 'app-student-posts',
   templateUrl: './student-posts.component.html',
-  styleUrls: ['./student-posts.component.css']
+  styleUrls: ['./student-posts.component.scss']
 })
 export class StudentPostsComponent implements OnInit {
 
