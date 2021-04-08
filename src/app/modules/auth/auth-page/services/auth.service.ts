@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(user: User): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>('there will be link', user)
+    return this.http.post<{ token: string }>('https://ed-linker.herokuapp.com/api/auth', user)
       .pipe(
         tap(
           ({ token }) => {
@@ -18,6 +18,10 @@ export class AuthService {
           }
         )
       );
+  }
+
+  test(): Observable<any> {
+    return this.http.get('https://ed-linker.herokuapp.com/api/auth');
   }
 
   getToken() {
