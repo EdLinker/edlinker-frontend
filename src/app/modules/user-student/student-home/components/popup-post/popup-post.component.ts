@@ -7,7 +7,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 @Component({
     selector: 'app-popup-post.component.html',
     templateUrl: './../popup-post/popup-post.component.html',
-    styleUrls: ['./../popup-post/popup-post.component.css']
+    styleUrls: ['./../popup-post/popup-post.component.scss']
 })
 export class PostPopupComponent implements OnInit {
     showAddTasks!: boolean;

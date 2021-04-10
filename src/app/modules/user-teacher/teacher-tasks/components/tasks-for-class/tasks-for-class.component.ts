@@ -8,7 +8,7 @@ import { TeacherPostState } from '../../../teacher-post/store/teacher-post.state
 @Component({
   selector: 'app-tasks-for-class',
   templateUrl: './tasks-for-class.component.html',
-  styleUrls: ['./tasks-for-class.component.css']
+  styleUrls: ['./tasks-for-class.component.scss']
 })
 export class TasksForClassComponent implements OnInit {
 
