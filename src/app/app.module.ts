@@ -9,8 +9,9 @@ import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
 import { SharedHeaderModule } from './modules/shared/shared-header';
 import { AuthGuard } from './modules/auth/guards';
 import { AuthService } from './modules/auth/auth-page/services';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
+import { TokenInterceptor } from './modules/auth/auth-page/interceptors/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,11 @@ import { LayoutComponent } from './modules/shared/layout/layout.component';
     SharedHeaderModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [
+    AuthGuard,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

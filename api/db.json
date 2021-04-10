@@ -7,7 +7,11 @@
         "date": "26.05.2021 16:40",
         "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
         "value": "In this task, you will need to do..",
-        "mediaUrl": "Google.com"
+        "mediaUrl": [
+          { "url": "Google.com" },
+          { "url": "Google.com" },
+          { "url": "Google.com" }
+      ]
       },
       { "id": 2, 
         "title": "Task 26",
@@ -16,16 +20,25 @@
         "date": "26.05.2021 16:40",
         "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
         "value": "In this task, you will need to do..",
-        "mediaUrl": "Google.com"
+        "mediaUrl": [
+          { "url": "Google.com" },
+          { "url": "Google.com" }
+        ]
       },
       { "id": 3, 
         "title": "Task 36",
         "subjectName": "English",
         "author": "Carl Mask",
         "date": "26.05.2021 16:40",
-        "image": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+        "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
         "value": "In this task, you will need to do..",
-        "mediaUrl": "Google.com"
+        "mediaUrl": [
+          { "url": "Google.com" },
+          { "url": "Google.com" },
+          { "url": "Google.com" },
+          { "url": "Google.com" },
+          { "url": "Google.com" }
+        ]
       }
     ],
     "comments": [

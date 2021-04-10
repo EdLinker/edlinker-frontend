@@ -13,11 +13,12 @@ import { teacherCreatePostRouting } from './teacher-create-post.routing';
 import { TeacherPostService } from './services';
 import { TeacherPostState } from './store/teacher-post.state';
 
+
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { ShortUrlPipe } from './pipes/short-url.pipe';
+import { PipesModule } from '../../shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -33,13 +34,13 @@ import { ShortUrlPipe } from './pipes/short-url.pipe';
     MatButtonModule,
     HttpClientModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    PipesModule
   ],
   exports: [],
   declarations: [
     TeacherPostViewComponent,
-    TeacherCreatePostFormComponent,
-    ShortUrlPipe
+    TeacherCreatePostFormComponent
   ],
   providers: [TeacherPostService],
 })

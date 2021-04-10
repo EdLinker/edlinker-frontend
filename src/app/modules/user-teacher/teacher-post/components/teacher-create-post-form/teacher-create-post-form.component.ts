@@ -8,7 +8,7 @@ import { TeacherAddPost } from '../../store/actions';
 @Component({
   selector: 'app-teacher-create-post-form',
   templateUrl: './teacher-create-post-form.component.html',
-  styleUrls: ['./teacher-create-post-form.component.css']
+  styleUrls: ['./teacher-create-post-form.component.scss']
 })
 export class TeacherCreatePostFormComponent implements OnInit {
   isDate: boolean;
@@ -43,8 +43,8 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
   initForm() {
     this.createPostForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.maxLength(255)]],
-      value: ['', [Validators.required, Validators.maxLength(255)]]
+      title: ['', Validators.required ],
+      value: ['', Validators.required ]
     });
   }
 
