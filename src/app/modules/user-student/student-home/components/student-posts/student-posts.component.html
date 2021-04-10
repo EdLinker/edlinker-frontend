@@ -1,6 +1,6 @@
 <mat-progress-spinner class="spinner" [mode]="'indeterminate'" [value]="50" *ngIf="loadingStatus$ | async">
 </mat-progress-spinner>
 
-<div class="example-card">
-  <app-shared-post *ngFor="let post of posts$ | async" [post]="post" (click)="openDialog(post)"></app-shared-post>
+<div class="cards-container">
+  <app-shared-post class="card" *ngFor="let post of posts$ | async" [post]="post" (click)="openDialog(post)"></app-shared-post>
 </div>
