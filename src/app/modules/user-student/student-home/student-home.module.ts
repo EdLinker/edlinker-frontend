@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
-import { PostPopupComponent, StudentPostsComponent } from './components/student-posts/student-posts.component';
+import { StudentPostsComponent } from './components/student-posts/student-posts.component';
 import { StudentPostsService } from './services';
 import { StudentPostsState } from './store/student-post-state';
 import { LoaderState } from './store/loader.state';
@@ -24,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PostPopupComponent } from './components/popup-post/popup-post.component';
 
 @NgModule({
   imports: [
