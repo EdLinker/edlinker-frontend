@@ -6,7 +6,7 @@ import { Post } from 'src/models';
 @Component({
   selector: 'app-teacher-post-view',
   templateUrl: './teacher-post-view.component.html',
-  styleUrls: ['./teacher-post-view.component.css']
+  styleUrls: ['./teacher-post-view.component.scss']
 })
 export class TeacherPostViewComponent implements OnInit {
 
