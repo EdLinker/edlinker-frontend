@@ -12,9 +12,20 @@ import { LoaderState } from './store/loader.state';
 import { StudentHomeViewComponent } from './components';
 import { studentHomeRouting } from './student-home.routing';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PipesModule } from '../../shared/pipes/pipes.module';
 import { SharedPostModule } from '../../shared/shared-post-card';
+
+
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { PostPopupComponent } from './components/popup-post/popup-post.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,12 +37,21 @@ import { SharedPostModule } from '../../shared/shared-post-card';
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    SharedPostModule
+    SharedPostModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatInputModule,
+    PipesModule,
+    MatFormFieldModule
   ],
   exports: [],
   declarations: [
     StudentHomeViewComponent,
-    StudentPostsComponent],
+    StudentPostsComponent,
+    PostPopupComponent,
+  ],
   providers: [
     StudentPostsService,
   ],
