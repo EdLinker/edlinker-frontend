@@ -25,6 +25,10 @@ export class AuthService {
     return this.http.get('https://ed-linker.herokuapp.com/api/auth');
   }
 
+  getUserTest(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:3000/user');
+  }
+
   getRole(): Observable<any> {
     return this.getUser().pipe(
       map((data => {
