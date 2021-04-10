@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~11.1.2",
     "@angular/router": "~11.1.2",
     "@ngxs/store": "^3.7.1",
+    "camelcase-keys": "^6.2.2",
+    "decamelize": "^5.0.0",
     "primeicons": "^4.1.0",
     "primeng": "^11.3.1",
     "rxjs": "~6.6.0",
