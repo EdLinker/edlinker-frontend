@@ -4,7 +4,7 @@ import { Post } from 'src/models';
 @Component({
   selector: 'app-shared-post',
   templateUrl: './shared-post.component.html',
-  styleUrls: ['./shared-post.component.css']
+  styleUrls: ['./shared-post.component.scss']
 })
 export class SharedPostComponent implements OnInit {
 

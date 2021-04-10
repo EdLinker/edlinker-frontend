@@ -8,7 +8,7 @@ import { TeacherAuditoriumsListState } from '../../store/teacher-auditoriumslist
 @Component({
   selector: 'app-auditoriums-list',
   templateUrl: 'auditoriums-list.component.html',
-  styleUrls: ['auditoriums-list.component.css'],
+  styleUrls: ['auditoriums-list.component.scss'],
 
 })
 
