@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { GetUser } from '../../shared/user-store/actions';
+import { User } from 'src/models';
 import { UserState } from '../../shared/user-store/user-state';
 import { AuthService } from '../auth-page/services';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    // @Select(UserState.getRole) role$!: Observable<string>;
+    @Select(UserState.getUser)
+    user$!: Observable<User>;
 
     constructor(
         private auth: AuthService,
@@ -32,18 +32,14 @@ export class AuthGuard implements CanActivate {
 
     canActivateChild(route: ActivatedRouteSnapshot) {
         const routeRoles = route.data.roles as Array<string>;
-        return this.auth.getRole().pipe(map((userRole) => {
-            if(!routeRoles || routeRoles.indexOf(userRole) !== -1) {
+        const userRole = this.store.selectSnapshot(UserState.getRole);
+        if (!routeRoles || routeRoles.indexOf(userRole) !== -1) {
             return true;
         } if (userRole === 'student') {
-            this.router.navigate(['/student']);
-            console.log(userRole);
-            return false; //! <--------- if 404 be, will change redirect.
+            return false;
         } else {
-            this.router.navigate(['/teacher']);
-            console.log(userRole);
+            this.router.navigate(['']);
             return false;
         }
-    }));
-}
+    };
 }

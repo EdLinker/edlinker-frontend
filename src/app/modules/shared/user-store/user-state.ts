@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
-import { Role, User } from 'src/models';
-import { AuthService } from '../../auth/auth-page/services';
-import { MapResponseService } from '../helper/services';
-import { GetUser } from './actions';
+import { User } from 'src/models';
+import { MapResponseService } from '../helper/services/map-response.service';
+import { GetUser, LoginAction } from './actions';
 import { UserService } from './services';
 
 export class UserStateModel {
@@ -18,8 +18,14 @@ export class UserStateModel {
 export class UserState {
     constructor(
         private userService: UserService,
-        private mapResponseService: MapResponseService
+        private mapResponseService: MapResponseService,
+        private router: Router
     ) { }
+
+    @Selector()
+    static getUser(state: UserStateModel) {
+        return state.user;
+    }
 
     @Selector()
     static getRole(state: UserStateModel) {
@@ -28,11 +34,6 @@ export class UserState {
                 const roles: string = data.name;
                 return roles;
             })).toString();
-    }
-
-    @Selector()
-    static getUser(state: UserStateModel) {
-        return state.user;
     }
 
     @Action(GetUser)
@@ -46,5 +47,13 @@ export class UserState {
                 });
             })
         );
+    }
+
+    @Action(LoginAction)
+    loginActions({ getState, setState, dispatch }: StateContext<UserStateModel>) {
+        dispatch(new GetUser()).subscribe(() => {
+            if(getState().user.roles.find(role => role.name === 'teacher')) {return this.router.navigate(['/teacher']);}
+            return this.router.navigate(['/student']);
+        });
     }
 }

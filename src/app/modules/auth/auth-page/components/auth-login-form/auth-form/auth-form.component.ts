@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
-import { SharedService } from 'src/app/modules/shared/services/shared.service';
+import { LoginAction } from 'src/app/modules/shared/user-store/actions';
 import { AuthService } from '../../../services';
 
 @Component({
@@ -46,16 +46,7 @@ export class AuthFormComponent implements OnInit, OnDestroy {
 
     this.aSub = this.authService.login(this.loginForm.value).subscribe(
       () => {
-        this.authService.getRole().subscribe(role => {
-          if (role === 'student') {
-            this.route.navigate(['/student']);
-            return this.loginForm.reset();
-          }
-          if (role === 'teacher') {
-            this.route.navigate(['/teacher']);
-            return this.loginForm.reset();
-          }
-        });
+        this.store.dispatch(new LoginAction());
       },
       error => {
         console.warn(error);

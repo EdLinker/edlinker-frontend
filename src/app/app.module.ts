@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
 import { UserState } from './modules/shared/user-store/user-state';
 import { UserService } from './modules/shared/user-store/services/user.service';
 import { MapResponseService } from './modules/shared/helper/services/map-response.service';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,9 +25,9 @@ import { MapResponseService } from './modules/shared/helper/services/map-respons
   ],
   imports: [
     BrowserModule,
-     HttpClientModule,
-      NgxsModule.forRoot([UserState], {
-      developmentMode: !environment.production,
+    HttpClientModule,
+    NgxsModule.forRoot([UserState], {
+      developmentMode: true,
     }),
     AppRoutingModule,
     BrowserAnimationsModule,
