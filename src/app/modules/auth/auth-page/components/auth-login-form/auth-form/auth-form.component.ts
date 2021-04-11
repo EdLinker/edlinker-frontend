@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
-import { Observable, Subscription } from 'rxjs';
-import { GetUser } from 'src/app/modules/shared/user-store/actions';
-import { UserState } from 'src/app/modules/shared/user-store/user-state';
-import { Role } from 'src/models';
+import { Store } from '@ngxs/store';
+import { Subscription } from 'rxjs';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 import { AuthService } from '../../../services';
 
 @Component({
@@ -14,8 +12,6 @@ import { AuthService } from '../../../services';
   styleUrls: ['./auth-form.component.scss']
 })
 export class AuthFormComponent implements OnInit, OnDestroy {
-
-  @Select(UserState.getRole) role$!: Observable<string>;
 
   loginForm!: FormGroup;
   hide = true;
@@ -47,10 +43,10 @@ export class AuthFormComponent implements OnInit, OnDestroy {
 
   login() {
     this.loginForm.disable();
-    this.store.dispatch(new GetUser());
+
     this.aSub = this.authService.login(this.loginForm.value).subscribe(
       () => {
-        this.role$.subscribe(role => {
+        this.authService.getRole().subscribe(role => {
           if (role === 'student') {
             this.route.navigate(['/student']);
             return this.loginForm.reset();

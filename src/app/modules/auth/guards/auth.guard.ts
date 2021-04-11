@@ -10,7 +10,7 @@ import { AuthService } from '../auth-page/services';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    @Select(UserState.getRole) role$!: Observable<string>;
+    // @Select(UserState.getRole) role$!: Observable<string>;
 
     constructor(
         private auth: AuthService,
@@ -32,18 +32,18 @@ export class AuthGuard implements CanActivate {
 
     canActivateChild(route: ActivatedRouteSnapshot) {
         const routeRoles = route.data.roles as Array<string>;
-        return this.role$.subscribe((userRole) => {
-                if (!routeRoles || routeRoles.indexOf(userRole) !== -1) {
-                    return true;
-                } if (userRole === 'student') {
-                    this.router.navigate(['/student']);
-                    console.log(userRole);
-                    return false; //! <--------- if 404 be, will change redirect.
-                } else {
-                    this.router.navigate(['/teacher']);
-                    console.log(userRole);
-                    return false;
-                }
-        });
-    }
+        return this.auth.getRole().pipe(map((userRole) => {
+            if(!routeRoles || routeRoles.indexOf(userRole) !== -1) {
+            return true;
+        } if (userRole === 'student') {
+            this.router.navigate(['/student']);
+            console.log(userRole);
+            return false; //! <--------- if 404 be, will change redirect.
+        } else {
+            this.router.navigate(['/teacher']);
+            console.log(userRole);
+            return false;
+        }
+    }));
+}
 }

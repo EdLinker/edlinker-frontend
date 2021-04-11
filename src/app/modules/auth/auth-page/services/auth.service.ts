@@ -1,21 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { UserState } from 'src/app/modules/shared/user-store/user-state';
 import { Role } from 'src/models';
 import { User } from 'src/models/user.model';
 
 @Injectable()
 export class AuthService {
 
-  @Select(UserState.getUser) role$!: Observable<Role[]>;
-
-  constructor(
-    private http: HttpClient,
-    private store: Store
-    ) { }
+  constructor(private http: HttpClient) { }
 
   login(user: User): Observable<{ token: string }> {
     return this.http.post<{ token: string }>('https://ed-linker.herokuapp.com/api/auth', user)
@@ -23,10 +16,27 @@ export class AuthService {
         tap(
           ({ token }) => {
             localStorage.setItem('auth-token', token);
+            return token;
           }
         )
       );
   }
+
+  getUser(): Observable<any> {
+    return this.http.get('https://ed-linker.herokuapp.com/api/auth');
+  }
+
+  getRole(): Observable<any> {
+    return this.getUser().pipe(
+      map((data => {
+        const roles: Role[] = data.roles;
+        let role;
+        roles.map(v => role = v.name);
+        return role;
+      }))
+    );
+  }
+
   getToken() {
     return localStorage.getItem('auth-token');
   }

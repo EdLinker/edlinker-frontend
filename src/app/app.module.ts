@@ -12,10 +12,10 @@ import { AuthService } from './modules/auth/auth-page/services';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
 import { TokenInterceptor } from './modules/auth/auth-page/interceptors/token.interceptor';
-import { MapResponseService } from './modules/shared/helper/services';
 import { environment } from 'src/environments/environment';
 import { UserState } from './modules/shared/user-store/user-state';
 import { UserService } from './modules/shared/user-store/services/user.service';
+import { MapResponseService } from './modules/shared/helper/services/map-response.service';
 @NgModule({
   declarations: [
     AppComponent,
