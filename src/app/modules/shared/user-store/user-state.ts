@@ -1,25 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
-import { User } from 'src/models';
+import { Role, User } from 'src/models';
 import { AuthService } from '../../auth/auth-page/services';
+import { MapResponseService } from '../helper/services';
 import { GetUser } from './actions';
+import { UserService } from './services';
 
 export class UserStateModel {
-    user!: User[];
+    user!: User;
 }
 
 @State<UserStateModel>({
     name: 'User',
-    defaults: {
-        user: [],
-    },
 })
 @Injectable()
 export class UserState {
     constructor(
-        private authService: AuthService,
+        private userService: UserService,
+        private mapResponseService: MapResponseService
     ) { }
+
+    @Selector()
+    static getRole(state: UserStateModel) {
+        return state.user.roles.
+            map((data => {
+                const roles: string = data.name;
+                return roles;
+            })).toString();
+    }
 
     @Selector()
     static getUser(state: UserStateModel) {
@@ -28,12 +37,12 @@ export class UserState {
 
     @Action(GetUser)
     getUser({ getState, setState }: StateContext<UserStateModel>) {
-        return this.authService.getUserTest().pipe(
+        return this.userService.getUser().pipe(
             tap((result) => {
                 const state = getState();
                 setState({
                     ...state,
-                    user: result,
+                    user: this.mapResponseService.snakeToCamel(result),
                 });
             })
         );

@@ -12,6 +12,10 @@ import { AuthService } from './modules/auth/auth-page/services';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
 import { TokenInterceptor } from './modules/auth/auth-page/interceptors/token.interceptor';
+import { MapResponseService } from './modules/shared/helper/services';
+import { environment } from 'src/environments/environment';
+import { UserState } from './modules/shared/user-store/user-state';
+import { UserService } from './modules/shared/user-store/services/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,17 +23,21 @@ import { TokenInterceptor } from './modules/auth/auth-page/interceptors/token.in
   ],
   imports: [
     BrowserModule,
+     HttpClientModule,
+      NgxsModule.forRoot([UserState], {
+      developmentMode: !environment.production,
+    }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot(),
     SharedBreadcrumbsModule,
     SharedHeaderModule,
-    HttpClientModule
   ],
   providers: [
     AuthGuard,
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    UserService,
+    MapResponseService
   ],
   bootstrap: [AppComponent]
 })

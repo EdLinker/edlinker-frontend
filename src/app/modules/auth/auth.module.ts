@@ -4,7 +4,7 @@ import { authRouting } from './auth.routing';
 
 @NgModule({
   imports: [
-    RouterModule.forChild(authRouting)
+    RouterModule.forChild(authRouting),
   ],
   exports: [],
   declarations: [],

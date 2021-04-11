@@ -8,6 +8,7 @@ import { StudentPostsState } from '../../store/student-post-state';
 
 import { MatDialog } from '@angular/material/dialog';
 import { PostPopupComponent } from '../popup-post/popup-post.component';
+import { StudentPostsService } from '../../services';
 @Component({
   selector: 'app-student-posts',
   templateUrl: './student-posts.component.html',
@@ -23,7 +24,7 @@ export class StudentPostsComponent implements OnInit {
 
   constructor(
     private store: Store,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {

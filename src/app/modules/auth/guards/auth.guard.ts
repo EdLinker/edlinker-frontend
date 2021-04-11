@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GetUser } from '../../shared/user-store/actions';
+import { UserState } from '../../shared/user-store/user-state';
 import { AuthService } from '../auth-page/services';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
+    @Select(UserState.getRole) role$!: Observable<string>;
+
     constructor(
         private auth: AuthService,
-        private router: Router
+        private router: Router,
+        private store: Store
     ) {
 
     };
@@ -26,7 +32,7 @@ export class AuthGuard implements CanActivate {
 
     canActivateChild(route: ActivatedRouteSnapshot) {
         const routeRoles = route.data.roles as Array<string>;
-        return this.auth.getRole().pipe(map((userRole) => {
+        return this.role$.subscribe((userRole) => {
                 if (!routeRoles || routeRoles.indexOf(userRole) !== -1) {
                     return true;
                 } if (userRole === 'student') {
@@ -38,6 +44,6 @@ export class AuthGuard implements CanActivate {
                     console.log(userRole);
                     return false;
                 }
-        }));
+        });
     }
 }

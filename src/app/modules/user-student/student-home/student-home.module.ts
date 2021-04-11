@@ -25,7 +25,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PostPopupComponent } from './components/popup-post/popup-post.component';
-import { MapResponseService } from '../../shared/services';
 
 @NgModule({
   imports: [
@@ -55,7 +54,6 @@ import { MapResponseService } from '../../shared/services';
   ],
   providers: [
     StudentPostsService,
-    MapResponseService
   ],
 })
 export class StudentHomeModule { }
