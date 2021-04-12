@@ -52,8 +52,8 @@ export class UserState {
     @Action(LoginAction)
     loginActions({ getState, setState, dispatch }: StateContext<UserStateModel>) {
         dispatch(new GetUser()).subscribe(() => {
-            if(getState().user.roles.find(role => role.name === 'teacher')) {return this.router.navigate(['/teacher']);}
-            return this.router.navigate(['/student']);
+            if(getState().user.roles.find(role => role.name === 'teacher')) {return this.router.navigate(['teacher']);}
+            return this.router.navigate(['student']);
         });
     }
 }
