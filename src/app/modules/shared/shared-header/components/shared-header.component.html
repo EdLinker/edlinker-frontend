@@ -1,6 +1,14 @@
 <mat-toolbar class="header">
     <a class="logo-link" href="">edlinker</a>
     <div class="search-field-wrapper"></div>
-    <mat-icon class="account-notifications-icon" aria-hidden="false" aria-label="Example notifications icon">notifications</mat-icon>
-    <mat-icon class="account-avatar-icon" matTooltipClass="mat-tooltip-n-new-line" matTooltip="{{userDataForTooltip()}}" aria-hidden="false" aria-label="Example account_circle icon">account_circle</mat-icon>
+
+    <mat-icon class="account-notifications-icon" aria-hidden="false"
+        aria-label="Example notifications icon"> notifications </mat-icon>
+
+    <mat-icon class="account-avatar-icon" matTooltipClass="mat-tooltip-n-new-line"
+        matTooltip="{{userDataForTooltip()}}" aria-hidden="false"
+        aria-label="Example account_circle icon"> account_circle </mat-icon>
+
+        <mat-icon class="material-icons-outlined logout-icon" (click)="logOut()"> logout </mat-icon>
+
 </mat-toolbar>

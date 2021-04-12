@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { User, UserProfile } from 'src/models';
+import { Store } from '@ngxs/store';
+import { AuthService } from 'src/app/modules/auth/auth-page/services';
+import { UserProfile } from 'src/models';
 import { UserState } from '../../user-store/user-state';
 
 @Component({
@@ -13,7 +13,10 @@ export class SharedHeaderComponent implements OnInit {
 
   userData!: UserProfile;
 
-  constructor(private store: Store) { }
+  constructor(
+    private store: Store,
+    private authService: AuthService
+    ) { }
 
 
   userDataForTooltip() {
@@ -38,6 +41,10 @@ export class SharedHeaderComponent implements OnInit {
       lastName: user.lastName,
       patronymic: user.patronymic,
     };
+  }
+
+  logOut() {
+    this.authService.logOut();
   }
 
 }
