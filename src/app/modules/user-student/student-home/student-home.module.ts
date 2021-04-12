@@ -25,6 +25,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PostPopupComponent } from './components/popup-post/popup-post.component';
+import { PopupEntryComponent } from './components/popup-post/popup-entry.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { PostPopupComponent } from './components/popup-post/popup-post.component
     StudentHomeViewComponent,
     StudentPostsComponent,
     PostPopupComponent,
+    PopupEntryComponent
   ],
   providers: [
     StudentPostsService,

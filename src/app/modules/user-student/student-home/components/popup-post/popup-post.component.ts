@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Post } from 'src/models';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+// import { Post } from 'src/models';
+// import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 @Component({
@@ -28,13 +28,14 @@ export class PostPopupComponent implements OnInit {
     ];
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) public data: Post,
+        // @Inject(MAT_DIALOG_DATA) public data: Post,
     ) { }
 
+
     ngOnInit(): void {
-        if (this.data.mediaUrl.length !== 0) {
-            this.mediaUrl = !this.mediaUrl;
-        }
+        // if (this.data.mediaUrl.length !== 0) {
+        //     this.mediaUrl = !this.mediaUrl;
+        // }
     }
 
     addTasks() {

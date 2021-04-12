@@ -29,7 +29,7 @@ export class StudentPostsState {
 
     @Action(StudentGetPosts)
     getPosts({ getState, setState }: StateContext<StudentPostsStateModel>) {
-         this.studentPostsService.getPosts(3).pipe(
+         this.studentPostsService.getPosts().pipe(
             finalize(() => this.store.dispatch(new HideLoaderAction())),
             tap((result) => {
                 const state = getState();
