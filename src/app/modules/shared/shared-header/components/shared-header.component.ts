@@ -28,6 +28,18 @@ export class SharedHeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+
+    // todo : This is dirty hotfix! There is a bug to fix here.
+    this.userData = {
+      id: 0,
+      role: 'userRole',
+      firstName: 'user.firstName',
+      lastName: 'user.lastName',
+      patronymic: 'user.patronymic',
+    };
+
+
     this.getUserData();
   }
 
