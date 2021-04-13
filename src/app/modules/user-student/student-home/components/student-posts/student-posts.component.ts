@@ -23,7 +23,7 @@ export class StudentPostsComponent implements OnInit {
 
   constructor(
     private store: Store,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {

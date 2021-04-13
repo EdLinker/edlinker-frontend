@@ -1,52 +1,110 @@
 {
-    "posts": [
-      { "id": 1, 
-        "title": "Task 25",
-        "subjectName": "English",
-        "author": "Carl Mask",
-        "date": "26.05.2021 16:40",
-        "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
-        "value": "In this task, you will need to do..",
-        "mediaUrl": [
-          { "url": "Google.com" },
-          { "url": "Google.com" },
-          { "url": "Google.com" }
+  "posts": [
+    {
+      "id": 1,
+      "title": "Task 25",
+      "subjectName": "English",
+      "author": "Carl Mask",
+      "date": "26.05.2021 16:40",
+      "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "value": "In this task, you will need to do..",
+      "mediaUrl": [
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        }
       ]
-      },
-      { "id": 2, 
-        "title": "Task 26",
-        "subjectName": "English",
-        "author": "Carl Mask",
-        "date": "26.05.2021 16:40",
-        "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
-        "value": "In this task, you will need to do..",
-        "mediaUrl": [
-          { "url": "Google.com" },
-          { "url": "Google.com" }
-        ]
-      },
-      { "id": 3, 
-        "title": "Task 36",
-        "subjectName": "English",
-        "author": "Carl Mask",
-        "date": "26.05.2021 16:40",
-        "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
-        "value": "In this task, you will need to do..",
-        "mediaUrl": [
-          { "url": "Google.com" },
-          { "url": "Google.com" },
-          { "url": "Google.com" },
-          { "url": "Google.com" },
-          { "url": "Google.com" }
-        ]
-      }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "auditoriums": [
-      { "auditoriumId": 1, "groupId": 1, "groupName": "422", "studentsCount": 16, "subjectName": "Фізика", "courceNumber": 3, "groupLeaderName": "groupLeaderName" },
-      { "auditoriumId": 2, "groupId": 2, "groupName": "423", "studentsCount": 12, "subjectName": "Фізика", "courceNumber": 3, "groupLeaderName": "groupLeaderName" }
-    ],
-    "profile": { "name": "typicode" }
+    },
+    {
+      "id": 2,
+      "title": "Task 26",
+      "subjectName": "English",
+      "author": "Carl Mask",
+      "date": "26.05.2021 16:40",
+      "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "value": "In this task, you will need to do..",
+      "mediaUrl": [
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Task 36",
+      "subjectName": "English",
+      "author": "Carl Mask",
+      "date": "26.05.2021 16:40",
+      "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "value": "In this task, you will need to do..",
+      "mediaUrl": [
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "auditoriums": [
+    {
+      "auditoriumId": 1,
+      "groupId": 1,
+      "groupName": "422",
+      "studentsCount": 16,
+      "subjectName": "Фізика",
+      "courceNumber": 3,
+      "groupLeaderName": "groupLeaderName"
+    },
+    {
+      "auditoriumId": 2,
+      "groupId": 2,
+      "groupName": "423",
+      "studentsCount": 12,
+      "subjectName": "Фізика",
+      "courceNumber": 3,
+      "groupLeaderName": "groupLeaderName"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "user": {
+    "id": 2,
+    "firstName": "Hello",
+    "lastName": "World",
+    "patronymic": "Guys",
+    "phoneNumber": "123123",
+    "roles": [
+        {
+            "id": 1,
+            "name": "student"
+        }
+    ]
   }
+}
