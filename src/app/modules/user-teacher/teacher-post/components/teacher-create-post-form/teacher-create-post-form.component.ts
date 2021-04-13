@@ -43,8 +43,8 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
   initForm() {
     this.createPostForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.maxLength(255)]],
-      value: ['', [Validators.required, Validators.maxLength(255)]]
+      title: ['', Validators.required ],
+      value: ['', Validators.required ]
     });
   }
 

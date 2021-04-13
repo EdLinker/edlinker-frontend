@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from 'src/models/user.model';
@@ -7,10 +8,13 @@ import { User } from 'src/models/user.model';
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: Router
+    ) { }
 
   login(user: User): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>('there will be link', user)
+    return this.http.post<{ token: string }>('https://ed-linker.herokuapp.com/api/auth', user)
       .pipe(
         tap(
           ({ token }) => {
@@ -20,8 +24,12 @@ export class AuthService {
       );
   }
 
+  getUser(): Observable<any> {
+    return this.http.get('https://ed-linker.herokuapp.com/api/auth');
+  }
+
   getToken() {
-   return localStorage.getItem('auth-token');
+    return localStorage.getItem('auth-token');
   }
 
   isAuthenticated() {
@@ -30,5 +38,6 @@ export class AuthService {
 
   logOut() {
     localStorage.clear();
+    return this.route.navigate(['auth']);
   }
 }

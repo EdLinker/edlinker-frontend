@@ -15,11 +15,19 @@ const routes: Routes = [
       {
         path: 'student',
         canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        data: {
+          roles: ['student']
+        },
         loadChildren: () => import('./modules/user-student').then(m => m.UserStudentModule),
       },
       {
         path: 'teacher',
         canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        data: {
+          roles: ['teacher']
+        },
         loadChildren: () => import('./modules/user-teacher').then(m => m.UserTeacherModule),
       }
     ]

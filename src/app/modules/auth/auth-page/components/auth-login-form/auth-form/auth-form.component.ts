@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
+import { LoginAction } from 'src/app/modules/shared/user-store/actions';
 import { AuthService } from '../../../services';
 
 @Component({
@@ -16,7 +19,9 @@ export class AuthFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: Router,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -41,8 +46,7 @@ export class AuthFormComponent implements OnInit, OnDestroy {
 
     this.aSub = this.authService.login(this.loginForm.value).subscribe(
       () => {
-        console.log('There will be redirect');
-        this.loginForm.reset();
+        this.store.dispatch(new LoginAction());
       },
       error => {
         console.warn(error);
