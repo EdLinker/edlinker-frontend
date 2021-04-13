@@ -6,3 +6,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-tooltip-n-new-line {
   white-space: pre-line;
 }
+
+table {
+  width: 100%;
+}
+
+.page-grid-container {
+  display: grid !important;
+  grid-template-columns: auto minmax(auto, 960px) auto;
+  grid-auto-flow: column;
+  grid-template-areas:
+      "none page none";
+}
+
+.grid-section {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.debug-dots {
+  outline: 1px dotted #0003;
+  outline-offset: -1px;
+}
