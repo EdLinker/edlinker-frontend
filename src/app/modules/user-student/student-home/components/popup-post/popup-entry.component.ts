@@ -19,7 +19,7 @@ import { PostPopupComponent } from './popup-post.component';
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.router.navigate(['/student'], { relativeTo: this.route });
       });
     }
   }

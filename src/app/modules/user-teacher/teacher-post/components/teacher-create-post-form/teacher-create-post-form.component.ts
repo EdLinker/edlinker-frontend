@@ -54,6 +54,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
     if (this.createPostForm.valid) {
       this.store.dispatch(new TeacherAddPost({
+        id: Math.floor(Math.random() * 2),
         title,
         value,
         subjectName: 'Some Subject',

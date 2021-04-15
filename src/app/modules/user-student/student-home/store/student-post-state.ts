@@ -27,9 +27,14 @@ export class StudentPostsState {
         return state.posts;
     }
 
+    @Selector()
+    static getPost(state: StudentPostsStateModel) {
+        const pos = state.posts.find(post => post.id);
+    }
+
     @Action(StudentGetPosts)
     getPosts({ getState, setState }: StateContext<StudentPostsStateModel>) {
-         this.studentPostsService.getPosts().pipe(
+        return this.studentPostsService.getPosts().pipe(
             finalize(() => this.store.dispatch(new HideLoaderAction())),
             tap((result) => {
                 const state = getState();

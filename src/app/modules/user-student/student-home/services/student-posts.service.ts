@@ -19,7 +19,5 @@ export class StudentPostsService {
 
   getPosts() {
     return this.http.get<Post[]>('http://localhost:3000/posts');
-    // this.store.dispatch(new ShowLoaderAction());
-    // return this.http.get<Post[]>(`https://ed-linker.herokuapp.com/api/${id}/tasks`);
   }
 }
