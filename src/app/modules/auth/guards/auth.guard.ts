@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/models';
+import { GetUser } from '../../shared/user-store/actions';
 import { UserState } from '../../shared/user-store/user-state';
 import { AuthService } from '../auth-page/services';
 
@@ -30,16 +31,22 @@ export class AuthGuard implements CanActivate {
         }
     }
 
-    canActivateChild(route: ActivatedRouteSnapshot) {
-        const routeRoles = route.data.roles as Array<string>;
-        const userRole = this.store.selectSnapshot(UserState.getRole);
-        if (!routeRoles || routeRoles.indexOf(userRole) !== -1) {
+    checkRole(routeRoles: Array<string>, userRole: string) {
+        if (routeRoles?.indexOf(userRole) !== -1) {
             return true;
-        } if (userRole === 'student') {
-            return false;
         } else {
             this.router.navigate(['']);
             return false;
         }
+    }
+
+    async canActivateChild(route: ActivatedRouteSnapshot) {
+        const routeRoles = route.data.roles as Array<string>;
+        let userRole = this.store.selectSnapshot(UserState.getRole);
+        if (userRole !== undefined) {return this.checkRole(routeRoles, userRole);}
+
+        await this.store.dispatch(new GetUser()).toPromise();
+        userRole = this.store.selectSnapshot(UserState.getRole);
+        return this.checkRole(routeRoles, userRole);
     };
 }

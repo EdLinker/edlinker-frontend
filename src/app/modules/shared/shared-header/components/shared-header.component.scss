@@ -1,5 +1,11 @@
 /* todo: (.header) - change background color */
 .header {
+  background-color: #FFF;
+  border-bottom: 1px solid rgba(#000, 0.1);
+  height: 76px;
+}
+
+.header-container {
   display: flex;
   flex-flow: row nowrap;
 }
@@ -45,5 +51,15 @@
 .account-notifications-icon:hover,
 .account-avatar-icon:hover {
   color: #555555;
+  cursor: pointer;
+}
+
+.logout-icon {
+  margin-left: 10px;
+  color: #858585;
+}
+
+.logout-icon:hover {
+  color: #444444;
   cursor: pointer;
 }

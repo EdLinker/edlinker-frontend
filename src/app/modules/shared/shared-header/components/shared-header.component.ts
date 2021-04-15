@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { AuthService } from 'src/app/modules/auth/auth-page/services';
+import { UserProfile } from 'src/models';
+import { UserState } from '../../user-store/user-state';
 
 @Component({
   selector: 'app-shared-header-component',
@@ -7,22 +11,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SharedHeaderComponent implements OnInit {
 
-  userData = {
-    id: '63',
-    role: 'teacher',
-    firstName: 'Name',
-    lastName: 'Surname',
-    patronymic: 'Patronymic',
-  };
+  userData!: UserProfile;
 
-  getUserDataForTooltip = `
+  constructor(
+    private store: Store,
+    private authService: AuthService
+    ) { }
+
+
+  userDataForTooltip() {
+    return `
     ${this.userData.role} #${this.userData.id}
     ${this.userData.lastName} ${this.userData.firstName} ${this.userData.patronymic}
-  `;
+    `;
+  }
 
-  constructor() { }
 
   ngOnInit(): void {
+
+
+    // todo : This is dirty hotfix! There is a bug to fix here.
+    this.userData = {
+      id: 0,
+      role: 'userRole',
+      firstName: 'user.firstName',
+      lastName: 'user.lastName',
+      patronymic: 'user.patronymic',
+    };
+
+
+    this.getUserData();
+  }
+
+  getUserData(): UserProfile {
+    const userRole = this.store.selectSnapshot(UserState.getRole);
+    const user = this.store.selectSnapshot(UserState.getUser);
+    return this.userData = {
+      id: user.id,
+      role: userRole,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      patronymic: user.patronymic,
+    };
+  }
+
+  logOut() {
+    this.authService.logOut();
   }
 
 }
