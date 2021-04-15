@@ -1,92 +1,107 @@
+// .page-grid-container {
+//   background-image: url("/assets/images/bg.jpg");
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover; 
+// }
+
 .grid-container {
+  height: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
+  gap: 10px 10px;
   background-image: url("/assets/images/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
+  background-size: cover; 
 }
 
 .text-1 {
   grid-area: 5 / 2 / 6 / 7;
-  font-size: 36px;
+  font-size: 24px;
   line-height: 1em;
 }
 
 .text-2 {
   padding-top: 20px;
-  grid-area: 6 / 2 / 8 / 7;
-  font-size: 36px;
+  grid-area: 6 / 2 / 9 / 6;
+  font-size: 24px;
   line-height: 1em;
 }
 
 .logo {
-  grid-area: 3 / 2 / 4 / 4;
+  grid-area: 3 / 2 / 4 / 4; 
 }
 
 .form-bg {
-  grid-area: 1 / 8 / 13 / 13;
-  background: rgba($color: #ffffff, $alpha: 0.9);
+  grid-area: 1 / 7 / 14 / 13; 
+  background: rgba($color: #ffffff, $alpha: 0.7);
+}
+
+.form-title {
+  grid-area: 4 / 8 / 5 / 11;
 }
 
 .form {
-  grid-area: 3 / 8 / 9 / 13;
-  place-self: center;
+  grid-area: 5 / 8 / 9 / 12;
+  // place-self: center;
 }
 
 .welcome-word {
   color: #00dbad;
 }
 
-@media (max-width: 1250px) {
-  .text-1 {
-    font-size: 24px;
-  }
+// @media (max-width: 1250px) {
+//   .text-1 {
+//     font-size: 24px;
+//   }
 
-  .text-2 {
-    font-size: 24px;
-  }
-}
+//   .text-2 {
+//     font-size: 24px;
+//   }
+// }
 
-@media (max-width: 970px) {
-  .text-1 {
-    font-size: 22px;
-  }
+// @media (max-width: 970px) {
+//   .text-1 {
+//     font-size: 22px;
+//   }
 
-  .text-2 {
-    font-size: 22px;
-  }
-}
+//   .text-2 {
+//     font-size: 22px;
+//   }
+// }
 
-@media (max-width: 800px) {
-  .form-bg {
-    grid-area: 6 / 5 / 9 / 8;
-    background: rgba($color: #ffffff, $alpha: 0.6);
-    border-radius: 20px;
-  }
+// @media (max-width: 800px) {
+//   .grid-container {
+//     padding: 10px;
+//   }
+//   .form-bg {
+//     grid-area: 6 / 5 / 9 / 8;
+//     background: rgba($color: #ffffff, $alpha: 0.6);
+//     border-radius: 20px;
+//   }
 
-  .form {
-    grid-area: 7 / 6 / 8 / 7;
-  }
+//   .form {
+//     grid-area: 7 / 6 / 8 / 7;
+//     padding: 10px;
+//   }
 
-  .text-1 {
-    grid-area: 4 / 5 / 5 / 9;
-    font-size: 18px;
-    line-height: 18px;
-    padding: 0;
-  }
+//   .text-1 {
+//     grid-area: 4 / 5 / 5 / 9;
+//     font-size: 18px;
+//     line-height: 18px;
+//   }
 
-  .text-2 {
-    padding: 0;
-    grid-area: 5 / 5 / 6 / 9; 
-    font-size: 18px;
-    line-height: 18px;
-  }
+//   .text-2 {
+//     padding-top: 0;
+//     grid-area: 5 / 5 / 6 / 9;
+//     font-size: 18px;
+//     line-height: 18px;
+//   }
 
-  .logo {
-    grid-area: 3 / 5 / 4 / 7;
-  }
-}
+//   .logo {
+//     grid-area: 3 / 5 / 4 / 7;
+//   }
+// }
