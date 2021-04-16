@@ -1,6 +1,5 @@
 <form [formGroup]="loginForm" class="example-container">
-    <mat-error *ngIf="err">{{ errorMessage() }}</mat-error>
-    <br>
+    <mat-error class="auth-error-message" *ngIf="err">{{ errorMessage() }}</mat-error>
     <mat-form-field appearance="fill">
         <mat-label>Пошта</mat-label>
         <input matInput placeholder="pat@example.com" formControlName="email">

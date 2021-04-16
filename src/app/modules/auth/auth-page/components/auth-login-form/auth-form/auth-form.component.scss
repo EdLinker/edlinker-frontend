@@ -1,7 +1,10 @@
 .example-container {
     display: flex;
     flex-direction: column;
-    width: 320px;
+}
+
+.auth-error-message {
+    margin-bottom: 1rem;
 }
 
 .icon-eye {
