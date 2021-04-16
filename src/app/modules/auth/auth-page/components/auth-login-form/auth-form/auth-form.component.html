@@ -1,5 +1,7 @@
 <form [formGroup]="loginForm" class="example-container">
+
     <mat-error class="auth-error-message" *ngIf="err">{{ errorMessage() }}</mat-error>
+    
     <mat-form-field appearance="fill">
         <mat-label>Пошта</mat-label>
         <input matInput placeholder="pat@example.com" formControlName="email">
@@ -13,7 +15,9 @@
             : 'visibility'}}
         </mat-icon>
     </mat-form-field>
-    <button class="login-button" type="submit" [disabled]="loginForm.invalid || loginForm.disabled"
+
+    <button class="login-button" type="submit" 
+        [disabled]="loginForm.invalid || loginForm.disabled"
+        [class.button-enable]="!(loginForm.invalid || loginForm.disabled)"
         (click)="login()" mat-stroked-button>УВІЙТИ</button>
-    <br>
 </form>
