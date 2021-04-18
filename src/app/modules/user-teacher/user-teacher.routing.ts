@@ -4,7 +4,7 @@ export const userTeacherRouting: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: 'Класи'
+      breadcrumb: 'Аудиторії'
     },
     children: [
       {
