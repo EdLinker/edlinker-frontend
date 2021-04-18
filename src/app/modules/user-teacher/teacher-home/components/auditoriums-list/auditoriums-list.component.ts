@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuditoriumModele } from 'src/models';
 import { GetTeacherAuditoriums } from '../../store/actions';
@@ -26,9 +27,15 @@ export class AuditoriumsListComponent implements OnInit {
 
   constructor(
     private store: Store,
+    private router: Router,
   ) {}
 
   ngOnInit() {
     this.store.dispatch(new GetTeacherAuditoriums());
+  }
+
+  navigateTo(row: AuditoriumModele) {
+    console.log(row.auditoriumId);
+    // this.router.navigate(['/some/'+row.auditoriumId]);
   }
 }
