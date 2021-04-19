@@ -1,39 +1,19 @@
-.container {
-  margin-top: 1em;
-}
-
-.sort-nav {
+.page-toolbar {
+  margin: 1em 0;
   display: flex;
-  min-height: 50px;
-  background: #f1f1f1;
-  border-radius: 15px;
   justify-content: space-between;
-  margin-bottom: 1em;
+  padding: 1em;
+  padding-left: 2em;
+  border-radius: 1em;
+  background: #f5f5f5;
 }
 
-.sort-nav-buttons {
+.filter-aria {
   display: flex;
   align-items: center;
-  padding-left: 20px;
 }
 
-.sort-nav-buttons span {
-  padding-right: 10px;
-  font-size: 18px;
+.filter-title {
+  padding-right: 1em;
   font-weight: 500;
-}
-
-.sort-nav-button-create {
-  display: flex;
-  align-items: center;
-  margin-right: 50px;  
-}
-
-.title {
-  display: flex;
-  padding-bottom: 10px;
-}
-
-.title h1 {
-    padding-left: 10%;
 }
