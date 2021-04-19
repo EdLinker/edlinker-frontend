@@ -1,4 +1,7 @@
 <form [formGroup]="loginForm" class="example-container">
+
+    <mat-error class="auth-error-message" *ngIf="err">{{ errorMessage() }}</mat-error>
+    
     <mat-form-field appearance="fill">
         <mat-label>Пошта</mat-label>
         <input matInput placeholder="pat@example.com" formControlName="email">
@@ -7,10 +10,14 @@
     <mat-form-field appearance="fill">
         <mat-label>Пароль</mat-label>
         <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
-        <button class="icon-eye" mat-icon-button matSuffix (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+        <mat-icon class="icon-eye" mat-icon-button matSuffix (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off'
+            : 'visibility'}}
+        </mat-icon>
     </mat-form-field>
-    <button class="login-button" [disabled]="loginForm.invalid || loginForm.disabled" (click)="login()" mat-stroked-button>Увійти</button>
+
+    <button class="login-button" type="submit" 
+        [disabled]="loginForm.invalid || loginForm.disabled"
+        [class.button-enable]="!(loginForm.invalid || loginForm.disabled)"
+        (click)="login()" mat-stroked-button>УВІЙТИ</button>
 </form>
