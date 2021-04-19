@@ -1,8 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
-// import { Post } from 'src/models';
-// import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { StudentGetPosts } from '../../store/actions';
+import { StudentPostsState } from '../../store/student-post-state';
+import { Post } from 'src/models';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-popup-post.component.html',
@@ -10,6 +15,8 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
     styleUrls: ['./../popup-post/popup-post.component.scss']
 })
 export class PostPopupComponent implements OnInit {
+
+    data!: Post;
     showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
@@ -27,15 +34,10 @@ export class PostPopupComponent implements OnInit {
     }
     ];
 
-    constructor(
-        // @Inject(MAT_DIALOG_DATA) public data: Post,
-    ) { }
+    constructor() { }
 
 
-    ngOnInit(): void {
-        // if (this.data.mediaUrl.length !== 0) {
-        //     this.mediaUrl = !this.mediaUrl;
-        // }
+    ngOnInit() {
     }
 
     addTasks() {

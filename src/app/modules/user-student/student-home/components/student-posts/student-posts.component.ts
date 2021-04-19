@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Post } from 'src/models';
-import { StudentGetPosts } from '../../store/actions';
 import { LoaderState } from '../../store/loader.state';
 import { StudentPostsState } from '../../store/student-post-state';
 
 import { MatDialog } from '@angular/material/dialog';
+import { StudentGetPost, StudentGetPosts } from '../../store/actions';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-student-posts',
   templateUrl: './student-posts.component.html',
