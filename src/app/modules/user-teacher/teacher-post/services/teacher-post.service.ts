@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from 'src/models';
+import { Post, NewTask } from 'src/models';
 import { ShowLoaderAction } from 'src/app/modules/user-student/student-home/store/actions';
 import { Store } from '@ngxs/store';
 
@@ -13,8 +13,10 @@ export class TeacherPostService {
     private store: Store
   ) { }
 
-  addPost(payload: Post) {
+  addPost(payload: NewTask) {
     return this.http.post<Post>('http://localhost:3000/posts', payload);
+    // return this.http.post<NewTask>('http://localhost:3000/posts', payload);
+    // todo                     !
   }
 
   getPosts() {
