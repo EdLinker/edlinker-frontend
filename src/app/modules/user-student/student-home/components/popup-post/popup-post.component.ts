@@ -1,13 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Store } from '@ngxs/store';
 import { Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Post } from 'src/models';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StudentGetPosts } from '../../store/actions';
 import { StudentPostsState } from '../../store/student-post-state';
-import { Post } from 'src/models';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-popup-post.component.html',
@@ -16,7 +15,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class PostPopupComponent implements OnInit {
 
-    data!: Post;
+    post!: Post | undefined;
     showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
@@ -34,7 +33,13 @@ export class PostPopupComponent implements OnInit {
     }
     ];
 
-    constructor() { }
+    constructor(
+        @Inject(MAT_DIALOG_DATA) posts: Post,
+        private route: Router,
+        private store: Store
+    ) {
+        this.setDataPost(posts);
+    }
 
 
     ngOnInit() {
@@ -64,4 +69,13 @@ export class PostPopupComponent implements OnInit {
             this.links.splice(index, 1);
         }
     }
+
+    async setDataPost(posts: Post) {
+        const id =  this.route.url.slice(-1);
+        if (posts !== undefined) { return this.post = posts ;}
+        await this.store.dispatch(new StudentGetPosts()).toPromise();
+        const newData = this.store.selectSnapshot(StudentPostsState.getPosts);
+        return this.post = newData.find(post => post.id === Number(id));
+    }
+
 }

@@ -1,14 +1,14 @@
-<!-- <h2 mat-dialog-title>
-  {{ data.subjectName }} | {{ data.author }}
+<h2 mat-dialog-title>
+  {{ post?.subjectName }} | {{ post?.author }}
   <br>
-  <h4>{{ data.date }}</h4>
+  <h4>{{ post?.date }}</h4>
 </h2>
 <mat-dialog-content class="mat-typography">
-  <h2>{{ data.title }}</h2>
-  <p> {{ data.value }} </p>
+  <h2>{{ post?.title }}</h2>
+  <p> {{ post?.value }} </p>
   <h2 *ngIf="mediaUrl">Корисна інформація:</h2>
   <mat-chip-list aria-label="Fish selection">
-    <mat-chip *ngFor="let url of data.mediaUrl"><a href="{{ url.url }}">{{ url.url }}</a></mat-chip>
+    <mat-chip *ngFor="let url of post?.mediaUrl"><a href="{{ url?.url }}">{{ url?.url }}</a></mat-chip>
   </mat-chip-list>
   <hr>
 
@@ -31,4 +31,3 @@
   <button mat-button (click)="addTasks()">Прикріпити завдання</button>
   <button mat-button [mat-dialog-close]="true">Надіслати завдання</button>
 </mat-dialog-actions>
-{{ data.author }} -->

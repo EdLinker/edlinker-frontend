@@ -6,8 +6,7 @@ import { LoaderState } from '../../store/loader.state';
 import { StudentPostsState } from '../../store/student-post-state';
 
 import { MatDialog } from '@angular/material/dialog';
-import { StudentGetPost, StudentGetPosts } from '../../store/actions';
-import { map } from 'rxjs/operators';
+import { StudentGetPosts } from '../../store/actions';
 @Component({
   selector: 'app-student-posts',
   templateUrl: './student-posts.component.html',

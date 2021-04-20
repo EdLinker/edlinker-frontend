@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Post } from 'src/models';
-import { StudentGetPosts } from '../../store/actions';
+import { Store } from '@ngxs/store';
 import { StudentPostsState } from '../../store/student-post-state';
 import { PostPopupComponent } from './popup-post.component';
 
@@ -13,9 +9,6 @@ import { PostPopupComponent } from './popup-post.component';
     template: ''
   })
   export class PopupEntryComponent implements OnInit{
-
-    @Select(StudentPostsState.getPosts) posts$!: Observable<Post[]>;
-
 
     constructor(
       public dialog: MatDialog,
@@ -26,14 +19,12 @@ import { PostPopupComponent } from './popup-post.component';
       this.openDialog();
     }
 
-    async ngOnInit() {
-      await this.store.dispatch(new StudentGetPosts()).toPromise();
-        this.dataForDialog();
+    ngOnInit() {
     }
 
-    openDialog(): void {
+   openDialog() {
       const dialogRef = this.dialog.open(PostPopupComponent, {
-            // data: post,
+            data: this.dataForDialog(),
             height: 'auto',
             width: '100%',
       });
@@ -45,10 +36,8 @@ import { PostPopupComponent } from './popup-post.component';
 
 
     dataForDialog() {
-      const id = Number(this.router.url.slice(-1));
-      this.posts$.pipe(
-          // map((post) => post.find(v => v.id === id)),
-          map((post) => post.map(v => console.log(v))),
-      ).subscribe();
+      const id = this.route.snapshot.paramMap.get('id');
+      const posts = this.store.selectSnapshot(StudentPostsState.getPosts);
+      return posts.find(post => post.id === Number(id));
   }
-  }
+}

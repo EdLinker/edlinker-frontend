@@ -6,9 +6,11 @@ export const studentHomeRouting: Routes = [
   {
     path: '',
     component: StudentHomeViewComponent,
+    children: [
+      {
+        path: 'dialog/:id',
+        component: PopupEntryComponent
+      }
+    ]
   },
-  {
-    path: 'dialog/:id',
-    component: PopupEntryComponent
-  }
 ];
