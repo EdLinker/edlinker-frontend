@@ -53,6 +53,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
     const title = this.createPostForm.controls.title.value;
     const value = this.createPostForm.controls.value.value;
     const data = new TeacherAddPost({
+      id: Math.floor(Math.random() * 10),
       title,
       value,
       subjectName: 'Some Subject',
