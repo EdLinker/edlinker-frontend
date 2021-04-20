@@ -48,6 +48,22 @@ export class TeacherCreatePostFormComponent implements OnInit {
     });
   }
 
+  //todo update post-task-modele
+  mylog() {
+    const title = this.createPostForm.controls.title.value;
+    const value = this.createPostForm.controls.value.value;
+    const data = new TeacherAddPost({
+      title,
+      value,
+      subjectName: 'Some Subject',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      date: '26.05.2021 16:40',
+      author: 'Carl Mask',
+      mediaUrl: this.links
+    });
+    console.log(data);
+  }
+
   onSubmit() {
     const title = this.createPostForm.controls.title.value;
     const value = this.createPostForm.controls.value.value;
@@ -67,14 +83,6 @@ export class TeacherCreatePostFormComponent implements OnInit {
     }
   }
 
-  openDatePicker() {
-    this.isDate = !this.isDate;
-  }
-
-  openAddFilesInput() {
-    this.isFile = !this.isFile;
-  }
-
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -86,6 +94,10 @@ export class TeacherCreatePostFormComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+  }
+
+  addTmp(): void {
+    this.links.push({ url: '' });
   }
 
   remove(link: any): void {
