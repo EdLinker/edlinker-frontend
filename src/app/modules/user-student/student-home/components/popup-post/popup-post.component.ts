@@ -7,6 +7,7 @@ import { Post } from 'src/models';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StudentGetPosts } from '../../store/actions';
 import { StudentPostsState } from '../../store/student-post-state';
+import { Task } from 'src/models/task.model';
 
 @Component({
     selector: 'app-popup-post.component.html',
@@ -15,7 +16,7 @@ import { StudentPostsState } from '../../store/student-post-state';
 })
 export class PostPopupComponent implements OnInit {
 
-    post!: Post | undefined;
+    task!: Task | undefined;
     showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
@@ -34,11 +35,11 @@ export class PostPopupComponent implements OnInit {
     ];
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) posts: Post,
+        @Inject(MAT_DIALOG_DATA) tasks: Task,
         private route: Router,
         private store: Store
     ) {
-        this.setDataPost(posts);
+        this.setDataPost(tasks);
     }
 
 
@@ -70,12 +71,12 @@ export class PostPopupComponent implements OnInit {
         }
     }
 
-    async setDataPost(posts: Post) {
+    async setDataPost(tasks: Task) {
         const id =  this.route.url.slice(-1);
-        if (posts !== undefined) { return this.post = posts ;}
+        if (tasks !== undefined) { return this.task = tasks ;}
         await this.store.dispatch(new StudentGetPosts()).toPromise();
-        const newData = this.store.selectSnapshot(StudentPostsState.getPosts);
-        return this.post = newData.find(post => post.id === Number(id));
+        const newTasks = this.store.selectSnapshot(StudentPostsState.getTasks);
+        return this.task = newTasks.find(task => task.taskId === Number(id));
     }
 
 }

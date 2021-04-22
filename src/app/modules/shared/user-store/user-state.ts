@@ -6,6 +6,7 @@ import { User } from 'src/models';
 import { MapResponseService } from '../helper/services/map-response.service';
 import { GetUser, LoginAction } from './actions';
 import { UserService } from './services';
+import { NgZone } from '@angular/core';
 
 export class UserStateModel {
     user!: User;
@@ -19,7 +20,8 @@ export class UserState {
     constructor(
         private userService: UserService,
         private mapResponseService: MapResponseService,
-        private router: Router
+        private router: Router,
+        private ngZone: NgZone
     ) { }
 
     @Selector()
@@ -50,10 +52,9 @@ export class UserState {
     }
 
     @Action(LoginAction)
-    loginActions({ getState, setState, dispatch }: StateContext<UserStateModel>) {
-        dispatch(new GetUser()).subscribe(() => {
-            if(getState().user.roles.find(role => role.name === 'teacher')) {return this.router.navigate(['teacher']);}
-            return this.router.navigate(['student']);
-        });
+    async loginActions({ getState, setState, dispatch }: StateContext<UserStateModel>) {
+        await dispatch(new GetUser()).toPromise();
+        if(getState().user.roles.find(role => role.name === 'teacher')) {return this.ngZone.run(() => this.router.navigate(['teacher']));}
+        return this.ngZone.run(() => this.router.navigate(['student']));
     }
 }

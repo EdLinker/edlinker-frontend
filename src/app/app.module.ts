@@ -15,6 +15,9 @@ import { TokenInterceptor } from './modules/auth/auth-page/interceptors/token.in
 import { UserState } from './modules/shared/user-store/user-state';
 import { UserService } from './modules/shared/user-store/services/user.service';
 import { MapResponseService } from './modules/shared/helper/services/map-response.service';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { StudentPostsState } from './modules/user-student/student-home/store/student-post-state';
+import { TeacherPostState } from './modules/user-teacher/teacher-post/store/teacher-post.state';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,14 @@ import { MapResponseService } from './modules/shared/helper/services/map-respons
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgxsModule.forRoot([UserState], {
+    NgxsModule.forRoot([
+      UserState,
+      StudentPostsState,
+      TeacherPostState,
+    ], {
       developmentMode: true,
     }),
+    NgxsLoggerPluginModule.forRoot({collapsed: true}),
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedBreadcrumbsModule,

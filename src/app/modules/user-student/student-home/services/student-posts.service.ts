@@ -4,6 +4,7 @@ import { Post, User } from 'src/models';
 import { Select, Store } from '@ngxs/store';
 import { UserState } from 'src/app/modules/shared/user-store/user-state';
 import { Observable } from 'rxjs';
+import { Task } from 'src/models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,8 @@ export class StudentPostsService {
   ) { }
 
   getPosts() {
-    return this.http.get<Post[]>('http://localhost:3000/posts');
+    const user = this.store.selectSnapshot(UserState.getUser);
+    console.log(user);
+    return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/users/${user.id}/tasks`);
   }
 }

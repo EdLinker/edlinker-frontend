@@ -11,7 +11,6 @@ import { StudentPostsState } from './store/student-post-state';
 import { LoaderState } from './store/loader.state';
 import { StudentHomeViewComponent } from './components';
 import { studentHomeRouting } from './student-home.routing';
-
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { SharedPostModule } from '../../shared/shared-post-card';
 
@@ -32,9 +31,6 @@ import { PopupEntryComponent } from './components/popup-post/popup-entry.compone
     CommonModule,
     FormsModule,
     RouterModule.forChild(studentHomeRouting),
-    NgxsModule.forRoot([StudentPostsState, LoaderState], {
-      developmentMode: !environment.production,
-    }),
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,

@@ -37,7 +37,7 @@ import { PostPopupComponent } from './popup-post.component';
 
     dataForDialog() {
       const id = this.route.snapshot.paramMap.get('id');
-      const posts = this.store.selectSnapshot(StudentPostsState.getPosts);
-      return posts.find(post => post.id === Number(id));
+      const tasks = this.store.selectSnapshot(StudentPostsState.getTasks);
+      return tasks.find(task => task.taskId === Number(id));
   }
 }
