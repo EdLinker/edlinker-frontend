@@ -11,6 +11,8 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { StudentsState } from './store/students.state';
 
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [TaskForStudentsComponent],
   imports: [
@@ -20,7 +22,8 @@ import { StudentsState } from './store/students.state';
       developmentMode: !environment.production,
     }),
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [StudentsService]
 })
