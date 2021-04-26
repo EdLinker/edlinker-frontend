@@ -8,7 +8,17 @@
       "date": "26.05.2021 16:40",
       "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
       "value": "In this task, you will need to do..",
-      "mediaUrl": "Google.com"
+      "mediaUrl": [
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        }
+      ]
     },
     {
       "id": 2,
@@ -18,7 +28,14 @@
       "date": "26.05.2021 16:40",
       "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
       "value": "In this task, you will need to do..",
-      "mediaUrl": "Google.com"
+      "mediaUrl": [
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        }
+      ]
     },
     {
       "id": 3,
@@ -26,64 +43,32 @@
       "subjectName": "English",
       "author": "Carl Mask",
       "date": "26.05.2021 16:40",
-      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg",
+      "image": "https://material.angular.io/assets/img/examples/shiba1.jpg",
       "value": "In this task, you will need to do..",
-      "mediaUrl": "Google.com"
+      "mediaUrl": [
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        },
+        {
+          "url": "Google.com"
+        }
+      ]
     }
   ],
-  "students": [
+  "comments": [
     {
       "id": 1,
-      "firstName": "Hello",
-      "lastName": "World",
-      "patronymic": "Abc",
-      "phoneNumber": "09149128",
-      "email": "string"
-    },
-    {
-      "id": 2,
-      "firstName": "Hello",
-      "lastName": "World",
-      "patronymic": "Abc",
-      "phoneNumber": "09149128",
-      "status": "true",
-      "email": "string"
-    },
-    {
-      "id": 3,
-      "firstName": "Hello",
-      "lastName": "World",
-      "patronymic": "Abc",
-      "phoneNumber": "09149128",
-      "status": "true",
-      "email": "string"
-    },
-    {
-      "id": 4,
-      "firstName": "Hello",
-      "lastName": "World",
-      "patronymic": "Abc",
-      "phoneNumber": "09149128",
-      "status": "true",
-      "email": "string"
-    },
-    {
-      "id": 5,
-      "firstName": "Hello",
-      "lastName": "World",
-      "patronymic": "Abc",
-      "phoneNumber": "09149128",
-      "status": "true",
-      "email": "string"
-    },
-    {
-      "id": 6,
-      "firstName": "Hello",
-      "lastName": "World",
-      "patronymic": "Abc",
-      "phoneNumber": "09149128",
-      "status": "true",
-      "email": "string"
+      "body": "some comment",
+      "postId": 1
     }
   ],
   "auditoriums": [
@@ -108,5 +93,18 @@
   ],
   "profile": {
     "name": "typicode"
+  },
+  "user": {
+    "id": 2,
+    "firstName": "Hello",
+    "lastName": "World",
+    "patronymic": "Guys",
+    "phoneNumber": "123123",
+    "roles": [
+        {
+            "id": 1,
+            "name": "student"
+        }
+    ]
   }
 }

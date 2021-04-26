@@ -6,7 +6,7 @@ import { userStudentRouting } from './user-student.routing';
 @NgModule({
   imports: [
     RouterModule.forChild(userStudentRouting),
-    SharedHeaderModule
+    SharedHeaderModule,
   ],
   exports: [],
   declarations: [],

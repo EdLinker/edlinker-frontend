@@ -1,16 +1,29 @@
-<div class="container">
-    <nav class="sort-nav">
-        <div class="sort-nav-buttons">
-            <span>Показати:</span>
+<div class="grid-section">
+
+    <nav class="page-toolbar">
+
+        <div class="filter-aria">
+
+            <span class="filter-title">Показати</span>
+
             <mat-chip-list aria-label="Fish selection">
-                <mat-chip>Все</mat-chip>
-                <mat-chip>Завдання</mat-chip>
-                <mat-chip>Повідомлення</mat-chip>
+                <mat-chip 
+                    *ngFor="let option of sortOptions" 
+                    selected="{{option.selected}}" 
+                    disabled="{{option.disabled}}">
+                    {{option.name}}
+                </mat-chip>
             </mat-chip-list>
+
         </div>
-        <div class="sort-nav-button-create">
-            <button mat-raised-button color="warn">+ Створити</button>
-        </div>
+
+        <button mat-raised-button color="accent">
+            <mat-icon>add</mat-icon>
+            Створити
+        </button>
+
     </nav>
+
     <app-shared-post *ngFor="let post of posts$ | async" [post]="post"></app-shared-post>
+    
 </div>

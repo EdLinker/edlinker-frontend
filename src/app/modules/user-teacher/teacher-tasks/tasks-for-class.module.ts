@@ -13,6 +13,9 @@ import { tasksForClassRouting } from './tasks-for-class.routing';
 
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
+
 @NgModule({
   declarations: [TasksForClassComponent],
   imports: [
@@ -24,7 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
     SharedPostModule,
     HttpClientModule,
     MatChipsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [TeacherPostService]
 })

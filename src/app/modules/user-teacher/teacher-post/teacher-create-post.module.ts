@@ -12,10 +12,14 @@ import { TeacherCreatePostFormComponent } from './components';
 import { teacherCreatePostRouting } from './teacher-create-post.routing';
 import { TeacherPostService } from './services';
 import { TeacherPostState } from './store/teacher-post.state';
+import { PipesModule } from '../../shared/pipes/pipes.module';
+
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   imports: [
@@ -26,10 +30,12 @@ import { MatChipsModule } from '@angular/material/chips';
     NgxsModule.forRoot([TeacherPostState], {
       developmentMode: !environment.production
     }),
+    HttpClientModule,
+    PipesModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule,
-    MatChipsModule
+    MatIconModule,
+    MatFormFieldModule,
   ],
   exports: [],
   declarations: [
