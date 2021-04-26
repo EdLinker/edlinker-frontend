@@ -1,17 +1,18 @@
 <h2 mat-dialog-title>
   {{ task?.subjectName }} | {{ task?.author?.firstName }} {{ task?.author?.lastName }}
   <br>
-  <h4>{{ task?.createdAt }}</h4>
+  <h4>{{ task?.createdAt | date: 'dd/MM/yyyy HH:mm'}}</h4>
 </h2>
 <mat-dialog-content class="mat-typography">
   <h2>{{ task?.title }}</h2>
   <p> {{ task?.description }} </p>
   <h2 *ngIf="mediaUrl">Корисна інформація:</h2>
   <mat-chip-list aria-label="Fish selection">
-    <!-- <mat-chip *ngFor="let url of task?.urls"><a href="{{ url?.url }}">{{ url?.url }}</a></mat-chip> --> <!--TODO change!-->
+    <mat-chip *ngFor="let url of urls ">
+      <a href="{{ url.url }}">{{ url.url }}</a>
+    </mat-chip>
   </mat-chip-list>
   <hr>
-
   <mat-form-field class="example-chip-list" *ngIf="showAddTasks">
     <mat-label>Посилання</mat-label>
     <mat-chip-list #chipList aria-label="Fruit selection">
