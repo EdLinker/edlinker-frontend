@@ -1,9 +1,10 @@
 export interface AuditoriumModele {
   auditoriumId: number;
   groupId: number;
-  groupName: string;
+  name: string;
   subjectName: string;
-  courceNumber: number;
-  studentsCount: number;
+  courseNumber: number;
+  studentCount: number;
   groupLeaderName?: string;
+  groupLeaderId: number;
 }

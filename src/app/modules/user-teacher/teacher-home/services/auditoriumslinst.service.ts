@@ -8,6 +8,6 @@ export class TeacherAuditoriumsService {
   constructor(private httpClient: HttpClient) { }
 
   getAuditoriumsList(): Observable<AuditoriumModele[]> {
-    return this.httpClient.get<AuditoriumModele[]>('http://localhost:3000/auditoriums');
+    return this.httpClient.get<AuditoriumModele[]>('https://ed-linker.herokuapp.com/api/users/3/auditoriums');
   }
 }
