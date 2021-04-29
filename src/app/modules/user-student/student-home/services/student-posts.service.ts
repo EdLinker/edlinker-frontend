@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post, User } from 'src/models';
 import { Select, Store } from '@ngxs/store';
-import { ShowLoaderAction } from '../store/actions';
 import { UserState } from 'src/app/modules/shared/user-store/user-state';
 import { Observable } from 'rxjs';
+import { Task } from 'src/models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class StudentPostsService {
     private store: Store
   ) { }
 
-  getPosts(id: number) {
-    // this.store.dispatch(new ShowLoaderAction());
-    return this.http.get<Post[]>(`https://ed-linker.herokuapp.com/api/${id}/tasks`);
+  getPosts() {
+    const user = this.store.selectSnapshot(UserState.getUser);
+    return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/users/${user.id}/tasks`);
   }
 }
