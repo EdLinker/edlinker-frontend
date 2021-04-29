@@ -20,7 +20,6 @@ export class StudentPostsService {
 
   getPosts() {
     const user = this.store.selectSnapshot(UserState.getUser);
-    console.log(user);
     return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/users/${user.id}/tasks`);
   }
 }
