@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { Store } from '@ngxs/store';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { TeacherAddPost } from '../../store/actions';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-teacher-create-post-form',
@@ -11,31 +7,12 @@ import { TeacherAddPost } from '../../store/actions';
   styleUrls: ['./teacher-create-post-form.component.scss']
 })
 export class TeacherCreatePostFormComponent implements OnInit {
-  isDate: boolean;
-  createPostForm!: FormGroup;
-  isFile: boolean;
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  //todo links from database
-  links = [{
-    url: 'https://material.angular.io/components/badge/overview'
-  },
-  {
-    url: 'https://material.angular.io/components/badge/overview'
-  }
-  ];
+  createPostForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store
-  ) {
-    this.isDate = false;
-    this.isFile = false;
-  }
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -43,67 +20,34 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
   initForm() {
     this.createPostForm = this.formBuilder.group({
-      title: ['', Validators.required ],
-      value: ['', Validators.required ]
+      title: ['', Validators.required],
+      content: ['', Validators.required],
+      urls: this.formBuilder.array([]),
     });
   }
 
-  //todo update post-task-modele
-  mylog() {
-    const title = this.createPostForm.controls.title.value;
-    const value = this.createPostForm.controls.value.value;
-    const data = new TeacherAddPost({
-      title,
-      value,
-      subjectName: 'Some Subject',
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-      date: '26.05.2021 16:40',
-      author: 'Carl Mask',
-      mediaUrl: this.links
-    });
-    console.log(data);
+
+  // urls logic
+
+  get urls() {
+    return this.createPostForm.get('urls') as FormArray;
   }
+
+  addUrls() {
+    this.urls.push(this.formBuilder.control('', Validators.required));
+  }
+
+  remUrls(link: number) {
+    console.log(this.urls.at(link));
+    this.urls.removeAt(link);
+  }
+
+  linkOnBlur(i: number) {
+    console.log(blur);
+  }
+
 
   onSubmit() {
-    const title = this.createPostForm.controls.title.value;
-    const value = this.createPostForm.controls.value.value;
-
-    if (this.createPostForm.valid) {
-      this.store.dispatch(new TeacherAddPost({
-        title,
-        value,
-        subjectName: 'Some Subject',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-        date: '26.05.2021 16:40',
-        author: 'Carl Mask',
-        mediaUrl: this.links
-      }))
-        .subscribe(() => this.createPostForm.reset());
-    }
-  }
-
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || '').trim()) {
-      this.links.push({ url: value.trim() });
-    }
-
-    if (input) {
-      input.value = '';
-    }
-  }
-
-  addTmp(): void {
-    this.links.push({ url: '' });
-  }
-
-  remove(link: any): void {
-    const index = this.links.indexOf(link);
-
-    if (index >= 0) {
-      this.links.splice(index, 1);
-    }
+    console.warn(this.createPostForm.value);
   }
 }

@@ -6,42 +6,49 @@
     </div>
 
     <!-- main fields -->
-    <form [formGroup]="createPostForm">
-        
-        <mat-form-field appearance="outline" class="block">
+    <form [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field class="block" appearance="outline">
             <mat-label>Тема завдання</mat-label>
             <input matInput formControlName="title">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="block">
+        <mat-form-field class="block" appearance="outline">
             <mat-label>Опис завдання</mat-label>
-            <textarea formControlName="value" matInput class="input-value"></textarea>
+            <textarea matInput class="input-value" formControlName="content"></textarea>
         </mat-form-field>
 
+        <!-- urls -->
+        <mat-form-field class="block" formArrayName="urls" appearance="outline" *ngFor="let link of urls.controls; let i=index">
+
+            <button mat-icon-button matPrefix (click)="remUrls(i)">
+                <mat-icon>clear</mat-icon>
+            </button>
+
+            <input matInput type="text" [formControlName]="i" (blur)="linkOnBlur(i)">
+
+            <mat-label>https://...</mat-label>
+
+        </mat-form-field>
+        
+
+        <!-- buttons -->
+        <div class="buttons-area">
+
+            <button mat-stroked-button color="primary" type="button" (click)="addUrls()">
+                <mat-icon>add_link</mat-icon> Додати посилання
+            </button>
+
+            <button mat-stroked-button type="button" routerLink="..">
+                <mat-icon>delete_sweep</mat-icon> Скасувати
+            </button>
+
+            <button mat-raised-button color="accent" type="submit">
+                <mat-icon>send</mat-icon> Опублікувати
+            </button>
+
+        </div>
+
     </form>
-
-    <!-- links -->
-    <mat-form-field appearance="outline" *ngFor="let link of links" class="block">
-        <button mat-icon-button matPrefix (click)="remove(link)"><mat-icon>clear</mat-icon></button>
-        <mat-label >https://..</mat-label>
-        <input matInput type="text" value="{{link.url}}">
-    </mat-form-field>
-
-    <!-- buttons -->
-    <div class="buttons-area">
-
-        <button color="primary" mat-stroked-button (click)="addTmp()">
-            <mat-icon>add_link</mat-icon> Додати посилання
-        </button>
-
-        <button mat-stroked-button>
-            <mat-icon>delete_sweep</mat-icon> Скасувати
-        </button>
-
-        <button color="accent" (click)="mylog()" (change)="mylog()" mat-raised-button>
-            <mat-icon>send</mat-icon> Опублікувати
-        </button>
-
-    </div>
 
 </div>
