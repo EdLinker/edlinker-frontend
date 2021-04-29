@@ -29,8 +29,7 @@ export class SharedHeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    // todo : This is dirty hotfix! There is a bug to fix here.
+    //TODO : This is dirty hotfix! There is a bug to fix here.
     this.userData = {
       id: 0,
       role: 'userRole',
@@ -56,6 +55,7 @@ export class SharedHeaderComponent implements OnInit {
   }
 
   logOut() {
+    this.store.reset(UserState);
     this.authService.logOut();
   }
 

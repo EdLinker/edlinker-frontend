@@ -1,13 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Post } from 'src/models';
-import { StudentGetPosts } from '../../store/actions';
 import { LoaderState } from '../../store/loader.state';
 import { StudentPostsState } from '../../store/student-post-state';
 
 import { MatDialog } from '@angular/material/dialog';
-import { PostPopupComponent } from '../popup-post/popup-post.component';
+import { StudentGetPosts } from '../../store/actions';
+import { Task } from 'src/models/task.model';
+
 @Component({
   selector: 'app-student-posts',
   templateUrl: './student-posts.component.html',
@@ -15,8 +15,7 @@ import { PostPopupComponent } from '../popup-post/popup-post.component';
 })
 export class StudentPostsComponent implements OnInit {
 
-
-  @Select(StudentPostsState.getPosts) posts$!: Observable<Post[]>;
+  @Select(StudentPostsState.getTasks) tasks$!: Observable<Task[]>;
 
   @Select(LoaderState.status)
   public loadingStatus$?: Observable<boolean>;
@@ -28,19 +27,5 @@ export class StudentPostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new StudentGetPosts());
-  }
-
-  openDialog(post: Post) {
-    const dialogRef = this.dialog.open(PostPopupComponent,
-      {
-        data: post,
-        height: 'auto',
-        width: '100%',
-      },
-    );
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }
