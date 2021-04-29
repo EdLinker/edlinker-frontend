@@ -3,13 +3,13 @@ import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
 
 import { tap } from 'rxjs/operators';
 import { MapResponseService } from 'src/app/modules/shared/helper/services/map-response.service';
-import { AuditoriumModele } from 'src/models';
+import { AuditoriumModel } from 'src/models';
 import { TeacherAuditoriumsService } from '../services';
 import { GetTeacherAuditoriums } from './actions';
 
 
 export class TeacherAuditoriumsListModel {
-    auditoriums!: AuditoriumModele[];
+    auditoriums!: AuditoriumModel[];
 }
 
 @State<TeacherAuditoriumsListModel>({

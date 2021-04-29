@@ -1,4 +1,4 @@
-export interface AuditoriumModele {
+export interface AuditoriumModel {
   auditoriumId: number;
   groupId: number;
   name: string;
