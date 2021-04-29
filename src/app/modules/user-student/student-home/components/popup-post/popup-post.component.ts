@@ -1,8 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Post } from 'src/models';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Store } from '@ngxs/store';
+import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { StudentGetPosts } from '../../store/actions';
+import { StudentPostsState } from '../../store/student-post-state';
+import { Task } from 'src/models/task.model';
+import { Url } from 'src/models';
 
 @Component({
     selector: 'app-popup-post.component.html',
@@ -10,6 +15,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
     styleUrls: ['./../popup-post/popup-post.component.scss']
 })
 export class PostPopupComponent implements OnInit {
+
+    task!: Task | undefined;
+    urls: Url[] | undefined;
     showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
@@ -28,13 +36,19 @@ export class PostPopupComponent implements OnInit {
     ];
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) public data: Post,
-    ) { }
+        @Inject(MAT_DIALOG_DATA) tasks: Task,
+        private route: Router,
+        private store: Store
+    ) {
+        this.setDataPost(tasks);
+    }
 
-    ngOnInit(): void {
-        if (this.data.mediaUrl.length !== 0) {
-            this.mediaUrl = !this.mediaUrl;
-        }
+
+    ngOnInit() {
+    }
+
+    setUrl() {
+        if (this.task !== undefined && this.task.urls.length >= 1) { return this.urls = JSON.parse(this.task.urls);}
     }
 
     addTasks() {
@@ -61,4 +75,13 @@ export class PostPopupComponent implements OnInit {
             this.links.splice(index, 1);
         }
     }
+
+    async setDataPost(tasks: Task) {
+        const id =  this.route.url.slice(-1);
+        if (tasks !== undefined) { return this.task = tasks, this.setUrl() ;}
+        await this.store.dispatch(new StudentGetPosts()).toPromise();
+        const newTasks = this.store.selectSnapshot(StudentPostsState.getTasks);
+        return this.task = newTasks.find(task => task.taskId === Number(id)), this.setUrl();
+    }
+
 }

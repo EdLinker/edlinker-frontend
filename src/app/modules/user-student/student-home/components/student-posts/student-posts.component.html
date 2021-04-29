@@ -2,5 +2,5 @@
 </mat-progress-spinner>
 
 <div class="cards-container">
-  <app-shared-post class="card" *ngFor="let post of posts$ | async" [post]="post" (click)="openDialog(post)"></app-shared-post>
+  <app-shared-post class="card" *ngFor="let task of tasks$ | async" [task]="task"  [routerLink]="['dialog', task.taskId ]"></app-shared-post>
 </div>
