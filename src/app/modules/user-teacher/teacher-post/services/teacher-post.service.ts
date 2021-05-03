@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from 'src/models';
+import { Task } from 'src/models';
 import { ShowLoaderAction } from 'src/app/modules/user-student/student-home/store/actions';
 import { Store } from '@ngxs/store';
+import { UserState } from 'src/app/modules/shared/user-store/user-state';
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +11,13 @@ import { Store } from '@ngxs/store';
 export class TeacherPostService {
   constructor(
     private http: HttpClient,
-    private store: Store
+    private store: Store,
   ) { }
 
-  addPost(payload: Post) {
-    return this.http.post<Post>('http://localhost:3000/posts', payload);
-  }
-
-  getPosts() {
+  getPosts(id: number) {
     this.store.dispatch(new ShowLoaderAction());
-    return this.http.get<Post[]>('http://localhost:3000/posts');
+    const user = this.store.selectSnapshot(UserState.getUser);
+    return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/auditoriums/${id}/tasks?user_id=${user.id}`);
   }
 
 }
