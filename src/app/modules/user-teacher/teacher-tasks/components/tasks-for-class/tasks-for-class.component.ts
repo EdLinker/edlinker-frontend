@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Post } from 'src/models';
@@ -38,10 +39,11 @@ export class TasksForClassComponent implements OnInit {
     },
   ];
 
-  constructor( private store: Store) { }
+  constructor( private store: Store, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.store.dispatch(new TeacherGetPosts());
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.store.dispatch(new TeacherGetPosts(id));
   }
 
 }

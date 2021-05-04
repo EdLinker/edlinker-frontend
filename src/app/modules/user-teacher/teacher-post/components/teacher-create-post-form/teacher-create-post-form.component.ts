@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Store } from '@ngxs/store';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { TeacherAddPost } from '../../store/actions';
 
 @Component({
   selector: 'app-teacher-create-post-form',
@@ -52,7 +51,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
   mylog() {
     const title = this.createPostForm.controls.title.value;
     const value = this.createPostForm.controls.value.value;
-    const data = new TeacherAddPost({
+    const data = {
       id: Math.floor(Math.random() * 10),
       title,
       value,
@@ -61,7 +60,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
       date: '26.05.2021 16:40',
       author: 'Carl Mask',
       mediaUrl: this.links
-    });
+    };
     console.log(data);
   }
 
@@ -70,17 +69,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
     const value = this.createPostForm.controls.value.value;
 
     if (this.createPostForm.valid) {
-      this.store.dispatch(new TeacherAddPost({
-        id: Math.floor(Math.random() * 2),
-        title,
-        value,
-        subjectName: 'Some Subject',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-        date: '26.05.2021 16:40',
-        author: 'Carl Mask',
-        mediaUrl: this.links
-      }))
-        .subscribe(() => this.createPostForm.reset());
+      return;
     }
   }
 
