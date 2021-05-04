@@ -38,16 +38,31 @@ export class TeacherCreatePostFormComponent implements OnInit {
   }
 
   remUrls(link: number) {
-    console.log(this.urls.at(link));
+    // console.log(this.urls.at(link));
     this.urls.removeAt(link);
   }
 
-  linkOnBlur(i: number) {
-    console.log(blur);
+  // linkOnBlur(i: number) {
+  //   // console.log(this.urls.value);
+  // }
+
+  validateUrls(urls: string[]) {
+    urls = urls.map(item => item.trim());
+    const url = urls.filter(item => item !== '');
+    return url;
   }
 
-
-  onSubmit() {
-    console.warn(this.createPostForm.value);
+ onSubmit() {
+    const a = this.validateUrls(this.createPostForm.controls.urls.value);
+    if (a.length > 0) {
+      console.log(a);
+    } else {
+      // const test2 = {
+      //   auditoriumId: 1,
+      //   title: this.createPostForm.controls.title.value,
+      //   description: this.createPostForm.controls.content.value,
+      // };
+      // return console.log('без юрл');
+    }
   }
 }
