@@ -17,11 +17,6 @@ import { MatTableModule } from '@angular/material/table';
 @NgModule({
   imports: [
     RouterModule.forChild(teacherHomeRouting),
-    // CommonModule,
-    // SharedHeaderModule,
-    NgxsModule.forRoot([TeacherAuditoriumsListState], {
-      developmentMode: !environment.production,
-    }),
     HttpClientModule,
     MatTableModule,
   ],
@@ -30,8 +25,6 @@ import { MatTableModule } from '@angular/material/table';
     TeacherHomeViewComponent,
     AuditoriumsListComponent,
   ],
-  providers: [
-    TeacherAuditoriumsService,
-  ],
+  providers: [],
 })
 export class TeacherHomeModule { }

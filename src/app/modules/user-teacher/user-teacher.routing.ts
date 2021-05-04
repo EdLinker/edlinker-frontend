@@ -29,7 +29,7 @@ export const userTeacherRouting: Routes = [
           }]
       },
       {
-        path: 'class-tasks',
+        path: 'class-tasks/:id',
         data: {
           breadcrumb: 'Группа-Предмет'
         },
