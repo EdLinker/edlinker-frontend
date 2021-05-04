@@ -1,9 +1,46 @@
-table {
-    width: 920px;
-    margin: 1em;
+// * {
+//     outline: 1px dotted #0003;
+//     outline-offset: -1px;
+// }
+
+
+.table-title {
+    margin: 0;
 }
 
+.table-area {
+    background-color: #f5f5f5;
+    padding: 1em 1em 0;
+    margin-top: 1em;
+    border-radius: 1em;
+}
+
+thead {border-collapse: collapse;}
+
 .mat-row:hover {
-    background-color: #00000008;
+    background-color: #e0e0e0 !important;
     cursor: pointer;
+}
+
+.mat-row {
+    background-color: #eeeeee;
+}
+
+.mat-table {
+    border-radius: 1em;
+    background-color: #0000;
+    border-spacing: 0 1em;
+}
+
+.mat-cell {
+    border: none;
+    // background-color: #eeeeee;
+}
+
+.mat-cell:first-child {
+    border-radius: .5em 0 0 .5em;
+}
+
+.mat-cell:last-child {
+    border-radius: 0 .5em .5em 0;
 }

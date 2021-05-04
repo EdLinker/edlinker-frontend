@@ -1,46 +1,47 @@
-<div class="container">
-  <nav class="nav-buttons">
-    <mat-chip-list aria-label="Fish selection">
-      <mat-chip>Завдання</mat-chip>
-      <mat-chip>Повідомлення</mat-chip>
-    </mat-chip-list>
-  </nav>
-  <form class="example-form" [formGroup]="createPostForm">
-    <mat-form-field class="example-full-width">
-      <mat-label>Тема завдання</mat-label>
-      <input matInput formControlName="title" class="input-title">
+<div class="grid-section post-form-container">
+
+    <!-- description area -->
+    <div class="description-area">
+        Створити публікації для аудиторії фізика-216
+    </div>
+
+    <!-- main fields -->
+    <form [formGroup]="createPostForm">
+        
+        <mat-form-field appearance="outline" class="block">
+            <mat-label>Тема завдання</mat-label>
+            <input matInput formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="block">
+            <mat-label>Опис завдання</mat-label>
+            <textarea formControlName="value" matInput class="input-value"></textarea>
+        </mat-form-field>
+
+    </form>
+
+    <!-- links -->
+    <mat-form-field appearance="outline" *ngFor="let link of links" class="block">
+        <button mat-icon-button matPrefix (click)="remove(link)"><mat-icon>clear</mat-icon></button>
+        <mat-label >https://..</mat-label>
+        <input matInput type="text" value="{{link.url}}">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Опис завдання</mat-label>
-      <textarea formControlName="value" matInput class="input-value"></textarea>
-    </mat-form-field>
-  </form>
-  <div class="send-post">
-    <button (click)="onSubmit()" class="send-button" mat-raised-button>Опублікувати</button>
-  </div>
-  <div class="container-file-button" (click)="openAddFilesInput()">
-    <button mat-mini-fab class="add-file">+</button>
-    <h3>Додати посилання</h3>
-  </div>
-  <mat-form-field class="example-chip-list" *ngIf="isFile">
-    <mat-label>Посилання</mat-label>
-    <mat-chip-list #chipList aria-label="Fruit selection">
-      <mat-chip *ngFor="let link of links" [selectable]="selectable" [removable]="removable"
-        (removed)="remove(link)">
-        {{link.url | shortUrl}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon> 
-      </mat-chip>
-      <input placeholder="Посилання" [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-        (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-  </mat-form-field>
-  <br>
-  <div class="to-plan-container" (click)="openDatePicker()">
-    <button mat-mini-fab class="to-plan">?</button>
-    <h3>Запланувати публікацію</h3>
-  </div>
-  <div class="date-picker" *ngIf="isDate">
-    <h1>There will be date picker</h1>
-  </div>
+
+    <!-- buttons -->
+    <div class="buttons-area">
+
+        <button color="primary" mat-stroked-button (click)="addTmp()">
+            <mat-icon>add_link</mat-icon> Додати посилання
+        </button>
+
+        <button mat-stroked-button>
+            <mat-icon>delete_sweep</mat-icon> Скасувати
+        </button>
+
+        <button color="accent" (click)="mylog()" (change)="mylog()" mat-raised-button>
+            <mat-icon>send</mat-icon> Опублікувати
+        </button>
+
+    </div>
+
 </div>
