@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
-import { Post } from 'src/models';
+import { Task } from 'src/models';
 import { TeacherPostService } from '../services';
-import { TeacherAddPost, TeacherGetPosts } from './actions';
+import { TeacherGetPosts } from './actions';
 import { finalize, tap } from 'rxjs/operators';
 import { HideLoaderAction } from 'src/app/modules/user-student/student-home/store/actions';
 import { Router } from '@angular/router';
 
 export class TeacherPostStateModel {
-    posts!: Post[];
+    tasks!: Task[];
 }
 
 @State<TeacherPostStateModel>({
     name: 'teacherPost',
     defaults: {
-        posts: [],
+        tasks: [],
     },
 })
 @Injectable()
@@ -46,14 +46,14 @@ export class TeacherPostState {
     }
 
     @Action(TeacherGetPosts)
-    getPosts({ getState, setState }: StateContext<TeacherPostStateModel>) {
-        return this.teacherPostService.getPosts().pipe(
+    getPosts({ getState, setState }: StateContext<TeacherPostStateModel>, { id }: TeacherGetPosts) {
+        return this.teacherPostService.getPosts(id).pipe(
             finalize(() => this.store.dispatch(new HideLoaderAction())),
             tap((result) => {
                 const state = getState();
                 setState({
                     ...state,
-                    posts: result,
+                    tasks: this.mapResponseService.snakeToCamel(result)
                 });
             })
         );

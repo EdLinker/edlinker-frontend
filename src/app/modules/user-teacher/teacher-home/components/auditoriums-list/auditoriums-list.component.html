@@ -1,32 +1,40 @@
-<h2>Мої класи</h2>
+<div class="table-area">
 
-<table mat-table [dataSource]="auditoriums$" class="mat-elevation-z8">
+  <h2 class="table-title"> Мої аудиторії </h2>
 
-  <ng-container matColumnDef="groupNameColumn">
-    <th mat-header-cell *matHeaderCellDef> Група </th>
-    <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
-  </ng-container>
+  <table mat-table [dataSource]="auditoriums$">
 
-  <ng-container matColumnDef="subjectNameColumn">
-    <th mat-header-cell *matHeaderCellDef> Предмет </th>
-    <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
-  </ng-container>
+    <ng-container matColumnDef="groupNameColumn">
+      <th mat-header-cell *matHeaderCellDef> Група </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="courceNumberColumn">
-    <th mat-header-cell *matHeaderCellDef> Курс </th>
-    <td mat-cell *matCellDef="let element"> {{element.courceNumber}} </td>
-  </ng-container>
+    <ng-container matColumnDef="subjectNameColumn">
+      <th mat-header-cell *matHeaderCellDef> Предмет </th>
+      <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="studentsCountColumn">
-    <th mat-header-cell *matHeaderCellDef> Студентів </th>
-    <td mat-cell *matCellDef="let element"> {{element.studentsCount}} </td>
-  </ng-container>
+    <ng-container matColumnDef="courseNumberColumn">
+      <th mat-header-cell *matHeaderCellDef> Курс </th>
+      <td mat-cell *matCellDef="let element"> {{element.courseNumber}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="groupLeaderNameColumn">
-    <th mat-header-cell *matHeaderCellDef> Староста </th>
-    <td mat-cell *matCellDef="let element"> {{element.groupLeaderName}} </td>
-  </ng-container>
+    <ng-container matColumnDef="studentsCountColumn">
+      <th mat-header-cell *matHeaderCellDef> Студентів </th>
+      <td mat-cell *matCellDef="let element"> {{element.studentCount}} </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="groupLeaderNameColumn">
+      <th mat-header-cell *matHeaderCellDef> Староста </th>
+      <td mat-cell *matCellDef="let element"> {{element.groupLeaderId}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row 
+        *matRowDef="let row; columns: displayedColumns;"
+        (click)="navigateTo(row)">
+    </tr>
+    
+  </table>
+
+</div>

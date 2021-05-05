@@ -1,9 +1,10 @@
 .example-container {
-    margin: 5% auto;
     display: flex;
     flex-direction: column;
-    max-width: 350px;
-    padding: 0 10px;
+}
+
+.auth-error-message {
+    margin-bottom: 1rem;
 }
 
 .icon-eye {
@@ -17,5 +18,10 @@
 }
 
 .login-button {
-    color: #1BB55C;
+    background: #FB03;
+    // font-family: 'Roboto', sans-serif;
+}
+
+.button-enable {    
+    background: #FFBB12;
 }
