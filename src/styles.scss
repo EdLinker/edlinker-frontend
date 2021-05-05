@@ -1,15 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-tooltip-n-new-line {
-  white-space: pre-line;
+html, body { 
+  height: 100%;
 }
+
+body { 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
 
 table {
   width: 100%;
 }
+
+
+
+// Grids
 
 .page-grid-container {
   display: grid !important;
@@ -23,6 +34,18 @@ table {
   grid-column-start: 2;
   grid-column-end: 3;
 }
+
+
+
+// Other
+
+.mat-tooltip-n-new-line {
+  white-space: pre-line;
+}
+
+
+
+// Debug
 
 .debug-dots {
   outline: 1px dotted #0003;
