@@ -5,6 +5,7 @@ import { TeacherPostService } from '../services';
 import { TeacherAddPost, TeacherGetPosts } from './actions';
 import { finalize, tap } from 'rxjs/operators';
 import { HideLoaderAction } from 'src/app/modules/user-student/student-home/store/actions';
+import { Router } from '@angular/router';
 
 export class TeacherPostStateModel {
     posts!: Post[];
@@ -20,7 +21,8 @@ export class TeacherPostStateModel {
 export class TeacherPostState {
     constructor(
         private teacherPostService: TeacherPostService,
-        private store: Store
+        private store: Store,
+        private router: Router
     ) { }
 
     @Selector()
@@ -40,7 +42,7 @@ export class TeacherPostState {
                     posts: [...state.posts, result],
                 });
             })
-        );
+        ).subscribe(() => this.router.navigate(['teacher/class-tasks']));
     }
 
     @Action(TeacherGetPosts)

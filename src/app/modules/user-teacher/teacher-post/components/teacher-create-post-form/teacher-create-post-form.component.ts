@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { NewTask } from 'src/models';
+import { TeacherAddPost } from '../../store/actions/teacher-add-post.action';
 
 @Component({
   selector: 'app-teacher-create-post-form',
@@ -12,7 +16,9 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-  ) {}
+    private store: Store,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.initForm();
@@ -26,9 +32,6 @@ export class TeacherCreatePostFormComponent implements OnInit {
     });
   }
 
-
-  // urls logic
-
   get urls() {
     return this.createPostForm.get('urls') as FormArray;
   }
@@ -38,13 +41,8 @@ export class TeacherCreatePostFormComponent implements OnInit {
   }
 
   remUrls(link: number) {
-    // console.log(this.urls.at(link));
     this.urls.removeAt(link);
   }
-
-  // linkOnBlur(i: number) {
-  //   // console.log(this.urls.value);
-  // }
 
   validateUrls(urls: string[]) {
     urls = urls.map(item => item.trim());
@@ -52,17 +50,36 @@ export class TeacherCreatePostFormComponent implements OnInit {
     return url;
   }
 
- onSubmit() {
-    const a = this.validateUrls(this.createPostForm.controls.urls.value);
-    if (a.length > 0) {
-      console.log(a);
-    } else {
-      // const test2 = {
-      //   auditoriumId: 1,
-      //   title: this.createPostForm.controls.title.value,
-      //   description: this.createPostForm.controls.content.value,
-      // };
-      // return console.log('без юрл');
-    }
+  onSubmit() {
+    this.prepareToSend();
   }
+
+  prepareToSend() {
+    const a = this.validateUrls(this.createPostForm.controls.urls.value);
+
+    if (a.length > 0) {
+      const links = JSON.stringify(a.map(obj => ({ url: obj})));
+      console.log(links);
+      const resultObject = {
+        auditoriumId: 1,
+        title: this.createPostForm.controls.title.value,
+        description: this.createPostForm.controls.content.value,
+        urls: links
+      };
+      return this.store.dispatch(new TeacherAddPost(resultObject));
+    }
+
+    return this.store.dispatch(new TeacherAddPost({
+      auditoriumId: 1,
+      title: this.createPostForm.controls.title.value,
+      description: this.createPostForm.controls.content.value,
+    }));
+  }
+
+  /**
+   * створити діспатч
+   * в діспатчеві додати нові дані в сторедж(стореджс сам відрендерить їх)
+   * в тому ж екшині створити еррор хендлер, якщо HTTP помилка то видалити дані зі стореджу і можливо показаnи нотифікацію
+   * якщо помилки немає, нічого не робити
+   */
 }
