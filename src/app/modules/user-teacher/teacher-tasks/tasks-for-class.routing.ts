@@ -5,5 +5,9 @@ export const tasksForClassRouting: Routes = [
     {
       path: '',
       component: TasksForClassComponent,
+    },
+    {
+      path: 'create-post/subject/:subjectId',
+      loadChildren: () => import('./../teacher-post').then(m => m.TeacherCreatePostModule),
     }
   ];
