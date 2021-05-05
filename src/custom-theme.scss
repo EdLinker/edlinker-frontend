@@ -22,21 +22,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
 $fontConfig: (
-  display-4:    mat-typography-level(8rem,    8rem,     300, 'Roboto', -0.0134em),
-  display-3:    mat-typography-level(4rem,    4rem,     400, 'Roboto', -0.0089em),
-  display-2:    mat-typography-level(3.21rem, 3.42rem,  400, 'Roboto', 0.0000em),
-  display-1:    mat-typography-level(2.43rem, 2.86rem,  400, 'Roboto', 0.0074em),
+  display-4:    mat-typography-level( (112/16)*1rem,  (112/16)*1rem),
+  display-3:    mat-typography-level( (56/16)*1rem,   (56/16)*1rem),
+  display-2:    mat-typography-level( (45/16)*1rem,   (48/16)*1rem),
+  display-1:    mat-typography-level( (34/16)*1rem,   (40/16)*1rem),
 
-  headline:     mat-typography-level(1.71rem, 2.29rem,  400, 'Roboto', 0.0000em),
-  title:        mat-typography-level(1.43rem, 2.29rem,  500, 'Roboto', 0.0075em),
-  subheading-2: mat-typography-level(1.14rem, 2rem,     400, 'Roboto', 0.0094em),
-  subheading-1: mat-typography-level(1.07rem, 1.71rem,  500, 'Roboto', 0.0067em),
+  headline:     mat-typography-level( (24/16)*1rem,   (32/16)*1rem),
+  title:        mat-typography-level( (20/16)*1rem,   (32/16)*1rem),
+  subheading-2: mat-typography-level( (16/16)*1rem,   (28/16)*1rem),
+  subheading-1: mat-typography-level( (15/16)*1rem,   (24/16)*1rem),
   
-  body-2:       mat-typography-level(1rem,    1.71rem,  500, 'Roboto', 0.0179em),
-  body-1:       mat-typography-level(1rem,    1.43rem,  400, 'Roboto', 0.0179em),
-  button:       mat-typography-level(14px,    14px,     500, 'Roboto'), //todo size and alignment
-  caption:      mat-typography-level(0.86rem, 1.43rem,  400, 'Roboto', 0.0333em),
-  input:        mat-typography-level(inherit, 1.125,    400, 'Roboto', 0.1rem)
+  body-2:       mat-typography-level( (14/16)*1rem,   (24/16)*1rem),
+  body-1:       mat-typography-level( (14/16)*1rem,   (20/16)*1rem),
+  button:       mat-typography-level( (14/16)*1rem,   (14/16)*1rem),
+  caption:      mat-typography-level( (12/16)*1rem,   (20/16)*1rem),
+  input:        mat-typography-level(inherit, 1.125)
 );
 
 // @function mat-typography-level(
@@ -169,19 +169,19 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #b3e5fc;
-  --primary-lighter-color: #8bd3fa;
-  --primary-darker-color: #9adafb;
+  --primary-color: map_get($mat-light-blue, 800);
+  --primary-lighter-color: map_get($mat-light-blue, 800);
+  --primary-darker-color: map_get($mat-light-blue, 800);
   --text-primary-color: #{$dark-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$dark-primary-text};
 }
 
 $mat-primary: (
-  main: #b3e5fc,
-  lighter: #8bd3fa,
-  darker: #9adafb,
-  200: #b3e5fc, // For slide toggle,
+  main: map_get($mat-light-blue, 800),
+  lighter: map_get($mat-light-blue, 800),
+  darker: map_get($mat-light-blue, 800),
+  200: map_get($mat-light-blue, 800), // For slide toggle,
   contrast : (
     main: $dark-primary-text,
     lighter: $dark-primary-text,
@@ -191,19 +191,19 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #fff176;
-  --accent-lighter-color: #fffbd6;
-  --accent-darker-color: #ffeb59;
+  --accent-color: map_get($mat-yellow, 300);
+  --accent-lighter-color: map_get($mat-yellow, 100);
+  --accent-darker-color: map_get($mat-yellow, 300);
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$dark-primary-text};
 }
 
 $mat-accent: (
-  main: #fff176,
-  lighter: #fffbd6,
-  darker: #ffeb59,
-  200: #fff176, // For slide toggle,
+  main: map_get($mat-yellow, 300),
+  lighter: map_get($mat-yellow, 100),
+  darker: map_get($mat-yellow, 300),
+  200: map_get($mat-yellow, 300), // For slide toggle,
   contrast : (
     main: $dark-primary-text,
     lighter: $dark-primary-text,
@@ -213,19 +213,19 @@ $mat-accent: (
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #ff5252;
-  --warn-lighter-color: #ffcbcb;
-  --warn-darker-color: #ff3838;
+  --warn-color: map_get($mat-red, A200);
+  --warn-lighter-color: map_get($mat-red, A200);
+  --warn-darker-color: map_get($mat-red, A200);
   --text-warn-color: #{$dark-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
 
 $mat-warn: (
-  main: #ff5252,
-  lighter: #ffcbcb,
-  darker: #ff3838,
-  200: #ff5252, // For slide toggle,
+  main: map_get($mat-red, A200),
+  lighter: map_get($mat-red, A200),
+  darker: map_get($mat-red, A200),
+  200: map_get($mat-red, A200), // For slide toggle,
   contrast : (
     main: $dark-primary-text,
     lighter: $dark-primary-text,
@@ -248,21 +248,22 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Handle buttons appropriately, with respect to line-height
 .mat-raised-button, .mat-stroked-button, .mat-flat-button {
-  padding: 0 1.15em;
-  margin: 0 .65em;
-  min-width: 3em;
-  line-height: 2.6em;
+  // padding: 0 1.15em !important;
+  // min-width: 3em !important;
+  line-height: (34/16)*1rem !important;
 }
 
-.mat-standard-chip {
-  padding: .5em .85em;
-  min-height: 2.5em;
-}
+// .mat-standard-chip {
+//   padding: .5em .85em !important;
+//   min-height: 2.5em !important;
+// }
 
 .material-icons {
-  font-size: 1.71rem;
-  font-family: 'Material Icons', 'Material Icons';  
-  .mat-badge-content {
-    font-family: 'Roboto';
-  }
+  width: auto !important;
+  height: auto !important;
+  // font-size: 1.71rem !important;
+  // font-family: 'Material Icons', 'Material Icons';  
+  // .mat-badge-content {
+  //   font-family: 'Roboto';
+  // }
 }
