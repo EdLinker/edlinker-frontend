@@ -26,7 +26,7 @@ export class PopupEntryComponent implements OnInit {
     const dialogRef = this.dialog.open(PostPopupComponent, {
       data: this.dataForDialog(),
       height: 'auto',
-      width: '100%',
+      width: '960px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
