@@ -12,7 +12,6 @@ export class TeacherAuditoriumsService {
   constructor(private httpClient: HttpClient, private store: Store) { }
 
   getAuditoriumsList(): Observable<AuditoriumModel[]> {
-    const user = this.store.selectSnapshot(UserState.getUser);
-    return this.httpClient.get<AuditoriumModel[]>(`https://ed-linker.herokuapp.com/api/users/${user.id}/auditoriums`);
+    return this.httpClient.get<AuditoriumModel[]>(`https://ed-linker.herokuapp.com/api/auditoriums`);
   }
 }

@@ -16,8 +16,7 @@ export class TeacherPostService {
 
   getPosts(id: number) {
     this.store.dispatch(new ShowLoaderAction());
-    const user = this.store.selectSnapshot(UserState.getUser);
-    return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/auditoriums/${id}/tasks?user_id=${user.id}`);
+    return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/auditoriums/${id}/tasks`);
   }
 
 }
