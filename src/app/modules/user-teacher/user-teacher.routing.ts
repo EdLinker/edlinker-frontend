@@ -6,7 +6,7 @@ export const userTeacherRouting: Routes = [
     loadChildren: () => import('./teacher-home').then(m => m.TeacherHomeModule)
   },
   {
-    path: 'class-tasks/auditorium/:auditoriumId',
+    path: 'class-tasks/auditorium/:auditoriumId/subject/:subjectId',
     loadChildren: () => import('./teacher-tasks').then(m => m.TasksForClassModule),
   }
 ];

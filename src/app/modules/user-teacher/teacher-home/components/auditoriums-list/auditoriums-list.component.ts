@@ -35,6 +35,6 @@ export class AuditoriumsListComponent implements OnInit {
   }
 
   navigateTo(row: AuditoriumModel) {
-    this.router.navigate(['/teacher/class-tasks/auditorium', row.auditoriumId]);
+    this.router.navigate(['/teacher/class-tasks/auditorium', row.auditoriumId, 'subject', row.subjectId]);
   }
 }

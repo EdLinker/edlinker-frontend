@@ -3,6 +3,7 @@ export interface AuditoriumModel {
   groupId: number;
   name: string;
   subjectName: string;
+  subjectId: string;
   courseNumber: number;
   studentCount: number;
   groupLeaderName?: string;
