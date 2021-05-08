@@ -48,6 +48,6 @@ export class TasksForClassComponent implements OnInit {
   }
 
   navigateToCreateTask() {
-    this.router.navigate(['create-post/subject', 1,], {relativeTo:this.route});
+    this.router.navigate(['create-post/subject', 1,], { relativeTo:this.route });
   }
 }

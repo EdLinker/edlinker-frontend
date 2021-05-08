@@ -13,10 +13,7 @@ export class StudentPostsService {
 
   @Select(UserState.getUser) user$!: Observable<User>;
 
-  constructor(
-    private http: HttpClient,
-    private store: Store
-  ) { }
+  constructor( private http: HttpClient ) { }
 
   getPosts() {
     return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/tasks`);

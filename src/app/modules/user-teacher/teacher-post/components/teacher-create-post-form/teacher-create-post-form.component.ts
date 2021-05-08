@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { NewTask } from 'src/models';
+import { MapResponseService } from 'src/app/modules/shared/helper/services/map-response.service';
 import { TeacherAddPost } from '../../store/actions/teacher-add-post.action';
 
 @Component({
@@ -13,15 +13,20 @@ import { TeacherAddPost } from '../../store/actions/teacher-add-post.action';
 export class TeacherCreatePostFormComponent implements OnInit {
 
   createPostForm!: FormGroup;
+  auditoriumId!: number;
+  subjectId!: number;
 
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,
-    private router: Router
+    private route: ActivatedRoute,
+    private mapResponseService: MapResponseService
   ) { }
 
   ngOnInit() {
     this.initForm();
+    this.auditoriumId = Number(this.route.snapshot.paramMap.get('auditoriumId'));
+    this.subjectId = Number(this.route.snapshot.paramMap.get('subjectId'));
   }
 
   initForm() {
@@ -44,6 +49,10 @@ export class TeacherCreatePostFormComponent implements OnInit {
     this.urls.removeAt(link);
   }
 
+  clearForm() {
+    this.createPostForm.reset();
+  }
+
   validateUrls(urls: string[]) {
     urls = urls.map(item => item.trim());
     const url = urls.filter(item => item !== '');
@@ -51,35 +60,38 @@ export class TeacherCreatePostFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.prepareToSend();
+    if (this.createPostForm.valid) {
+      return this.prepareToSend();
+    }
+    return;
   }
 
   prepareToSend() {
-    const a = this.validateUrls(this.createPostForm.controls.urls.value);
-
-    if (a.length > 0) {
-      const links = JSON.stringify(a.map(obj => ({ url: obj})));
-      console.log(links);
-      const resultObject = {
-        auditoriumId: 1,
-        title: this.createPostForm.controls.title.value,
-        description: this.createPostForm.controls.content.value,
-        urls: links
-      };
-      return this.store.dispatch(new TeacherAddPost(resultObject));
+    const arrayOfLinks = this.validateUrls(this.createPostForm.controls.urls.value);
+    if (arrayOfLinks.length > 0) {
+      const links = arrayOfLinks.map(obj => ({ url: obj }));
+      const resultObject = this.mapResponseService.camelToSnake({
+        task: {
+          title: this.createPostForm.controls.title.value,
+          auditoriumId: this.auditoriumId,
+          subjectId: this.subjectId,
+          description: this.createPostForm.controls.content.value,
+          url: links,
+        }
+      });
+      return this.store.dispatch(new TeacherAddPost(resultObject, this.auditoriumId));
     }
 
-    return this.store.dispatch(new TeacherAddPost({
-      auditoriumId: 1,
-      title: this.createPostForm.controls.title.value,
-      description: this.createPostForm.controls.content.value,
-    }));
+    return this.store.dispatch(new TeacherAddPost(
+      this.mapResponseService.camelToSnake({
+        task: {
+          title: this.createPostForm.controls.title.value,
+          auditoriumId: this.auditoriumId,
+          subjectId: this.subjectId,
+          description: this.createPostForm.controls.content.value,
+        }
+      }),
+      this.auditoriumId));
   }
 
-  /**
-   * створити діспатч
-   * в діспатчеві додати нові дані в сторедж(стореджс сам відрендерить їх)
-   * в тому ж екшині створити еррор хендлер, якщо HTTP помилка то видалити дані зі стореджу і можливо показаnи нотифікацію
-   * якщо помилки немає, нічого не робити
-   */
 }
