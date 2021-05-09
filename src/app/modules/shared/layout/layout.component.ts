@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -12,7 +13,7 @@ export class LayoutComponent implements OnInit {
   houseplants = 3;
   houseplant = 0;
 
-  constructor() { }
+  constructor( public router: Router ) { }
 
   ngOnInit(): void {
     this.cat = this.getRandomInt(this.cats);
@@ -20,6 +21,7 @@ export class LayoutComponent implements OnInit {
   }
 
   getRandomInt(max: number) {
+    console.log(this.router.url);
     return Math.floor(Math.random() * max);
   }
 }
