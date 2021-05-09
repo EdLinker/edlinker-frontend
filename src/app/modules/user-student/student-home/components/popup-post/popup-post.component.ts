@@ -42,8 +42,7 @@ export class PostPopupComponent implements OnInit {
     }
 
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     setUrl() {
         if (this.task !== undefined && this.task.urls.length >= 1) { return this.urls = this.task.urls; }
