@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Post } from 'src/models';
@@ -20,6 +20,7 @@ export interface SortOption {
 export class TasksForClassComponent implements OnInit {
 
   @Select(TeacherPostState.getPosts) posts$!: Observable<Post[]>;
+  id!: number;
 
   sortOptions: SortOption[] = [
     {
@@ -39,11 +40,14 @@ export class TasksForClassComponent implements OnInit {
     },
   ];
 
-  constructor( private store: Store, private route: ActivatedRoute) { }
+  constructor( private store: Store, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.store.dispatch(new TeacherGetPosts(id));
+    this.id = Number(this.route.snapshot.paramMap.get('auditoriumId'));
+    this.store.dispatch(new TeacherGetPosts(this.id));
   }
 
+  navigateToCreateTask() {
+    this.router.navigate(['create-post'], { relativeTo:this.route });
+  }
 }
