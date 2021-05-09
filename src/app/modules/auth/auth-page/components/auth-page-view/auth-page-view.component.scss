@@ -43,6 +43,10 @@
   align-self: center;
 }
 
+.logo > img {
+  height: 3rem;
+}
+
 .text-1 {
   grid-area: t1;
   font-size: 24px;
@@ -78,7 +82,7 @@
 }
 
 
-@media (max-width: 960px) { 
+@media (max-width: 960px) {
   .grid-container {
     grid-auto-rows: auto;
     gap: 20px 20px;
@@ -94,7 +98,7 @@
     ". at ."
     ". au .";
   }
-  
+
   .form-bg {
     display: none;
   }

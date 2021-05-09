@@ -1,7 +1,7 @@
 .header {
   background-color: #D0F3FF;
   // background-color: var(--blue-200);
-  // border-bottom: 1px solid rgba(#000, 0.1);
+  border-bottom: 1px solid rgba(#000, 0.03);
   height: 76px;
 }
 
@@ -18,21 +18,22 @@
 /* logo */
 
 .logo-link {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
+  display: flex;
 }
 
-.logo-link:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(1, 217, 189, 1) 0%,
-    rgba(89, 224, 125, 1) 16%,
-    rgba(0, 171, 255, 1) 59%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.logo-svg {
+  position: relative;
+  top: (1/16)*1rem;
+  height: 2rem;
+  width: auto;
+}
+
+.logo-link :hover.logo-svg {
+  top: (2/16)*1rem;
+}
+
+.logo-link :active.logo-svg {
+  top: (4/16)*1rem;
 }
 
 
