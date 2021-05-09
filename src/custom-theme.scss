@@ -31,7 +31,7 @@ $fontConfig: (
   title:        mat-typography-level( (20/16)*1rem,   (32/16)*1rem),
   subheading-2: mat-typography-level( (16/16)*1rem,   (28/16)*1rem),
   subheading-1: mat-typography-level( (15/16)*1rem,   (24/16)*1rem),
-  
+
   body-2:       mat-typography-level( (14/16)*1rem,   (24/16)*1rem),
   body-1:       mat-typography-level( (14/16)*1rem,   (20/16)*1rem),
   button:       mat-typography-level( (14/16)*1rem,   (14/16)*1rem),
@@ -39,13 +39,6 @@ $fontConfig: (
   input:        mat-typography-level(inherit, 1.125)
 );
 
-// @function mat-typography-level(
-//   $font-size, 
-//   $line-height: $font-size, 
-//   $font-weight: 400, 
-//   $font-family: null, 
-//   $letter-spacing: normal
-// ) 
 
 
 
@@ -78,33 +71,6 @@ $mat-light-theme-foreground: (
   slider-off-active: $dark-disabled-text,
 );
 
-// Dark Theme text
-$light-text: #ffffff;
-$light-primary-text: $light-text;
-$light-accent-text: rgba($light-primary-text, 0.7);
-$light-disabled-text: rgba($light-primary-text, 0.5);
-$light-dividers: rgba($light-primary-text, 0.12);
-$light-focused: rgba($light-primary-text, 0.12);
-
-$mat-dark-theme-foreground: (
-  base:              $light-text,
-  divider:           $light-dividers,
-  dividers:          $light-dividers,
-  disabled:          $light-disabled-text,
-  disabled-button:   rgba($light-text, 0.3),
-  disabled-text:     $light-disabled-text,
-  elevation:         black,
-  hint-text:         $light-disabled-text,
-  secondary-text:    $light-accent-text,
-  accent-text:       $light-accent-text,
-  icon:              $light-text,
-  icons:             $light-text,
-  text:              $light-text,
-  slider-min:        $light-text,
-  slider-off:        rgba($light-text, 0.3),
-  slider-off-active: rgba($light-text, 0.3),
-);
-
 // Background config
 // Light bg
 $light-background:    #fafafa;
@@ -135,40 +101,12 @@ $mat-light-theme-background: (
   disabled-list-option:     $light-bg-darker-10,
 );
 
-// Dark bg
-$dark-background:     #2c2c2c;
-$dark-bg-lighter-5:   lighten($dark-background, 5%);
-$dark-bg-lighter-10:  lighten($dark-background, 10%);
-$dark-bg-lighter-20:  lighten($dark-background, 20%);
-$dark-bg-lighter-30:  lighten($dark-background, 30%);
-$light-bg-alpha-4:    rgba(#fafafa, 0.04);
-$light-bg-alpha-12:   rgba(#fafafa, 0.12);
-
-// Background palette for dark themes.
-$mat-dark-theme-background: (
-  background:               $dark-background,
-  status-bar:               $dark-bg-lighter-20,
-  app-bar:                  $dark-bg-lighter-5,
-  hover:                    $light-bg-alpha-4,
-  card:                     $dark-bg-lighter-5,
-  dialog:                   $dark-bg-lighter-5,
-  tooltip:                  $dark-bg-lighter-20,
-  disabled-button:          $light-bg-alpha-12,
-  raised-button:            $dark-bg-lighter-5,
-  focused-button:           $light-focused,
-  selected-button:          $dark-bg-lighter-20,
-  selected-disabled-button: $dark-bg-lighter-30,
-  disabled-button-toggle:   $dark-bg-lighter-10,
-  unselected-chip:          $dark-bg-lighter-20,
-  disabled-list-option:     $dark-bg-lighter-10,
-);
-
 // Compute font config
 @include mat-core($fontConfig);
 
 // Theme Config
 
-body {
+html {
   --primary-color: map_get($mat-light-blue, 800);
   --primary-lighter-color: map_get($mat-light-blue, 800);
   --primary-darker-color: map_get($mat-light-blue, 800);
@@ -190,7 +128,7 @@ $mat-primary: (
 );
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
-body {
+html {
   --accent-color: map_get($mat-yellow, 300);
   --accent-lighter-color: map_get($mat-yellow, 100);
   --accent-darker-color: map_get($mat-yellow, 300);
@@ -212,7 +150,7 @@ $mat-accent: (
 );
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
-body {
+html {
   --warn-color: map_get($mat-red, A200);
   --warn-lighter-color: map_get($mat-red, A200);
   --warn-darker-color: map_get($mat-red, A200);
@@ -235,14 +173,12 @@ $mat-warn: (
 $theme-warn: mat-palette($mat-warn, main, lighter, darker);;
 
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
-$altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
 @include angular-material-theme($theme);
 
-.theme-alternate {
-  @include angular-material-theme($altTheme);
-}
+
+
 
 // Specific component overrides, pieces that are not in line with the general theming
 
@@ -262,7 +198,7 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   width: auto !important;
   height: auto !important;
   // font-size: 1.71rem !important;
-  // font-family: 'Material Icons', 'Material Icons';  
+  // font-family: 'Material Icons', 'Material Icons';
   // .mat-badge-content {
   //   font-family: 'Roboto';
   // }

@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedHeaderModule } from './modules/shared/shared-header';
+import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
 import { AuthGuard } from './modules/auth/guards';
 import { AuthService } from './modules/auth/auth-page/services';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
@@ -37,6 +38,7 @@ import { TeacherAuditoriumsListState } from './modules/user-teacher/teacher-home
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedHeaderModule,
+    SharedBreadcrumbsModule,
   ],
   providers: [
     AuthGuard,

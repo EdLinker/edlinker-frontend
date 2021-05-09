@@ -1,6 +1,7 @@
 <mat-card class="card">
   <mat-card-header>
-    <img mat-card-avatar class="header-image" src="{{ task.avatar }}">
+    <img *ngIf="task.avatar" mat-card-avatar class="header-image" src="{{ task.avatar }}">
+    <div *ngIf="!task.avatar" mat-card-avatar class="header-image-template"></div>
     <mat-card-title>
       {{ task.subjectName }} | {{ task.author.firstName }} {{ task.author.lastName }}
     </mat-card-title>

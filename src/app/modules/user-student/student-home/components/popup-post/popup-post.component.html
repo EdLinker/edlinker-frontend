@@ -1,8 +1,8 @@
 <h2 mat-dialog-title>
   {{ task?.subjectName }} | {{ task?.author?.firstName }} {{ task?.author?.lastName }}
-  <br>
   <h4>{{ task?.createdAt | date: 'dd/MM/yyyy HH:mm'}}</h4>
 </h2>
+
 <mat-dialog-content class="mat-typography">
   <h2>{{ task?.title }}</h2>
   <p> {{ task?.description }} </p>
