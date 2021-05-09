@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { LoaderState } from '../../store/loader.state';
+import { Store } from '@ngxs/store';
 import { StudentPostsState } from '../../store/student-post-state';
-
 import { MatDialog } from '@angular/material/dialog';
 import { StudentGetPosts } from '../../store/actions';
 import { Task } from 'src/models/task.model';
@@ -15,10 +12,7 @@ import { Task } from 'src/models/task.model';
 })
 export class StudentPostsComponent implements OnInit {
 
-  @Select(StudentPostsState.getTasks) tasks$!: Observable<Task[]>;
-
-  @Select(LoaderState.status)
-  public loadingStatus$?: Observable<boolean>;
+  tasks$!: Task[];
 
   constructor(
     private store: Store,
@@ -26,6 +20,11 @@ export class StudentPostsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(new StudentGetPosts());
+    this.getTasks();
+  }
+
+  async getTasks() {
+    await this.store.dispatch(new StudentGetPosts()).toPromise();
+    return this.tasks$ = this.store.selectSnapshot(StudentPostsState.getTasks);
   }
 }

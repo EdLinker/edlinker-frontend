@@ -12,5 +12,7 @@ export interface Task {
     status?: string;
     subjectName: string;
     title: string;
-    urls: string;
+    urls: {
+        url: string;
+    }[];
 }

@@ -10,12 +10,14 @@ import { PostPopupComponent } from './popup-post.component';
 })
 export class PopupEntryComponent implements OnInit {
 
+  id!: number;
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
     private store: Store
   ) {
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.openDialog();
   }
 
@@ -24,7 +26,7 @@ export class PopupEntryComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(PostPopupComponent, {
-      data: this.dataForDialog(),
+      data: { task: this.dataForDialog(), id: this.id },
       height: 'auto',
       width: '960px',
     });
@@ -36,8 +38,7 @@ export class PopupEntryComponent implements OnInit {
 
 
   dataForDialog() {
-    const id = this.route.snapshot.paramMap.get('id');
     const tasks = this.store.selectSnapshot(StudentPostsState.getTasks);
-    return tasks.find(task => task.taskId === Number(id));
+    return tasks.find(task => task.taskId === Number(this.id));
   }
 }

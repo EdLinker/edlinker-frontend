@@ -1,14 +1,3 @@
-<mat-progress-spinner
-  class="spinner"
-  [mode]="'indeterminate'"
-  [value]="50"
-  *ngIf="loadingStatus$ | async"
->
-</mat-progress-spinner>
-
-<app-shared-post
-  class="grid-section card"
-  *ngFor="let task of tasks$ | async"
-  [task]="task"
-  [routerLink]="['dialog', task.taskId]"
-></app-shared-post>
+<div class="cards-container">
+  <app-shared-post class="card" *ngFor="let task of tasks$" [task]="task"  [routerLink]="['dialog', task.taskId ]"></app-shared-post>
+</div>

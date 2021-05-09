@@ -22,7 +22,6 @@ export class StudentPostsState {
 
     constructor(
         private studentPostsService: StudentPostsService,
-        private store: Store,
         private mapResponse: MapResponseService
     ) {}
 
