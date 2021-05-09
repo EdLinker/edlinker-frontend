@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +21,8 @@ export class TeacherCreatePostFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private store: Store,
     private route: ActivatedRoute,
-    private mapResponseService: MapResponseService
+    private mapResponseService: MapResponseService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
 
   clearForm() {
     this.createPostForm.reset();
+    return this.location.back();
   }
 
   validateUrls(urls: string[]) {
