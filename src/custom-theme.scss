@@ -31,7 +31,7 @@ $fontConfig: (
   title:        mat-typography-level( (20/16)*1rem,   (32/16)*1rem),
   subheading-2: mat-typography-level( (16/16)*1rem,   (28/16)*1rem),
   subheading-1: mat-typography-level( (15/16)*1rem,   (24/16)*1rem),
-  
+
   body-2:       mat-typography-level( (14/16)*1rem,   (24/16)*1rem),
   body-1:       mat-typography-level( (14/16)*1rem,   (20/16)*1rem),
   button:       mat-typography-level( (14/16)*1rem,   (14/16)*1rem),
@@ -198,7 +198,7 @@ $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   width: auto !important;
   height: auto !important;
   // font-size: 1.71rem !important;
-  // font-family: 'Material Icons', 'Material Icons';  
+  // font-family: 'Material Icons', 'Material Icons';
   // .mat-badge-content {
   //   font-family: 'Roboto';
   // }
