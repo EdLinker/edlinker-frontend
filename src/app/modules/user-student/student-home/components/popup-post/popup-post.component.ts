@@ -17,7 +17,7 @@ export class PostPopupComponent implements OnInit {
 
     task!: Task | undefined;
     urls: Url[] | undefined;
-    showAddTasks!: boolean;
+    // showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
     selectable = true;
@@ -45,13 +45,13 @@ export class PostPopupComponent implements OnInit {
     ngOnInit() {}
 
     setUrl() {
-        if (this.task !== undefined && this.task.urls.length >= 1) { return this.urls = this.task.urls; }
+        if (this.task !== undefined && this.task.urls.toString() !== '{}') { return this.urls = this.task.urls; }
         return;
     }
 
-    addTasks() {
-        this.showAddTasks = !this.showAddTasks;
-    }
+    // addTasks() {
+    //     this.showAddTasks = !this.showAddTasks;
+    // }
 
     add(event: MatChipInputEvent): void {
         const input = event.input;
