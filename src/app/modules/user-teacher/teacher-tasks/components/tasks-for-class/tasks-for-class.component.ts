@@ -50,7 +50,6 @@ export class TasksForClassComponent implements OnInit {
   async setTasks() {
     await this.store.dispatch(new TeacherGetPosts(this.id)).toPromise();
     this.posts = this.store.selectSnapshot(TeacherPostState.getPosts);
-    console.log(this.posts);
   }
 
   navigateToCreateTask() {
