@@ -5,17 +5,21 @@ import { delayedRetry } from 'src/app/modules/shared/helper';
 import { catchError, shareReplay } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { Task } from 'src/models';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class TeacherPostService {
+
+  url = environment.apiUrl;
+
   constructor(
     private http: HttpClient,
   ) { }
 
   addPost(payload: NewTask, id: number) {
     return this.http.post<NewTask>(
-      `https://ed-linker.herokuapp.com/api/auditoriums/${id}/tasks`, payload
+      `${this.url}auditoriums/${id}/tasks`, payload
       ).pipe(
       delayedRetry(1000, 3),
       catchError(error => {
@@ -27,7 +31,7 @@ export class TeacherPostService {
   }
 
   getPosts(id: number) {
-    return this.http.get<Task[]>(`https://ed-linker.herokuapp.com/api/auditoriums/${id}/tasks`);
+    return this.http.get<Task[]>(`${this.url}auditoriums/${id}/tasks`);
   }
 
 }
