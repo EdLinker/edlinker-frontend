@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxsModule } from '@ngxs/store';
-import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SharedPostModule } from '../../shared/shared-post-card';
@@ -22,9 +20,6 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     CommonModule,
     RouterModule.forChild(tasksForClassRouting),
-    NgxsModule.forRoot([TeacherPostState, LoaderState], {
-      developmentMode: !environment.production,
-    }),
     SharedPostModule,
     HttpClientModule,
     MatChipsModule,

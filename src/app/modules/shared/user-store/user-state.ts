@@ -39,11 +39,11 @@ export class UserState {
     }
 
     @Action(GetUser)
-    getUser({ getState, setState }: StateContext<UserStateModel>) {
+    getUser({ getState, patchState }: StateContext<UserStateModel>) {
         return this.userService.getUser().pipe(
             tap((result) => {
                 const state = getState();
-                setState({
+                patchState({
                     ...state,
                     user: this.mapResponseService.snakeToCamel(result),
                 });
@@ -52,7 +52,7 @@ export class UserState {
     }
 
     @Action(LoginAction)
-    async loginActions({ getState, setState, dispatch }: StateContext<UserStateModel>) {
+    async loginActions({ getState, dispatch }: StateContext<UserStateModel>) {
         await dispatch(new GetUser()).toPromise();
         if(getState().user.roles.find(role => role.name === 'teacher')) {return this.ngZone.run(() => this.router.navigate(['teacher']));}
         return this.ngZone.run(() => this.router.navigate(['student']));
