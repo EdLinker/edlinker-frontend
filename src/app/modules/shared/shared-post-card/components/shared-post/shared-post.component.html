@@ -3,7 +3,7 @@
     <img *ngIf="task.avatar" mat-card-avatar class="header-image" src="{{ task.avatar }}">
     <div *ngIf="!task.avatar" mat-card-avatar class="header-image-template"></div>
     <mat-card-title>
-      {{ task.subjectName }} | {{ task.author.firstName }} {{ task.author.lastName }}
+      {{ task.subjectName }} | {{ task.author.name }} {{ task.author.surname }}
     </mat-card-title>
     <mat-card-subtitle>{{ task.createdAt | date: 'dd/MM/yyyy HH:mm'}}</mat-card-subtitle>
   </mat-card-header>

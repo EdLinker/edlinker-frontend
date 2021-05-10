@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Post } from 'src/models';
+import { Post, Task } from 'src/models';
 import { TeacherGetPosts } from '../../../teacher-post/store/actions';
 import { TeacherPostState } from '../../../teacher-post/store/teacher-post.state';
 
@@ -19,7 +19,7 @@ export interface SortOption {
 })
 export class TasksForClassComponent implements OnInit {
 
-  @Select(TeacherPostState.getPosts) posts$!: Observable<Post[]>;
+  posts!: Task[];
   id!: number;
 
   sortOptions: SortOption[] = [
@@ -44,7 +44,12 @@ export class TasksForClassComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('auditoriumId'));
-    this.store.dispatch(new TeacherGetPosts(this.id));
+    this.setTasks();
+  }
+
+  async setTasks() {
+    await this.store.dispatch(new TeacherGetPosts(this.id)).toPromise();
+    this.posts = this.store.selectSnapshot(TeacherPostState.getPosts);
   }
 
   navigateToCreateTask() {

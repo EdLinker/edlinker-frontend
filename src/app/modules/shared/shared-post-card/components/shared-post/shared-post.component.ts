@@ -10,7 +10,7 @@ export class SharedPostComponent implements OnInit {
 
   @Input() task!: Task;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {}
 
