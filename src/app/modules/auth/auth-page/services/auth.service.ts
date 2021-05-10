@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from 'src/models/user.model';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -22,7 +21,7 @@ export class AuthService {
       .pipe(
         tap(
           ({ token }) => {
-            Cookie.set('auth-token', token);
+            localStorage.setItem('auth-token', token);
           }
         )
       );
@@ -33,15 +32,15 @@ export class AuthService {
   }
 
   getToken() {
-    return Cookie.get('auth-token');
+    return localStorage.getItem('auth-token');
   }
 
   isAuthenticated() {
-    return Cookie.get('auth-token');
+    return localStorage.getItem('auth-token');
   };
 
   logOut() {
-    Cookie.delete('auth-token');
+    localStorage.clear();
     return this.route.navigate(['auth']);
   }
 }
