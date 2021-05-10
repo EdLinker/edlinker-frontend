@@ -33,7 +33,7 @@ import { environment } from 'src/environments/environment';
       StudentPostsState,
       TeacherPostState,
       TeacherAuditoriumsListState
-    ]),
+     ], { developmentMode: !environment.production }),
     environment.plugins,
     AppRoutingModule,
     BrowserAnimationsModule,
