@@ -21,7 +21,6 @@ export class LayoutComponent implements OnInit {
   }
 
   getRandomInt(max: number) {
-    console.log(this.router.url);
     return Math.floor(Math.random() * max);
   }
 }

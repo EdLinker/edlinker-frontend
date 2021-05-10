@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+
 import { PostPopupComponent } from './components/popup-post/popup-post.component';
 import { PopupEntryComponent } from './components/popup-post/popup-entry.component';
 
@@ -41,7 +43,8 @@ import { PopupEntryComponent } from './components/popup-post/popup-entry.compone
     MatIconModule,
     MatInputModule,
     PipesModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatListModule,
   ],
   exports: [],
   declarations: [

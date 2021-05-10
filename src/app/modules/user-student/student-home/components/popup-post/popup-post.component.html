@@ -1,35 +1,34 @@
-<h2 mat-dialog-title>
+<!-- dialog header -->
+<div class="dialog-title-flex-container">
   <img *ngIf="task?.avatar" mat-card-avatar class="header-image" src="{{ task?.avatar }}">
   <div *ngIf="!task?.avatar" mat-card-avatar class="header-image-template"></div>
-  {{ task?.subjectName }} | {{ task?.author?.firstName }} {{ task?.author?.lastName }}
-  <h4>{{ task?.createdAt | date: 'dd/MM/yyyy HH:mm'}}</h4>
-</h2>
+  <h2 mat-dialog-title>
+    {{ task?.subjectName }} | {{ task?.author?.firstName }} {{ task?.author?.lastName }}
+    <h4>{{ task?.createdAt | date: 'dd/MM/yyyy HH:mm'}}</h4>
+  </h2>
+</div>
 
+
+<!-- dialog content -->
 <mat-dialog-content class="mat-typography">
+
   <h2>{{ task?.title }}</h2>
-  <p> {{ task?.description }} </p>
-  <h2 *ngIf="mediaUrl">Корисна інформація:</h2>
-  <mat-chip-list aria-label="Fish selection">
-    <mat-chip *ngFor="let url of urls ">
-      <a href="{{ url.url }}">{{ url.url }}</a>
-    </mat-chip>
-  </mat-chip-list>
-  <hr>
-  <mat-form-field class="example-chip-list" *ngIf="showAddTasks">
-    <mat-label>Посилання</mat-label>
-    <mat-chip-list #chipList aria-label="Fruit selection">
-      <mat-chip *ngFor="let link of links" [selectable]="selectable" [removable]="removable"
-        (removed)="remove(link)">
-        {{ link.url | shortUrl}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-      <input placeholder="Посилання" [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-        (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-  </mat-form-field>
+
+  <p> {{ task?.description }}</p>
+
+  <mat-list *ngIf="urls">
+    <div mat-subheader>Посилання</div>
+    <mat-list-item *ngFor="let url of urls">
+      <mat-icon mat-list-icon>link</mat-icon>
+      <div mat-line>
+        <a href="{{ url.url }}">{{ url.url }}</a>
+      </div>
+    </mat-list-item>
+  </mat-list>
 
 </mat-dialog-content>
+
+<!-- dialog buttons -->
 <mat-dialog-actions align="end">
   <button mat-button (click)="addTasks()">Прикріпити завдання</button>
   <button mat-button [mat-dialog-close]="true">Надіслати завдання</button>
