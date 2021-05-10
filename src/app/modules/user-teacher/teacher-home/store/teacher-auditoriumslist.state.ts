@@ -32,11 +32,11 @@ export class TeacherAuditoriumsListState {
     }
 
     @Action(GetTeacherAuditoriums)
-    getAuditoriumsList({ getState, setState }: StateContext<TeacherAuditoriumsListModel>) {
+    getAuditoriumsList({ getState, patchState }: StateContext<TeacherAuditoriumsListModel>) {
         return this.teacherAuditoriumsService.getAuditoriumsList().pipe(
             tap((result) => {
                 const state = getState();
-                setState({
+                patchState({
                     ...state,
                     auditoriums: this.mapResponseService.snakeToCamel(result)
                 });

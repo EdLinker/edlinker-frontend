@@ -47,12 +47,12 @@ export class TeacherPostState {
     }
 
     @Action(TeacherGetPosts)
-    getPosts({ getState, setState }: StateContext<TeacherPostStateModel>, { id }: TeacherGetPosts) {
+    getPosts({ getState, patchState }: StateContext<TeacherPostStateModel>, { id }: TeacherGetPosts) {
         return this.teacherPostService.getPosts(id).pipe(
             finalize(() => this.store.dispatch(new HideLoaderAction())),
             tap((result) => {
                 const state = getState();
-                setState({
+                patchState({
                     ...state,
                     tasks: this.mapResponseService.snakeToCamel(result)
                 });
