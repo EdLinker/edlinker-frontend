@@ -7,4 +7,3 @@ export { UserProfile } from './user-profile.model';
 export { Task } from './task.model';
 export { Url } from './url.model';
 export { NewTask } from './new-task.model';
-export { EnvironmentInterface } from './environments-model';

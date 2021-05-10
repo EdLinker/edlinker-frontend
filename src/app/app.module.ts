@@ -18,6 +18,7 @@ import { MapResponseService } from './modules/shared/helper/services/map-respons
 import { StudentPostsState } from './modules/user-student/student-home/store/student-post-state';
 import { TeacherPostState } from './modules/user-teacher/teacher-post/store/teacher-post.state';
 import { TeacherAuditoriumsListState } from './modules/user-teacher/teacher-home/store/teacher-auditoriumslist.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,8 @@ import { TeacherAuditoriumsListState } from './modules/user-teacher/teacher-home
       StudentPostsState,
       TeacherPostState,
       TeacherAuditoriumsListState
-    ], {
-      developmentMode: true,
-    }),
+    ]),
+    environment.plugins,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedHeaderModule,

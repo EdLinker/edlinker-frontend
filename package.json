@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~11.1.2",
     "@angular/platform-browser-dynamic": "~11.1.2",
     "@angular/router": "~11.1.2",
+    "@ngxs/devtools-plugin": "^3.7.1",
+    "@ngxs/logger-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.1",
     "camelcase-keys": "^6.2.2",
     "ng2-cookies": "^1.0.12",

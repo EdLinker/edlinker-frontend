@@ -1,8 +1,10 @@
-import { EnvironmentInterface } from 'src/models';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
-export const environment: EnvironmentInterface = {
+export const environment = {
   production: false,
-  apiUrl: 'https://ed-linker.herokuapp.com/api/'
+  apiUrl: 'https://ed-linker.herokuapp.com/api/',
+  plugins: [NgxsLoggerPluginModule.forRoot(), NgxsReduxDevtoolsPluginModule.forRoot()]
 };
 
 /*
