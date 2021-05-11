@@ -20,11 +20,13 @@ import { TeacherPostState } from './modules/user-teacher/teacher-post/store/teac
 import { TeacherAuditoriumsListState } from './modules/user-teacher/teacher-home/store/teacher-auditoriumslist.state';
 import { environment } from 'src/environments/environment';
 import { StudentsState } from './modules/user-teacher/teacher-tasks/store/students.state';
+import { Page404Component } from './modules/shared/page-404/page404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
