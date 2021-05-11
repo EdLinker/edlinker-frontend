@@ -46,13 +46,13 @@ export class PostPopupComponent implements OnInit {
     }
 
     setUrl() {
-        if (this.task !== undefined && this.task.urls.toString() !== '{}') { return this.urls = this.task.urls; }
+        if (this.task !== undefined && this.isObjectEmpty(this.task.urls)) { return this.urls = this.task.urls; }
         return;
     }
 
-    // addTasks() {
-    //     this.showAddTasks = !this.showAddTasks;
-    // }
+    isObjectEmpty(obj: Record<string, any>) {
+        return Object.keys(obj).length !== 0;
+    }
 
     add(event: MatChipInputEvent): void {
         const input = event.input;
