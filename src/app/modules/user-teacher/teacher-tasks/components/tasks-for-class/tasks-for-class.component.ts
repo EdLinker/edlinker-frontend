@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { Post, Task } from 'src/models';
+import { Store } from '@ngxs/store';
+import { Task } from 'src/models';
 import { TeacherGetPosts } from '../../../teacher-post/store/actions';
 import { TeacherPostState } from '../../../teacher-post/store/teacher-post.state';
 
@@ -54,5 +53,9 @@ export class TasksForClassComponent implements OnInit {
 
   navigateToCreateTask() {
     this.router.navigate(['create-post'], { relativeTo:this.route });
+  }
+
+  routeToStudent(numb: number) {
+      this.router.navigate(['students', numb], { relativeTo: this.route });
   }
 }
