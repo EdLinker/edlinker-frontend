@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Student } from 'src/models';
 import { TeacherGetStudents } from './actions';
 import { StudentsService } from '../services';
 import { tap } from 'rxjs/operators';
+import { MapResponseService } from 'src/app/modules/shared/helper/services/map-response.service';
 
 export class StudentsStateModel {
     students!: Student[];
@@ -18,8 +19,8 @@ export class StudentsStateModel {
 @Injectable()
 export class StudentsState {
     constructor(
-        private store: Store,
-        private studentsService: StudentsService
+        private studentsService: StudentsService,
+        private mapResponseService: MapResponseService
     ) { }
 
     @Selector()
@@ -28,13 +29,13 @@ export class StudentsState {
     }
 
     @Action(TeacherGetStudents)
-    getStudents({ getState, setState }: StateContext<StudentsStateModel>) {
-        return this.studentsService.getStudents().pipe(
+    getStudents({ getState, patchState }: StateContext<StudentsStateModel>, { numb }: TeacherGetStudents) {
+        return this.studentsService.getStudents(numb).pipe(
             tap((result) => {
                 const state = getState();
-                setState({
+                patchState({
                     ...state,
-                    students: result,
+                    students: this.mapResponseService.snakeToCamel(result),
                 });
             })
         );
