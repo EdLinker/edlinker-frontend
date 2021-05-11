@@ -40,7 +40,7 @@ export class TaskForStudentsComponent implements OnInit {
   constructor(private store: Store, private route: ActivatedRoute) {
     this.taskNumber = Number(this.route.snapshot.paramMap.get('taskNumber'));
     this.id = Number(this.route.snapshot.paramMap.get('auditoriumId'));
-    this.task = this.store.selectSnapshot(TeacherPostState.getPosts).find(task => task.number === this.taskNumber)!;
+    this.task = this.store.selectSnapshot(TeacherPostState.getPosts).find(task => task.number === this.taskNumber);
   }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class TaskForStudentsComponent implements OnInit {
   async getTask() {
     if (!this.task) {
       await this.store.dispatch(new TeacherGetPosts(this.id)).toPromise();
-      return this.task = this.store.selectSnapshot(TeacherPostState.getPosts).find(task => task.number === this.taskNumber)!;
+      return this.task = this.store.selectSnapshot(TeacherPostState.getPosts).find(task => task.number === this.taskNumber);
     }
     return;
   }
