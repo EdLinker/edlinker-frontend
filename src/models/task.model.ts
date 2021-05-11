@@ -2,9 +2,9 @@ export interface Task {
     taskId: number;
     auditoriumId?: number;
     author: {
-        firstName: string;
-        lastName: string;
-        userId?: number;
+        name: string;
+        surname: string;
+        id?: number;
     };
     avatar: string;
     createdAt: string;
@@ -12,5 +12,7 @@ export interface Task {
     status?: string;
     subjectName: string;
     title: string;
-    urls: string;
+    urls: {
+        url: string;
+    }[];
 }

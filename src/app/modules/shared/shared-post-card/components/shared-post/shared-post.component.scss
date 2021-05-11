@@ -1,8 +1,17 @@
 .card {
-    background: #fffbfb;
+    // background: #fffbfb;
     margin-bottom: 28px;
+}
+
+.mat-card {
+  backdrop-filter: blur(.35rem);
+  background-color: #FFF8;
 }
 
 .header-image {
     background-size: cover;
+}
+
+.header-image-template {
+    background-color: #dfdfdf;
 }

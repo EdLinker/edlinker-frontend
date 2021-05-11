@@ -22,7 +22,6 @@ export class StudentPostsState {
 
     constructor(
         private studentPostsService: StudentPostsService,
-        private store: Store,
         private mapResponse: MapResponseService
     ) {}
 
@@ -32,11 +31,11 @@ export class StudentPostsState {
     }
 
     @Action(StudentGetPosts)
-    getPosts({ getState, setState }: StateContext<StudentPostsStateModel>) {
+    getPosts({ getState, patchState }: StateContext<StudentPostsStateModel>) {
         return this.studentPostsService.getPosts().pipe(
             tap((result) => {
                 const state = getState();
-                setState({
+                patchState({
                     ...state,
                     tasks: this.mapResponse.snakeToCamel(result),
                 });

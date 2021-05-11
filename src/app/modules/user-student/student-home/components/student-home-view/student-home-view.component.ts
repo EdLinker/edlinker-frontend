@@ -13,4 +13,5 @@ export class StudentHomeViewComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

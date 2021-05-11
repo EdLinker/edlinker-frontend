@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Store } from '@ngxs/store';
-import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StudentGetPosts } from '../../store/actions';
 import { StudentPostsState } from '../../store/student-post-state';
@@ -18,7 +17,7 @@ export class PostPopupComponent implements OnInit {
 
     task!: Task | undefined;
     urls: Url[] | undefined;
-    showAddTasks!: boolean;
+    // showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
     selectable = true;
@@ -36,11 +35,10 @@ export class PostPopupComponent implements OnInit {
     ];
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) tasks: Task,
-        private route: Router,
-        private store: Store
+        @Inject(MAT_DIALOG_DATA) data: {task: Task; id: number},
+        private store: Store,
     ) {
-        this.setDataPost(tasks);
+        this.setDataPost(data.task, data.id);
     }
 
 
@@ -48,12 +46,13 @@ export class PostPopupComponent implements OnInit {
     }
 
     setUrl() {
-        if (this.task !== undefined && this.task.urls.length >= 1) { return this.urls = JSON.parse(this.task.urls);}
+        if (this.task !== undefined && this.task.urls.toString() !== '{}') { return this.urls = this.task.urls; }
+        return;
     }
 
-    addTasks() {
-        this.showAddTasks = !this.showAddTasks;
-    }
+    // addTasks() {
+    //     this.showAddTasks = !this.showAddTasks;
+    // }
 
     add(event: MatChipInputEvent): void {
         const input = event.input;
@@ -76,12 +75,13 @@ export class PostPopupComponent implements OnInit {
         }
     }
 
-    async setDataPost(tasks: Task) {
-        const id =  this.route.url.slice(-1);
-        if (tasks !== undefined) { return this.task = tasks, this.setUrl() ;}
-        await this.store.dispatch(new StudentGetPosts()).toPromise();
-        const newTasks = this.store.selectSnapshot(StudentPostsState.getTasks);
-        return this.task = newTasks.find(task => task.taskId === Number(id)), this.setUrl();
+    async setDataPost(data: Task, id: number) {
+        if (data === undefined) {
+            await this.store.dispatch(new StudentGetPosts()).toPromise();
+            const newTasks = this.store.selectSnapshot(StudentPostsState.getTasks);
+            return this.task = newTasks.find(task => task.taskId === Number(id)), this.setUrl();
+        }
+        return this.task = data, this.setUrl();
     }
 
 }

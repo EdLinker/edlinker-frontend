@@ -6,8 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
 import { SharedHeaderModule } from './modules/shared/shared-header';
+import { SharedBreadcrumbsModule } from './modules/shared/shared-breadcrumbs';
 import { AuthGuard } from './modules/auth/guards';
 import { AuthService } from './modules/auth/auth-page/services';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
@@ -17,6 +17,8 @@ import { UserService } from './modules/shared/user-store/services/user.service';
 import { MapResponseService } from './modules/shared/helper/services/map-response.service';
 import { StudentPostsState } from './modules/user-student/student-home/store/student-post-state';
 import { TeacherPostState } from './modules/user-teacher/teacher-post/store/teacher-post.state';
+import { TeacherAuditoriumsListState } from './modules/user-teacher/teacher-home/store/teacher-auditoriumslist.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,13 @@ import { TeacherPostState } from './modules/user-teacher/teacher-post/store/teac
       UserState,
       StudentPostsState,
       TeacherPostState,
-    ], {
-      developmentMode: true,
-    }),
+      TeacherAuditoriumsListState
+     ], { developmentMode: !environment.production }),
+    environment.plugins,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedBreadcrumbsModule,
     SharedHeaderModule,
+    SharedBreadcrumbsModule,
   ],
   providers: [
     AuthGuard,

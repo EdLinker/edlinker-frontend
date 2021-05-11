@@ -6,7 +6,7 @@
 
     <ng-container matColumnDef="groupNameColumn">
       <th mat-header-cell *matHeaderCellDef> Група </th>
-      <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="subjectNameColumn">
@@ -14,19 +14,19 @@
       <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="courceNumberColumn">
+    <ng-container matColumnDef="courseNumberColumn">
       <th mat-header-cell *matHeaderCellDef> Курс </th>
-      <td mat-cell *matCellDef="let element"> {{element.courceNumber}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.courseNumber}} </td>
     </ng-container>
 
     <ng-container matColumnDef="studentsCountColumn">
       <th mat-header-cell *matHeaderCellDef> Студентів </th>
-      <td mat-cell *matCellDef="let element"> {{element.studentsCount}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.studentCount}} </td>
     </ng-container>
 
     <ng-container matColumnDef="groupLeaderNameColumn">
       <th mat-header-cell *matHeaderCellDef> Староста </th>
-      <td mat-cell *matCellDef="let element"> {{element.groupLeaderName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.groupLeaderId}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

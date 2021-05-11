@@ -1,9 +1,28 @@
-<app-shared-header-component></app-shared-header-component>
-<div class="page-grid-container">
-    <app-shared-breadcrumbs class="grid-section"></app-shared-breadcrumbs>
-    <div class="grid-section">
-        <router-outlet></router-outlet>
-    </div>
-    
+<!-- ambient background -->
+
+<div class="ambient-bg page-grid-container">
+  <div class="grid-section ambient-section">
+    <img
+      class="ambient-img cat-img"
+      src="../../../../assets/images/cats-flowers/cat{{ cat }}.png"
+      alt=""
+    />
+    <img
+      class="ambient-img houseplant-img"
+      src="../../../../assets/images/cats-flowers/houseplant{{ houseplant }}.png"
+      alt=""
+    />
+  </div>
 </div>
 
+
+<!-- content -->
+
+<app-shared-header-component></app-shared-header-component>
+<app-shared-breadcrumbs-component *ngIf="router.url !== '/student'"></app-shared-breadcrumbs-component>
+
+<div class="page-grid-container">
+  <div class="grid-section">
+    <router-outlet></router-outlet>
+  </div>
+</div>

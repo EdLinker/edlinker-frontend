@@ -1,6 +1,6 @@
-import { Post } from 'src/models';
+import { NewTask } from 'src/models';
 
 export class TeacherAddPost {
     static readonly type = '[Teacher] Add post';
-    constructor(public payload: Post) { }
+    constructor(public payload: NewTask, public id: number) { }
 }
