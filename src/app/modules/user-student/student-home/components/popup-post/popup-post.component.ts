@@ -36,13 +36,14 @@ export class PostPopupComponent implements OnInit {
 
     constructor(
         @Inject(MAT_DIALOG_DATA) data: {task: Task; id: number},
-        private store: Store
+        private store: Store,
     ) {
         this.setDataPost(data.task, data.id);
     }
 
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     setUrl() {
         if (this.task !== undefined && this.task.urls.toString() !== '{}') { return this.urls = this.task.urls; }
