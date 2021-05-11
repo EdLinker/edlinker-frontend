@@ -2,6 +2,10 @@
   display: block;
 }
 
+.title {
+  margin-top: var(--space-2);
+}
+
 .input-value {
   height: 16em;
 }

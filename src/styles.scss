@@ -1,3 +1,11 @@
+/* Project Variables */
+
+html {
+  --space-1: 1rem;
+  --space-2: 2rem;
+
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
@@ -38,6 +46,15 @@ table {
 .grid-full-section {
   grid-column-start: 1;
   grid-column-end: 4;
+}
+
+
+
+// Cards backgrounds
+
+.card-blur-bg {
+  backdrop-filter: blur(.35rem) !important;
+  background-color: #FFF8 !important;
 }
 
 

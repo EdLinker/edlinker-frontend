@@ -1,4 +1,4 @@
-<div class="table-area">
+<div class="table-area card-blur-bg">
 
   <h2 class="table-title"> Мої аудиторії </h2>
 
@@ -30,11 +30,11 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row 
+    <tr mat-row
         *matRowDef="let row; columns: displayedColumns;"
         (click)="navigateTo(row)">
     </tr>
-    
+
   </table>
 
 </div>
