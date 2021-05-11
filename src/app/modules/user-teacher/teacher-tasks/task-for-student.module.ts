@@ -14,7 +14,7 @@ import { BollToIconPipe } from '../../shared/pipes';
 import { SharedPostModule } from '../../shared/shared-post-card';
 
 @NgModule({
-  declarations: [TaskForStudentsComponent, BollToIconPipe],
+  declarations: [TaskForStudentsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(tasksForStudentsRouting),
