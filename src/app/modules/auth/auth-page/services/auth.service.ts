@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { Role } from 'src/models';
+import { tap } from 'rxjs/operators';
 import { User } from 'src/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  url = environment.apiUrl;
+
+  constructor(
+    private http: HttpClient,
+    private route: Router
+    ) { }
 
   login(user: User): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>('https://ed-linker.herokuapp.com/api/auth', user)
+    return this.http.post<{ token: string }>(`${this.url}auth`, user)
       .pipe(
         tap(
           ({ token }) => {
@@ -21,19 +27,8 @@ export class AuthService {
       );
   }
 
-  getUser(): Observable<any> { //! Need model.
-    return this.http.get('https://ed-linker.herokuapp.com/api/auth');
-  }
-
-  getRole(): Observable<any> {
-    return this.getUser().pipe(
-      map((data => {
-        const roles: Role[] = data.roles;
-        let role;
-        roles.map(v => role = v.name);
-        return role;
-      }))
-    );
+  getUser(): Observable<any> {
+    return this.http.get(`${this.url}auth`);
   }
 
   getToken() {
@@ -46,5 +41,6 @@ export class AuthService {
 
   logOut() {
     localStorage.clear();
+    return this.route.navigate(['auth']);
   }
 }

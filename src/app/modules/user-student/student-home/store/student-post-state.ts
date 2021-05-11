@@ -1,43 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import { Post } from 'src/models';
 import { StudentPostsService } from '../services';
-import { HideLoaderAction, ShowLoaderAction, StudentGetPosts } from './actions';
-import { finalize, tap } from 'rxjs/operators';
+import { StudentGetPosts } from './actions';
+import { tap } from 'rxjs/operators';
+import { MapResponseService } from 'src/app/modules/shared/helper/services/map-response.service';
+import { Task } from 'src/models/task.model';
 
 export class StudentPostsStateModel {
-    posts!: Post[];
+    tasks!: Task[];
 }
 
 @State<StudentPostsStateModel>({
-    name: 'studentPosts',
+    name: 'studentTasks',
     defaults: {
-        posts: [],
+        tasks: [],
     },
 })
+
 @Injectable()
 export class StudentPostsState {
+
     constructor(
         private studentPostsService: StudentPostsService,
-        private store: Store
-    ) { }
+        private mapResponse: MapResponseService
+    ) {}
 
     @Selector()
-    static getPosts(state: StudentPostsStateModel) {
-        return state.posts;
+    static getTasks(state: StudentPostsStateModel) {
+        return state.tasks;
     }
 
     @Action(StudentGetPosts)
-    getPosts({ getState, setState }: StateContext<StudentPostsStateModel>) {
+    getPosts({ getState, patchState }: StateContext<StudentPostsStateModel>) {
         return this.studentPostsService.getPosts().pipe(
-            finalize(() => this.store.dispatch(new HideLoaderAction())),
             tap((result) => {
                 const state = getState();
-                setState({
+                patchState({
                     ...state,
-                    posts: result,
+                    tasks: this.mapResponse.snakeToCamel(result),
                 });
             })
         );
-    }
+    };
 }

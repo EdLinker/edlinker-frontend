@@ -1,8 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Post } from 'src/models';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Store } from '@ngxs/store';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { StudentGetPosts } from '../../store/actions';
+import { StudentPostsState } from '../../store/student-post-state';
+import { Task } from 'src/models/task.model';
+import { Url } from 'src/models';
 
 @Component({
     selector: 'app-popup-post.component.html',
@@ -10,7 +14,10 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
     styleUrls: ['./../popup-post/popup-post.component.scss']
 })
 export class PostPopupComponent implements OnInit {
-    showAddTasks!: boolean;
+
+    task!: Task | undefined;
+    urls: Url[] | undefined;
+    // showAddTasks!: boolean;
     mediaUrl?: boolean = false;
     visible = true;
     selectable = true;
@@ -28,17 +35,23 @@ export class PostPopupComponent implements OnInit {
     ];
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) public data: Post,
-    ) { }
-
-    ngOnInit(): void {
-        if (this.data.mediaUrl.length !== 0) {
-            this.mediaUrl = !this.mediaUrl;
-        }
+        @Inject(MAT_DIALOG_DATA) data: {task: Task; id: number},
+        private store: Store,
+    ) {
+        this.setDataPost(data.task, data.id);
     }
 
-    addTasks() {
-        this.showAddTasks = !this.showAddTasks;
+
+    ngOnInit() {
+    }
+
+    setUrl() {
+        if (this.task !== undefined && this.isObjectEmpty(this.task.urls)) { return this.urls = this.task.urls; }
+        return;
+    }
+
+    isObjectEmpty(obj: Record<string, any>) {
+        return Object.keys(obj).length !== 0;
     }
 
     add(event: MatChipInputEvent): void {
@@ -61,4 +74,14 @@ export class PostPopupComponent implements OnInit {
             this.links.splice(index, 1);
         }
     }
+
+    async setDataPost(data: Task, id: number) {
+        if (data === undefined) {
+            await this.store.dispatch(new StudentGetPosts()).toPromise();
+            const newTasks = this.store.selectSnapshot(StudentPostsState.getTasks);
+            return this.task = newTasks.find(task => task.taskId === Number(id)), this.setUrl();
+        }
+        return this.task = data, this.setUrl();
+    }
+
 }

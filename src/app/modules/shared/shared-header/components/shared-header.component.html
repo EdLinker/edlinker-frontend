@@ -1,6 +1,20 @@
-<mat-toolbar class="header">
-    <a class="logo-link" href="">edlinker</a>
-    <div class="search-field-wrapper"></div>
-    <mat-icon class="account-notifications-icon" aria-hidden="false" aria-label="Example notifications icon">notifications</mat-icon>
-    <mat-icon class="account-avatar-icon" matTooltipClass="mat-tooltip-n-new-line" matTooltip="{{getUserDataForTooltip}}" aria-hidden="false" aria-label="Example account_circle icon">account_circle</mat-icon>
+<mat-toolbar class="page-grid-container header">
+
+  <div class="grid-section header-container">
+
+    <a class="logo-link" href="">
+      <img class="logo-svg" src="/assets/images/logo.svg" alt="Логотип">
+    </a>
+
+    <div class="header-essentials">
+      <mat-icon
+        class="account-avatar-icon"
+        matTooltipClass="mat-tooltip-n-new-line"
+        matTooltip="{{userDataForTooltip()}}"> account_circle </mat-icon>
+
+      <mat-icon class="logout-icon" (click)="logOut()"> logout </mat-icon>
+    </div>
+
+  </div>
+
 </mat-toolbar>

@@ -1,9 +1,10 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://ed-linker.herokuapp.com/api/',
+  plugins: [NgxsLoggerPluginModule.forRoot({collapsed: true}), NgxsReduxDevtoolsPluginModule.forRoot()]
 };
 
 /*

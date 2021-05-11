@@ -1,13 +1,14 @@
-<mat-card class="card">
+<mat-card class="card card-blur-bg">
   <mat-card-header>
-    <img mat-card-avatar class="header-image" src="{{ post.imageUrl }}">
+    <img *ngIf="task.avatar" mat-card-avatar class="header-image" src="{{ task.avatar }}">
+    <div *ngIf="!task.avatar" mat-card-avatar class="header-image-template"></div>
     <mat-card-title>
-      {{ post.subjectName }} | {{ post.author }}
+      {{ task.subjectName }} | {{ task.author.name }} {{ task.author.surname }}
     </mat-card-title>
-    <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ task.createdAt | date: 'dd/MM/yyyy HH:mm'}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <h1> {{ post.title | truncate:[221, '...'] }} </h1>
-    <p> {{ post.value | truncate:[221, '...'] }} </p>
+    <h1> {{ task.title | truncate:[221, '...'] }} </h1>
+    <p> {{ task.description | truncate:[221, '...'] }} </p>
   </mat-card-content>
 </mat-card>

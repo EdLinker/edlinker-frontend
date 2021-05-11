@@ -1,3 +1,28 @@
+<!-- ambient background -->
+
+<div class="ambient-bg page-grid-container">
+  <div class="grid-section ambient-section">
+    <img
+      class="ambient-img cat-img"
+      src="../../../../assets/images/cats-flowers/cat{{ cat }}.png"
+      alt=""
+    />
+    <img
+      class="ambient-img houseplant-img"
+      src="../../../../assets/images/cats-flowers/houseplant{{ houseplant }}.png"
+      alt=""
+    />
+  </div>
+</div>
+
+
+<!-- content -->
+
 <app-shared-header-component></app-shared-header-component>
-<app-shared-breadcrumbs></app-shared-breadcrumbs>
-<router-outlet></router-outlet>
+<app-shared-breadcrumbs-component *ngIf="hide"></app-shared-breadcrumbs-component>
+<div class="space-after-header"></div>
+<div class="page-grid-container">
+  <div class="grid-section">
+    <router-outlet></router-outlet>
+  </div>
+</div>

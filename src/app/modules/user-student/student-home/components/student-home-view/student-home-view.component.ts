@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-student-home-view',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class StudentHomeViewComponent implements OnInit {
+
   constructor() { }
 
-  ngOnInit() { }
+
+  ngOnInit() {
+  }
+
 }

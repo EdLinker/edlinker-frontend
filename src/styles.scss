@@ -1,8 +1,91 @@
+/* Project Variables */
+
+html {
+  --space-1: 1rem;
+  --space-2: 2rem;
+
+}
+
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+
+table {
+  width: 100%;
+}
+
+
+
+// Grids
+
+.page-grid-container {
+  display: grid !important;
+  grid-template-columns: auto minmax(auto, 960px) auto;
+  grid-auto-flow: column;
+  grid-template-areas:
+      "none page none";
+}
+
+.grid-section {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.grid-full-section {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+
+
+// Cards backgrounds
+
+.card-blur-bg {
+  backdrop-filter: blur(.35rem) !important;
+  background-color: #FFF8 !important;
+}
+
+
+
+
+// description area
+
+.description-area {
+  margin-bottom: 2em;
+  background-color: #FFF;
+  // background-color: #f5f5f5;
+  border-radius: 1em;
+  // border: 1px solid #000;
+  padding: 1em;
+
+  // box-shadow: 0px .5rem 3rem -.5rem rgba(34, 60, 80, 0.18);
+}
+
+
+
+// Other
 
 .mat-tooltip-n-new-line {
   white-space: pre-line;
+}
+
+
+
+// Debug
+
+.debug-dots {
+  outline: 1px dotted #0003;
+  outline-offset: -1px;
 }

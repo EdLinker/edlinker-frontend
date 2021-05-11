@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { AuditoriumModele } from 'src/models';
+import { Store } from '@ngxs/store';
+import { Router } from '@angular/router';
+import { AuditoriumModel } from 'src/models';
 import { GetTeacherAuditoriums } from '../../store/actions';
 import { TeacherAuditoriumsListState } from '../../store/teacher-auditoriumslist.state';
 
@@ -14,21 +14,27 @@ import { TeacherAuditoriumsListState } from '../../store/teacher-auditoriumslist
 
 export class AuditoriumsListComponent implements OnInit {
 
-  @Select(TeacherAuditoriumsListState.getAuditoriumsList) auditoriums$!: Observable<AuditoriumModele[]>;
+  auditoriums$!: AuditoriumModel[];
 
   displayedColumns: string[] = [
     'groupNameColumn',
     'subjectNameColumn',
-    'courceNumberColumn',
+    'courseNumberColumn',
     'studentsCountColumn',
     'groupLeaderNameColumn',
   ];
 
   constructor(
     private store: Store,
+    private router: Router,
   ) {}
 
-  ngOnInit() {
-    this.store.dispatch(new GetTeacherAuditoriums());
+  async ngOnInit() {
+    await this.store.dispatch(new GetTeacherAuditoriums()).toPromise();
+    this.auditoriums$ = this.store.selectSnapshot(TeacherAuditoriumsListState.getAuditoriumsList);
+  }
+
+  navigateTo(row: AuditoriumModel) {
+    this.router.navigate(['/teacher/auditorium', row.auditoriumId, 'subject', row.subjectId]);
   }
 }

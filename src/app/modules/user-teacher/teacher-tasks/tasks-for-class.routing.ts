@@ -5,5 +5,13 @@ export const tasksForClassRouting: Routes = [
     {
       path: '',
       component: TasksForClassComponent,
+    },
+    {
+      path: 'create-post',
+      loadChildren: () => import('./../teacher-post').then(m => m.TeacherCreatePostModule),
+    },
+    {
+        path: 'students/:taskNumber',
+        loadChildren: () => import('./../teacher-tasks/task-for-student.module').then(m => m.TaskForStudentModule)
     }
   ];

@@ -1,6 +1,7 @@
-<mat-progress-spinner class="spinner" [mode]="'indeterminate'" [value]="50" *ngIf="loadingStatus$ | async">
-</mat-progress-spinner>
+<!-- <div class="description-area">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt harum quos iste commodi reiciendis placeat nesciunt iusto, rem tenetur? Ut beatae perspiciatis ipsa sequi, distinctio incidunt. Veniam officiis dolores nostrum!
+</div> -->
 
 <div class="cards-container">
-  <app-shared-post class="card" *ngFor="let post of posts$ | async" [post]="post" (click)="openDialog(post)"></app-shared-post>
+  <app-shared-post class="card" *ngFor="let task of tasks$" [task]="task"  [routerLink]="['dialog', task.taskId ]"></app-shared-post>
 </div>

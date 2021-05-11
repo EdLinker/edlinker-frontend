@@ -1,9 +1,13 @@
+/* eslint-disable id-blacklist */
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { TeacherAddPost } from '../../store/actions';
+import { MapResponseService } from 'src/app/modules/shared/helper/services/map-response.service';
+import { TeacherGetPosts } from '../../store/actions';
+import { TeacherAddPost } from '../../store/actions/teacher-add-post.action';
+import { TeacherPostState } from '../../store/teacher-post.state';
 
 @Component({
   selector: 'app-teacher-create-post-form',
@@ -11,87 +15,110 @@ import { TeacherAddPost } from '../../store/actions';
   styleUrls: ['./teacher-create-post-form.component.scss']
 })
 export class TeacherCreatePostFormComponent implements OnInit {
-  isDate: boolean;
+
   createPostForm!: FormGroup;
-  isFile: boolean;
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-
-  //todo links from database
-  links = [{
-    url: 'https://material.angular.io/components/badge/overview'
-  },
-  {
-    url: 'https://material.angular.io/components/badge/overview'
-  }
-  ];
-
+  auditoriumId!: number;
+  subjectId!: number;
+  taskNumber!: number;
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store
-  ) {
-    this.isDate = false;
-    this.isFile = false;
-  }
+    private store: Store,
+    private route: ActivatedRoute,
+    private mapResponseService: MapResponseService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
     this.initForm();
+    this.auditoriumId = Number(this.route.snapshot.paramMap.get('auditoriumId'));
+    this.subjectId = Number(this.route.snapshot.paramMap.get('subjectId'));
+    const maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
+    this.taskNumber = Math.max.apply(null, maxNumber);
+    this.prepareTaskNumber();
+
   }
 
   initForm() {
     this.createPostForm = this.formBuilder.group({
-      title: ['', Validators.required ],
-      value: ['', Validators.required ]
+      title: ['', Validators.required],
+      content: ['', Validators.required],
+      urls: this.formBuilder.array([]),
     });
   }
 
+  get urls() {
+    return this.createPostForm.get('urls') as FormArray;
+  }
+
+  addUrls() {
+    this.urls.push(this.formBuilder.control('', Validators.required));
+  }
+
+  remUrls(link: number) {
+    this.urls.removeAt(link);
+  }
+
+  clearForm() {
+    this.createPostForm.reset();
+    return this.location.back();
+  }
+
+  validateUrls(urls: string[]) {
+    urls = urls.map(item => item.trim());
+    const url = urls.filter(item => item !== '');
+    return url;
+  }
+
   onSubmit() {
-    const title = this.createPostForm.controls.title.value;
-    const value = this.createPostForm.controls.value.value;
-
     if (this.createPostForm.valid) {
-      this.store.dispatch(new TeacherAddPost({
-        title,
-        value,
-        subjectName: 'Some Subject',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-        date: '26.05.2021 16:40',
-        author: 'Carl Mask',
-        mediaUrl: this.links
-      }))
-        .subscribe(() => this.createPostForm.reset());
+      return this.prepareToSend();
     }
+    return;
   }
 
-  openDatePicker() {
-    this.isDate = !this.isDate;
-  }
-
-  openAddFilesInput() {
-    this.isFile = !this.isFile;
-  }
-
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || '').trim()) {
-      this.links.push({ url: value.trim() });
+  prepareToSend() {
+    const arrayOfLinks = this.validateUrls(this.createPostForm.controls.urls.value);
+    if (arrayOfLinks.length > 0) {
+      const links = arrayOfLinks.map(obj => ({ url: obj }));
+      const resultObject = this.mapResponseService.camelToSnake({
+        task: {
+          title: this.createPostForm.controls.title.value,
+          auditoriumId: this.auditoriumId,
+          subjectId: this.subjectId,
+          description: this.createPostForm.controls.content.value,
+          url: links,
+          number: this.taskNumber+1
+        }
+      });
+      return this.store.dispatch(new TeacherAddPost(resultObject, this.auditoriumId));
     }
 
-    if (input) {
-      input.value = '';
-    }
+    return this.store.dispatch(new TeacherAddPost(
+      this.mapResponseService.camelToSnake({
+        task: {
+          title: this.createPostForm.controls.title.value,
+          auditoriumId: this.auditoriumId,
+          subjectId: this.subjectId,
+          description: this.createPostForm.controls.content.value,
+          number: this.taskNumber
+        }
+      }),
+      this.auditoriumId
+    ));
   }
 
-  remove(link: any): void {
-    const index = this.links.indexOf(link);
-
-    if (index >= 0) {
-      this.links.splice(index, 1);
+  async prepareTaskNumber() {
+    const id = Number(this.route.snapshot.paramMap.get('auditoriumId'));
+    let maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);;
+    if (!this.store.selectSnapshot(TeacherPostState.getPosts).length) {
+      await this.store.dispatch(new TeacherGetPosts(id)).toPromise();
+      if (this.store.selectSnapshot(TeacherPostState.getPosts).length === 0) {
+        return this.taskNumber = 0;
+      } else {
+        maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
+        return this.taskNumber = Math.max.apply(null, maxNumber) + 1;
+      }
     }
+    return this.taskNumber = Math.max.apply(null, maxNumber) + 1;
   }
 }

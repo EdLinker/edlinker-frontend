@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/models';
+import { Task } from 'src/models/task.model';
 
 @Component({
   selector: 'app-shared-post',
@@ -8,11 +8,10 @@ import { Post } from 'src/models';
 })
 export class SharedPostComponent implements OnInit {
 
-  @Input() post!: Post;
+  @Input() task!: Task;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

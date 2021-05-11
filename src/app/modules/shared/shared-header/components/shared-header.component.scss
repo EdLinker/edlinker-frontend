@@ -1,49 +1,61 @@
-/* todo: (.header) - change background color */
 .header {
+  background-color: #D0F3FF;
+  // background-color: var(--blue-200);
+  border-bottom: 1px solid rgba(#000, 0.1);
+  height: 76px;
+}
+
+.header-container {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
 }
+
+
+
+
+/* logo */
 
 .logo-link {
-  color: #000;
-  text-decoration: none;
+  display: flex;
 }
 
-.logo-link:hover {
-  background: linear-gradient(90deg, rgba(1,217,189,1) 0%, rgba(89,224,125,1) 16%, rgba(0,171,255,1) 59%);  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.search-field-wrapper {
-  margin-left: 1rem;
-  margin-right: 1rem;
+.logo-svg {
+  position: relative;
+  top: (1/16)*1rem;
   height: 2rem;
-  border-radius: 2rem;
-  background-color: rgba(0, 0, 0, 5%);
-  flex-basis: 100%;
+  width: auto;
 }
 
-.account-notifications-icon {
-  width: 1.6rem;
-  height: 1.6rem;
-  font-size: 1.6rem;
-  margin-right: .6rem;
+.logo-link :hover.logo-svg {
+  top: (2/16)*1rem;
 }
 
-.account-avatar-icon {
-  width: 2rem;
-  height: 2rem;
-  font-size: 2rem;
+.logo-link :active.logo-svg {
+  top: (4/16)*1rem;
 }
 
-.account-notifications-icon, .account-avatar-icon {
-  color: #858585;
+
+
+
+/* header-essentials */
+
+.header-essentials {
+  display: flex;
+  align-items: center;
   user-select: none;
 }
 
-.account-notifications-icon:hover,
-.account-avatar-icon:hover {
-  color: #555555;
+.header-essentials :hover {
   cursor: pointer;
+}
+
+.account-avatar-icon {
+  font-size: 2.5rem;
+}
+
+.logout-icon {
+  font-size: 2rem;
+  margin-left: 1.125rem;
 }
