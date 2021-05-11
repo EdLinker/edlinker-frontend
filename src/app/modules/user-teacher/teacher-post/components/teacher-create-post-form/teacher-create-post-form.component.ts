@@ -35,6 +35,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
     const maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
     this.taskNumber = Math.max.apply(null, maxNumber);
     this.prepareTaskNumber();
+
   }
 
   initForm() {
@@ -99,19 +100,25 @@ export class TeacherCreatePostFormComponent implements OnInit {
           auditoriumId: this.auditoriumId,
           subjectId: this.subjectId,
           description: this.createPostForm.controls.content.value,
-          number: this.taskNumber+1
+          number: this.taskNumber
         }
       }),
-      this.auditoriumId));
+      this.auditoriumId
+    ));
   }
 
   async prepareTaskNumber() {
     const id = Number(this.route.snapshot.paramMap.get('auditoriumId'));
-    if (this.taskNumber === -Infinity) {
+    let maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);;
+    if (!this.store.selectSnapshot(TeacherPostState.getPosts).length) {
       await this.store.dispatch(new TeacherGetPosts(id)).toPromise();
-      const maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
-      this.taskNumber = Math.max.apply(null, maxNumber);
+      if (this.store.selectSnapshot(TeacherPostState.getPosts).length === 0) {
+        return this.taskNumber = 0;
+      } else {
+        maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
+        return this.taskNumber = Math.max.apply(null, maxNumber) + 1;
+      }
     }
+    return this.taskNumber = Math.max.apply(null, maxNumber) + 1;
   }
-
 }
