@@ -15,4 +15,6 @@ export interface Task {
     urls: {
         url: string;
     }[];
+    // eslint-disable-next-line id-blacklist
+    number: number;
 }

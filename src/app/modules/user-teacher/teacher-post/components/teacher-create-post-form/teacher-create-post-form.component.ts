@@ -1,10 +1,13 @@
+/* eslint-disable id-blacklist */
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { MapResponseService } from 'src/app/modules/shared/helper/services/map-response.service';
+import { TeacherGetPosts } from '../../store/actions';
 import { TeacherAddPost } from '../../store/actions/teacher-add-post.action';
+import { TeacherPostState } from '../../store/teacher-post.state';
 
 @Component({
   selector: 'app-teacher-create-post-form',
@@ -16,7 +19,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
   createPostForm!: FormGroup;
   auditoriumId!: number;
   subjectId!: number;
-
+  taskNumber!: number;
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,
@@ -29,6 +32,9 @@ export class TeacherCreatePostFormComponent implements OnInit {
     this.initForm();
     this.auditoriumId = Number(this.route.snapshot.paramMap.get('auditoriumId'));
     this.subjectId = Number(this.route.snapshot.paramMap.get('subjectId'));
+    const maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
+    this.taskNumber = Math.max.apply(null, maxNumber);
+    this.prepareTaskNumber();
   }
 
   initForm() {
@@ -80,6 +86,7 @@ export class TeacherCreatePostFormComponent implements OnInit {
           subjectId: this.subjectId,
           description: this.createPostForm.controls.content.value,
           url: links,
+          number: this.taskNumber+1
         }
       });
       return this.store.dispatch(new TeacherAddPost(resultObject, this.auditoriumId));
@@ -92,9 +99,19 @@ export class TeacherCreatePostFormComponent implements OnInit {
           auditoriumId: this.auditoriumId,
           subjectId: this.subjectId,
           description: this.createPostForm.controls.content.value,
+          number: this.taskNumber+1
         }
       }),
       this.auditoriumId));
+  }
+
+  async prepareTaskNumber() {
+    const id = Number(this.route.snapshot.paramMap.get('auditoriumId'));
+    if (this.taskNumber === -Infinity) {
+      await this.store.dispatch(new TeacherGetPosts(id)).toPromise();
+      const maxNumber = this.store.selectSnapshot(TeacherPostState.getPosts).map(v => v.number);
+      this.taskNumber = Math.max.apply(null, maxNumber);
+    }
   }
 
 }
