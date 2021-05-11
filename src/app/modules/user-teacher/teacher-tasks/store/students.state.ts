@@ -29,8 +29,8 @@ export class StudentsState {
     }
 
     @Action(TeacherGetStudents)
-    getStudents({ getState, patchState }: StateContext<StudentsStateModel>, { numb }: TeacherGetStudents) {
-        return this.studentsService.getStudents(numb).pipe(
+    getStudents({ getState, patchState }: StateContext<StudentsStateModel>, { numb, id }: TeacherGetStudents) {
+        return this.studentsService.getStudents(numb, id).pipe(
             tap((result) => {
                 const state = getState();
                 patchState({

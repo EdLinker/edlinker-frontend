@@ -13,7 +13,7 @@ export class StudentsService {
   url = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  getStudents(numb: number) {
-    return this.http.get<Student[]>(`${this.url}/users_task?number=${numb}`);
+  getStudents(numb: number, id: number) {
+    return this.http.get<Student[]>(`${this.url}/users_task?number=${numb}&auditorium_id=${id}`);
   }
 }
