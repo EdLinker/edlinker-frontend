@@ -15,4 +15,5 @@ export class TeacherAuditoriumsService {
   getAuditoriumsList(): Observable<AuditoriumModel[]> {
     return this.httpClient.get<AuditoriumModel[]>(`${this.url}auditoriums`);
   }
+
 }
