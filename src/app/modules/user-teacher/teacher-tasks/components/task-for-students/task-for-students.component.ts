@@ -31,7 +31,6 @@ export class TaskForStudentsComponent implements OnInit {
   taskNumber: number;
   panelOpenState = false;
   displayedColumns: string[] = [
-    'number',
     'fullName',
     'status',
     'messages',
@@ -49,7 +48,7 @@ export class TaskForStudentsComponent implements OnInit {
 
   getStudents() {
     this.getTask();
-    return this.store.dispatch(new TeacherGetStudents(this.taskNumber));
+    return this.store.dispatch(new TeacherGetStudents(this.taskNumber, this.id));
   }
 
   async getTask() {
