@@ -1,54 +1,61 @@
-<div class="grid-section post-form-container">
-
+<mat-card class="card-blur-bg">
+  <div class="grid-section post-form-container">
     <!-- description area -->
-    <div class="description-area">
-        Створити публікації для аудиторії фізика-216
-    </div>
+    <!-- <h2 class="title">Створити публікації для аудиторії фізика-216</h2> -->
+
+    <mat-card-header>
+      <mat-card-title class="title">Створити публікації</mat-card-title>
+    </mat-card-header>
 
     <!-- main fields -->
-    <form [formGroup]="createPostForm">
 
+    <form [formGroup]="createPostForm">
+      <mat-card-content>
         <mat-form-field class="block" appearance="outline">
-            <mat-label>Тема завдання</mat-label>
-            <input matInput formControlName="title">
+          <mat-label>Тема завдання</mat-label>
+          <input matInput formControlName="title" />
         </mat-form-field>
 
         <mat-form-field class="block" appearance="outline">
-            <mat-label>Опис завдання</mat-label>
-            <textarea matInput class="input-value" formControlName="content"></textarea>
+          <mat-label>Опис завдання</mat-label>
+          <textarea
+            matInput
+            class="input-value"
+            formControlName="content">
+          </textarea>
         </mat-form-field>
 
         <!-- urls -->
-        <mat-form-field class="block" formArrayName="urls" appearance="outline" *ngFor="let link of urls.controls; let i=index">
+        <mat-form-field
+          class="block"
+          formArrayName="urls"
+          appearance="outline"
+          *ngFor="let link of urls.controls; let i = index" >
+          <button mat-icon-button matPrefix (click)="remUrls(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
 
-            <button mat-icon-button matPrefix (click)="remUrls(i)">
-                <mat-icon>clear</mat-icon>
-            </button>
+          <input matInput type="text" [formControlName]="i" />
 
-            <input matInput type="text" [formControlName]="i">
-
-            <mat-label>https://...</mat-label>
-
+          <mat-label>https://...</mat-label>
         </mat-form-field>
-        
+      </mat-card-content>
 
-        <!-- buttons -->
-        <div class="buttons-area">
+      <!-- buttons -->
+      <div class="buttons-area">
+        <button mat-stroked-button color="primary" type="button" (click)="addUrls()"
+        >
+          <mat-icon>add_link</mat-icon> Додати посилання
+        </button>
 
-            <button mat-stroked-button color="primary" type="button" (click)="addUrls()">
-                <mat-icon>add_link</mat-icon> Додати посилання
-            </button>
+        <button mat-stroked-button type="button" (click)="clearForm()">
+          <mat-icon>delete_sweep</mat-icon> Скасувати
+        </button>
 
-            <button mat-stroked-button type="button" (click)="clearForm()">
-                <mat-icon>delete_sweep</mat-icon> Скасувати
-            </button>
-
-            <button mat-raised-button color="accent" type="submit" (click)="onSubmit()">
-                <mat-icon>send</mat-icon> Опублікувати
-            </button>
-
-        </div>
-
+        <button mat-raised-button color="accent" type="submit" (click)="onSubmit()" >
+          <mat-icon>send</mat-icon> Опублікувати
+        </button>
+      </div>
     </form>
-
-</div>
+  </div>
+</mat-card>

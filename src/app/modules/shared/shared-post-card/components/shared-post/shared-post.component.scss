@@ -1,11 +1,5 @@
 .card {
-    // background: #fffbfb;
-    margin-bottom: 28px;
-}
-
-.mat-card {
-  backdrop-filter: blur(.35rem);
-  background-color: #FFF8;
+    margin-bottom: var(--space-2);
 }
 
 .header-image {
