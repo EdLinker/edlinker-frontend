@@ -19,6 +19,7 @@ import { StudentPostsState } from './modules/user-student/student-home/store/stu
 import { TeacherPostState } from './modules/user-teacher/teacher-post/store/teacher-post.state';
 import { TeacherAuditoriumsListState } from './modules/user-teacher/teacher-home/store/teacher-auditoriumslist.state';
 import { environment } from 'src/environments/environment';
+import { StudentsState } from './modules/user-teacher/teacher-tasks/store/students.state';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { environment } from 'src/environments/environment';
       UserState,
       StudentPostsState,
       TeacherPostState,
-      TeacherAuditoriumsListState
+      TeacherAuditoriumsListState,
+      StudentsState
      ], { developmentMode: !environment.production }),
     environment.plugins,
     AppRoutingModule,

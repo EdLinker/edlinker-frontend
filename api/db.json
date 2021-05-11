@@ -101,10 +101,65 @@
     "patronymic": "Guys",
     "phoneNumber": "123123",
     "roles": [
-        {
-            "id": 1,
-            "name": "student"
-        }
+      {
+        "id": 1,
+        "name": "student"
+      }
     ]
+  },
+  "students": [ {
+    "id": 1,
+    "firstName": "Andrew",
+    "lastName": "ABC",
+    "patronymic": "some",
+    "phoneNumber": "123123",
+    "email": "asd@asdasd.com",
+    "status": true
+  },
+  {
+    "id": 2,
+    "firstName": "Andrew",
+    "lastName": "ABC",
+    "patronymic": "some",
+    "phoneNumber": "123123",
+    "email": "asd@asdasd.com",
+    "status": true
+  },
+  {
+    "id": 3,
+    "firstName": "Andrew",
+    "lastName": "ABC",
+    "patronymic": "some",
+    "phoneNumber": "123123",
+    "email": "asd@asdasd.com",
+    "status": false
+  },
+  {
+    "id": 4,
+    "firstName": "Andrew",
+    "lastName": "ABC",
+    "patronymic": "some",
+    "phoneNumber": "123123",
+    "email": "asd@asdasd.com",
+    "status": true
+  },
+  {
+    "id": 5,
+    "firstName": "Andrew",
+    "lastName": "ABC",
+    "patronymic": "some",
+    "phoneNumber": "123123",
+    "email": "asd@asdasd.com",
+    "status": true
+  },
+  {
+    "id": 6,
+    "firstName": "Andrew",
+    "lastName": "ABC",
+    "patronymic": "some",
+    "phoneNumber": "123123",
+    "email": "asd@asdasd.com",
+    "status": false
   }
+]
 }

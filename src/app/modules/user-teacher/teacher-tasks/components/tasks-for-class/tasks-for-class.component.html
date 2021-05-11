@@ -22,6 +22,6 @@
 
     </nav>
 
-    <app-shared-post *ngFor="let post of posts" [task]="post"></app-shared-post>
+    <app-shared-post *ngFor="let post of posts" [task]="post" (click)="routeToStudent(post.number)"></app-shared-post>
 
 </div>

@@ -1,0 +1,53 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Завдання: №{{ task?.number }}
+      </mat-panel-title>
+      <mat-panel-description>
+        Натиснути щоб відкрити
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    {{ task?.subjectName }} | {{ task?.author?.name }} {{ task?.author?.surname }}
+    <br>
+    {{ task?.createdAt | date: 'dd/MM/yyyy HH:mm'}}
+    <h2> {{ task?.title }} </h2>
+    <p> {{ task?.description }} </p>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<table mat-table [dataSource]="students$" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef> № </th>
+    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef> П І Б </th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.firstName }} {{ element.lastName }} {{ element.patronymic }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef  class="align-center"> Статус виконання </th>
+    <td mat-cell *matCellDef="let element"  class="align-center">
+      <mat-icon class="material-icons"> {{ element.status | icon }} </mat-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="messages">
+    <th mat-header-cell *matHeaderCellDef class="align-center"> Повідомлення </th>
+    <td mat-cell *matCellDef="let element" class="align-center">
+      <mat-icon class="material-icons">
+        mail_outline
+      </mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

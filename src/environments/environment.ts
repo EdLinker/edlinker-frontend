@@ -4,7 +4,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 export const environment = {
   production: false,
   apiUrl: 'https://ed-linker.herokuapp.com/api/',
-  plugins: [NgxsLoggerPluginModule.forRoot(), NgxsReduxDevtoolsPluginModule.forRoot()]
+  plugins: [NgxsLoggerPluginModule.forRoot({collapsed: true}), NgxsReduxDevtoolsPluginModule.forRoot()]
 };
 
 /*
